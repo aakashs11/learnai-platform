@@ -2,7 +2,7 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
 import {
     BookOpen, Code, Brain, Play, CheckCircle, ArrowRight,
-    Sparkles, Users, Award, Zap, Target, Rocket, Star
+    Sparkles, Users, Award, Zap, Target, Rocket
 } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../contexts/AuthContext'
@@ -63,10 +63,10 @@ export default function LandingPage() {
         }
     ]
 
-    const testimonials = [
-        { name: 'Priya S.', class: 'Class XII', text: 'The interactive code examples made learning AI so much easier!', stars: 5 },
-        { name: 'Arjun M.', class: 'Class XII', text: 'Finally understood neural networks thanks to the visual explanations.', stars: 5 },
-        { name: 'Sneha R.', class: 'Class XI', text: 'The quizzes after each section really help me remember concepts.', stars: 5 }
+    const curriculumTopics = [
+        { unit: 1, title: 'Data Handling with Python', topics: ['NumPy arrays', 'Pandas DataFrames', 'CSV operations', 'Data visualization'] },
+        { unit: 2, title: 'Data Science Methodology', topics: ['10-step methodology', 'CRISP-DM framework', 'Data analytics types', 'Model evaluation'] },
+        { unit: 3, title: 'Machine Learning & AI', topics: ['Computer Vision basics', 'NLP fundamentals', 'Neural Networks', 'CNN architecture'] }
     ]
 
     const stats = [
@@ -350,7 +350,7 @@ export default function LandingPage() {
                 </div>
             </section>
 
-            {/* Testimonials */}
+            {/* What You'll Learn - Curriculum Overview */}
             <section className="relative z-10 container mx-auto px-6 py-24">
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
@@ -359,31 +359,38 @@ export default function LandingPage() {
                     className="text-center mb-16"
                 >
                     <h2 className="text-4xl lg:text-5xl font-bold mb-4">
-                        Students
-                        <span className="text-emerald-400"> Love It</span>
+                        What You'll
+                        <span className="text-emerald-400"> Master</span>
                     </h2>
+                    <p className="text-xl text-slate-400 max-w-2xl mx-auto">
+                        Complete CBSE Class XII AI syllabus coverage
+                    </p>
                 </motion.div>
 
                 <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-                    {testimonials.map((testimonial, idx) => (
+                    {curriculumTopics.map((unit, idx) => (
                         <motion.div
                             key={idx}
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: idx * 0.1 }}
-                            className="p-6 bg-slate-900/50 backdrop-blur border border-white/10 rounded-2xl"
+                            className="p-6 bg-slate-900/50 backdrop-blur border border-white/10 rounded-2xl hover:border-indigo-500/30 transition-colors"
                         >
-                            <div className="flex gap-1 mb-4">
-                                {[...Array(testimonial.stars)].map((_, i) => (
-                                    <Star key={i} className="w-5 h-5 fill-amber-400 text-amber-400" />
+                            <div className="flex items-center gap-3 mb-4">
+                                <div className="w-10 h-10 rounded-lg bg-indigo-500/20 flex items-center justify-center">
+                                    <span className="text-indigo-400 font-bold">U{unit.unit}</span>
+                                </div>
+                                <h3 className="font-semibold text-lg">{unit.title}</h3>
+                            </div>
+                            <ul className="space-y-2">
+                                {unit.topics.map((topic, i) => (
+                                    <li key={i} className="flex items-center gap-2 text-slate-300 text-sm">
+                                        <CheckCircle className="w-4 h-4 text-emerald-400 shrink-0" />
+                                        {topic}
+                                    </li>
                                 ))}
-                            </div>
-                            <p className="text-slate-300 mb-4 italic">"{testimonial.text}"</p>
-                            <div>
-                                <p className="font-medium">{testimonial.name}</p>
-                                <p className="text-sm text-slate-500">{testimonial.class}</p>
-                            </div>
+                            </ul>
                         </motion.div>
                     ))}
                 </div>

@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ChevronDown, Lightbulb, BookOpen, CheckCircle, XCircle, ExternalLink, Brain, Zap, Target, HelpCircle } from 'lucide-react'
+import MermaidDiagram from './MermaidDiagram'
 
 /**
  * InteractiveTheory Component
@@ -69,10 +70,10 @@ export default function InteractiveTheory({ sections, keyConcepts, unit }) {
                             key={idx}
                             onClick={() => setExpandedSection(idx)}
                             className={`w-3 h-3 rounded-full transition-all ${completedSections.has(idx)
-                                    ? 'bg-emerald-400'
-                                    : expandedSection === idx
-                                        ? 'bg-indigo-400'
-                                        : 'bg-slate-600'
+                                ? 'bg-emerald-400'
+                                : expandedSection === idx
+                                    ? 'bg-indigo-400'
+                                    : 'bg-slate-600'
                                 }`}
                         />
                     ))}
@@ -148,10 +149,10 @@ function TheorySection({ section, index, isExpanded, isCompleted, checkState, on
     return (
         <div
             className={`rounded-xl border overflow-hidden transition-all ${isCompleted
-                    ? 'bg-emerald-500/10 border-emerald-500/30'
-                    : isExpanded
-                        ? 'bg-slate-800/50 border-indigo-500/30'
-                        : 'bg-slate-800/30 border-slate-700/50'
+                ? 'bg-emerald-500/10 border-emerald-500/30'
+                : isExpanded
+                    ? 'bg-slate-800/50 border-indigo-500/30'
+                    : 'bg-slate-800/30 border-slate-700/50'
                 }`}
         >
             {/* Section Header */}
@@ -198,6 +199,15 @@ function TheorySection({ section, index, isExpanded, isCompleted, checkState, on
                                     </p>
                                 ))}
                             </div>
+
+                            {/* Diagram */}
+                            {section.diagram && (
+                                <MermaidDiagram
+                                    code={section.diagram.code}
+                                    title={section.diagram.title}
+                                    caption={section.diagram.caption}
+                                />
+                            )}
 
                             {/* Did You Know Box */}
                             {section.didYouKnow && (
@@ -296,14 +306,14 @@ function ComprehensionCheck({ check, state, onAnswer }) {
                         onClick={() => handleSelect(idx)}
                         disabled={!!state}
                         className={`w-full text-left px-3 py-2 rounded-lg text-sm transition-all ${state
-                                ? idx === check.correctAnswer
-                                    ? 'bg-emerald-500/20 border-emerald-500/50 text-emerald-300'
-                                    : idx === selected && selected !== check.correctAnswer
-                                        ? 'bg-red-500/20 border-red-500/50 text-red-300'
-                                        : 'bg-slate-800/50 border-slate-700/50 text-slate-400'
-                                : selected === idx
-                                    ? 'bg-indigo-500/20 border-indigo-500/50 text-white'
-                                    : 'bg-slate-800/50 border-slate-700/50 text-slate-300 hover:bg-slate-700/50'
+                            ? idx === check.correctAnswer
+                                ? 'bg-emerald-500/20 border-emerald-500/50 text-emerald-300'
+                                : idx === selected && selected !== check.correctAnswer
+                                    ? 'bg-red-500/20 border-red-500/50 text-red-300'
+                                    : 'bg-slate-800/50 border-slate-700/50 text-slate-400'
+                            : selected === idx
+                                ? 'bg-indigo-500/20 border-indigo-500/50 text-white'
+                                : 'bg-slate-800/50 border-slate-700/50 text-slate-300 hover:bg-slate-700/50'
                             } border`}
                     >
                         <span className="mr-2 font-mono">{String.fromCharCode(65 + idx)}.</span>
@@ -326,8 +336,8 @@ function ComprehensionCheck({ check, state, onAnswer }) {
                     initial={{ opacity: 0, y: 5 }}
                     animate={{ opacity: 1, y: 0 }}
                     className={`mt-3 p-3 rounded-lg ${state === 'correct'
-                            ? 'bg-emerald-500/10 border border-emerald-500/30'
-                            : 'bg-red-500/10 border border-red-500/30'
+                        ? 'bg-emerald-500/10 border border-emerald-500/30'
+                        : 'bg-red-500/10 border border-red-500/30'
                         }`}
                 >
                     <div className="flex items-start gap-2">

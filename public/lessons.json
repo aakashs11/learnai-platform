@@ -414,6 +414,11 @@
         "type": "concept",
         "duration": 4,
         "content": "Think of these as milestones on your data science journey:\n\n📋 Problem Understanding (Steps 1-2)\n1. Business Understanding - What's the problem?\n2. Analytic Approach - How will we solve it?\n\n📊 Data Preparation (Steps 3-6)\n3. Data Requirements - What data do we need?\n4. Data Collection - Gather the data\n5. Data Understanding - Explore and visualize\n6. Data Preparation - Clean and transform\n\n🤖 Modeling & Deployment (Steps 7-10)\n7. Modeling - Build the model\n8. Evaluation - Does it work?\n9. Deployment - Put it in production\n10. Feedback - Learn and improve",
+        "diagram": {
+          "title": "Data Science Methodology Flow",
+          "code": "graph TD\n    A[📋 Business Understanding] --> B[🔍 Analytic Approach]\n    B --> C[📊 Data Requirements]\n    C --> D[📥 Data Collection]\n    D --> E[🔎 Data Understanding]\n    E --> F[🧹 Data Preparation]\n    F --> G[🤖 Modeling]\n    G --> H[✅ Evaluation]\n    H --> I[🚀 Deployment]\n    I --> J[📈 Feedback]\n    J -.-> A\n    style A fill:#6366f1\n    style G fill:#7c3aed\n    style I fill:#10b981",
+          "caption": "The 10 steps of IBM's Data Science Methodology - notice how feedback loops back to the start"
+        },
         "keyTakeaway": "The methodology is iterative - you often go back to earlier steps as you learn more.",
         "pageRef": 18,
         "check": {
@@ -433,6 +438,11 @@
         "type": "application",
         "duration": 3,
         "content": "Each type of analytics answers a different question:\n\n📈 Descriptive - 'What happened?'\n→ Sales reports, dashboards\n\n🔍 Diagnostic - 'Why did it happen?'\n→ Root cause analysis\n\n🔮 Predictive - 'What will happen?'\n→ Forecasting, predictions\n\n💡 Prescriptive - 'What should we do?'\n→ Recommendations, optimization\n\nAs you move down, analytics becomes more complex but also more valuable!",
+        "diagram": {
+          "title": "Analytics Maturity Pyramid",
+          "code": "graph TB\n    subgraph Value[\"💎 Value\"]\n        direction TB\n        D[\"💡 Prescriptive<br/>What should we do?\"]\n        C[\"🔮 Predictive<br/>What will happen?\"]\n        B[\"🔍 Diagnostic<br/>Why did it happen?\"]\n        A[\"📈 Descriptive<br/>What happened?\"]\n    end\n    A --> B --> C --> D\n    style D fill:#10b981\n    style C fill:#6366f1\n    style B fill:#f59e0b\n    style A fill:#64748b",
+          "caption": "As you move up the pyramid, analytics becomes more complex but also more valuable to the business"
+        },
         "didYouKnow": "Most companies are stuck at Descriptive analytics. Only 3% have achieved true Prescriptive analytics!",
         "keyTakeaway": "Descriptive tells you the past, Predictive tells the future, Prescriptive tells you what to DO.",
         "pageRef": 21,
