@@ -27,10 +27,7 @@ export default function ProtectedRoute({
 
     // Check admin role if required
     if (requireAdmin) {
-        const isAdmin = user?.user_metadata?.role === 'admin' ||
-            user?.email?.endsWith('@admin.com') ||
-            // Add your admin email here
-            user?.email === 'aakash@example.com'
+        const isAdmin = user?.email === 'aakash.mufc@gmail.com'
 
         if (!isAdmin) {
             return (

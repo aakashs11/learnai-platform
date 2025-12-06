@@ -14,7 +14,7 @@ export const supabase = supabaseUrl && supabaseAnonKey
 // Mock user for demo mode
 const MOCK_ADMIN = {
     id: 'mock-admin-id',
-    email: 'aakash@example.com',
+    email: 'aakash.mufc@gmail.com',
     user_metadata: { role: 'admin', full_name: 'Demo Admin' }
 }
 
