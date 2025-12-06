@@ -13,7 +13,7 @@ export default function ProgressTracker({ totalLessons, completedLessons, totalX
                         <Star className="w-5 h-5 text-indigo-400" />
                     </div>
                     <div>
-                        <p className="text-xs text-slate-400">Lessons</p>
+                        <p className="text-xs text-slate-500">Lessons</p>
                         <p className="text-lg font-bold text-white">{completedLessons}/{totalLessons}</p>
                     </div>
                 </div>
@@ -24,7 +24,7 @@ export default function ProgressTracker({ totalLessons, completedLessons, totalX
                         <Zap className="w-5 h-5 text-yellow-400" />
                     </div>
                     <div>
-                        <p className="text-xs text-slate-400">Total XP</p>
+                        <p className="text-xs text-slate-500">Total XP</p>
                         <p className="text-lg font-bold text-yellow-400">{totalXp}</p>
                     </div>
                 </div>
@@ -35,7 +35,7 @@ export default function ProgressTracker({ totalLessons, completedLessons, totalX
                         <Flame className="w-5 h-5 text-orange-400" />
                     </div>
                     <div>
-                        <p className="text-xs text-slate-400">Streak</p>
+                        <p className="text-xs text-slate-500">Streak</p>
                         <p className="text-lg font-bold text-orange-400">{streak} days</p>
                     </div>
                 </div>
@@ -46,7 +46,7 @@ export default function ProgressTracker({ totalLessons, completedLessons, totalX
                         <Trophy className="w-5 h-5 text-emerald-400" />
                     </div>
                     <div>
-                        <p className="text-xs text-slate-400">Mastery</p>
+                        <p className="text-xs text-slate-500">Mastery</p>
                         <p className="text-lg font-bold text-emerald-400">{Math.round(progressPercent)}%</p>
                     </div>
                 </div>

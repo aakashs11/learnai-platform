@@ -17,7 +17,7 @@ export default function TheorySection({ unit, keyConcepts, objectives }) {
                     </div>
                     <div>
                         <h4 className="font-semibold text-white">Theory & Concepts</h4>
-                        <p className="text-xs text-slate-400">
+                        <p className="text-xs text-slate-500">
                             Unit {unit.number}: {unit.title} • Pages {unit.pageStart}-{unit.pageEnd}
                         </p>
                     </div>
@@ -26,7 +26,7 @@ export default function TheorySection({ unit, keyConcepts, objectives }) {
                     animate={{ rotate: isOpen ? 180 : 0 }}
                     transition={{ duration: 0.2 }}
                 >
-                    <ChevronDown className="w-5 h-5 text-slate-400" />
+                    <ChevronDown className="w-5 h-5 text-slate-500" />
                 </motion.div>
             </button>
 
@@ -48,7 +48,7 @@ export default function TheorySection({ unit, keyConcepts, objectives }) {
                                 </h5>
                                 <ul className="space-y-1">
                                     {objectives.map((obj, idx) => (
-                                        <li key={idx} className="text-sm text-slate-400 pl-4 relative before:content-['•'] before:absolute before:left-0 before:text-indigo-400">
+                                        <li key={idx} className="text-sm text-slate-500 pl-4 relative before:content-['•'] before:absolute before:left-0 before:text-indigo-400">
                                             {obj}
                                         </li>
                                     ))}
@@ -72,7 +72,7 @@ export default function TheorySection({ unit, keyConcepts, objectives }) {
 
                             {/* Handbook Reference */}
                             <div className="pt-2 border-t border-slate-700/50">
-                                <p className="text-xs text-slate-500 flex items-center gap-1">
+                                <p className="text-xs text-slate-600 flex items-center gap-1">
                                     📖 Reference: AI Student Handbook XII, Pages {unit.pageStart}-{unit.pageEnd}
                                 </p>
                             </div>

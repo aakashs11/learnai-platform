@@ -125,11 +125,11 @@ export default function LessonViewer({
                         <span className="px-2 py-0.5 bg-indigo-500/20 text-indigo-400 text-xs font-medium rounded-full">
                             Lesson {lesson?.lessonNumber}
                         </span>
-                        <span className="text-xs text-slate-500">
+                        <span className="text-xs text-slate-600">
                             Block {currentBlockIndex + 1} of {totalBlocks}
                         </span>
                     </div>
-                    <span className="text-xs text-slate-400">{progress}% complete</span>
+                    <span className="text-xs text-slate-500">{progress}% complete</span>
                 </div>
 
                 {/* Progress bar */}
@@ -173,7 +173,7 @@ export default function LessonViewer({
                                     <Play className="w-8 h-8 text-purple-400" />
                                 </div>
                                 <h3 className="text-xl font-bold mb-2">Ready for the Quiz!</h3>
-                                <p className="text-slate-400 mb-6">
+                                <p className="text-slate-500 mb-6">
                                     You've completed all content blocks. Test your knowledge!
                                 </p>
                                 <button
@@ -204,7 +204,7 @@ export default function LessonViewer({
                     <button
                         onClick={handlePrev}
                         disabled={currentBlockIndex === 0}
-                        className="flex items-center gap-1 px-4 py-2 text-sm text-slate-400 hover:text-white disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+                        className="flex items-center gap-1 px-4 py-2 text-sm text-slate-500 hover:text-white disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
                     >
                         <ChevronLeft className="w-4 h-4" />
                         Previous

@@ -158,7 +158,7 @@ len(plt.get_fignums()) > 0
                         <span className="w-3 h-3 rounded-full bg-yellow-500/80" />
                         <span className="w-3 h-3 rounded-full bg-green-500/80" />
                     </div>
-                    <span className="text-xs text-slate-400 ml-2">{title || 'Python'}</span>
+                    <span className="text-xs text-slate-500 ml-2">{title || 'Python'}</span>
                     {!pyodideReady && (
                         <span className="text-xs text-amber-400 flex items-center gap-1">
                             <Loader2 className="w-3 h-3 animate-spin" />
@@ -172,7 +172,7 @@ len(plt.get_fignums()) > 0
                         className="p-1.5 hover:bg-slate-700 rounded-md transition-colors"
                         title="Reset code"
                     >
-                        <RotateCcw className="w-4 h-4 text-slate-400" />
+                        <RotateCcw className="w-4 h-4 text-slate-500" />
                     </button>
                     <button
                         onClick={handleCopy}
@@ -182,7 +182,7 @@ len(plt.get_fignums()) > 0
                         {copied ? (
                             <Check className="w-4 h-4 text-emerald-400" />
                         ) : (
-                            <Copy className="w-4 h-4 text-slate-400" />
+                            <Copy className="w-4 h-4 text-slate-500" />
                         )}
                     </button>
                 </div>
@@ -239,7 +239,7 @@ len(plt.get_fignums()) > 0
                 >
                     <div className="px-4 py-2 bg-slate-950 flex items-center gap-2">
                         <Image className="w-4 h-4 text-purple-400" />
-                        <span className="text-xs text-slate-500 uppercase tracking-wider">Plot Output</span>
+                        <span className="text-xs text-slate-600 uppercase tracking-wider">Plot Output</span>
                     </div>
                     <div className="p-4 bg-slate-950 flex justify-center">
                         <img
@@ -259,8 +259,8 @@ len(plt.get_fignums()) > 0
                     className="border-t border-slate-700"
                 >
                     <div className="px-4 py-2 bg-slate-950 flex items-center gap-2">
-                        <Terminal className="w-4 h-4 text-slate-500" />
-                        <span className="text-xs text-slate-500 uppercase tracking-wider">Output</span>
+                        <Terminal className="w-4 h-4 text-slate-600" />
+                        <span className="text-xs text-slate-600 uppercase tracking-wider">Output</span>
                     </div>
                     <pre className="p-4 text-sm font-mono text-slate-300 bg-slate-950 overflow-x-auto whitespace-pre-wrap">
                         {output}

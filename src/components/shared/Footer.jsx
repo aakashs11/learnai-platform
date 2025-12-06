@@ -12,7 +12,7 @@ export default function Footer() {
                         </div>
                         <span className="font-semibold text-white">LearnAI</span>
                     </Link>
-                    <p className="text-slate-500 text-sm">
+                    <p className="text-slate-600 text-sm">
                         © {new Date().getFullYear()} LearnAI. Made with ❤️ for students.
                     </p>
                 </div>

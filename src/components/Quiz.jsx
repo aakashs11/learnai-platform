@@ -37,7 +37,7 @@ export default function Quiz({ questions, onComplete, lessonTitle }) {
 
     if (!questions || questions.length === 0) {
         return (
-            <div className="flex flex-col items-center justify-center h-64 text-slate-400">
+            <div className="flex flex-col items-center justify-center h-64 text-slate-500">
                 <BookOpen className="w-12 h-12 mb-4 opacity-50" />
                 <p>No quiz questions available for this lesson yet.</p>
             </div>
@@ -60,7 +60,7 @@ export default function Quiz({ questions, onComplete, lessonTitle }) {
                     <Trophy className="w-20 h-20 text-yellow-400 mb-4" />
                 </motion.div>
                 <h2 className="text-3xl font-bold text-white mb-2">Quiz Complete!</h2>
-                <p className="text-slate-400 mb-6">{lessonTitle}</p>
+                <p className="text-slate-500 mb-6">{lessonTitle}</p>
 
                 <div className="grid grid-cols-2 gap-6 mb-8">
                     <div className="bg-emerald-500/10 border border-emerald-500/20 rounded-2xl p-6 text-center">
@@ -84,7 +84,7 @@ export default function Quiz({ questions, onComplete, lessonTitle }) {
                         className={`h-3 rounded-full ${percentage >= 80 ? 'bg-emerald-500' : percentage >= 50 ? 'bg-yellow-500' : 'bg-red-500'}`}
                     />
                 </div>
-                <p className="text-slate-400 text-sm">{percentage}% Accuracy</p>
+                <p className="text-slate-500 text-sm">{percentage}% Accuracy</p>
             </motion.div>
         )
     }
@@ -100,7 +100,7 @@ export default function Quiz({ questions, onComplete, lessonTitle }) {
                         animate={{ width: `${((currentIndex + 1) / questions.length) * 100}%` }}
                     />
                 </div>
-                <span className="text-slate-400 text-sm font-medium">
+                <span className="text-slate-500 text-sm font-medium">
                     {currentIndex + 1}/{questions.length}
                 </span>
             </div>
@@ -131,7 +131,7 @@ export default function Quiz({ questions, onComplete, lessonTitle }) {
                                 } else if (isSelected && !isCorrect) {
                                     buttonClass += "bg-red-500/20 border-red-500 text-red-300"
                                 } else {
-                                    buttonClass += "bg-slate-800/50 border-slate-700 text-slate-400"
+                                    buttonClass += "bg-slate-800/50 border-slate-700 text-slate-500"
                                 }
                             } else {
                                 buttonClass += isSelected
@@ -184,7 +184,7 @@ export default function Quiz({ questions, onComplete, lessonTitle }) {
                                         {currentQuestion.explanation}
                                     </p>
                                     {currentQuestion.pageRef && (
-                                        <p className="text-slate-500 text-xs mt-2">
+                                        <p className="text-slate-600 text-xs mt-2">
                                             📖 Handbook Reference: Page {currentQuestion.pageRef}
                                         </p>
                                     )}

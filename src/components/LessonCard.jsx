@@ -36,7 +36,7 @@ export default function LessonCard({ lesson, onClick, isLocked = false }) {
                     <CheckCircle className="w-4 h-4 text-emerald-400" />
                 )}
                 {isLocked && (
-                    <Lock className="w-4 h-4 text-slate-500" />
+                    <Lock className="w-4 h-4 text-slate-600" />
                 )}
             </div>
 
@@ -48,7 +48,7 @@ export default function LessonCard({ lesson, onClick, isLocked = false }) {
 
                     {/* Lesson Info */}
                     <div className="flex-1 min-w-0">
-                        <span className="text-xs text-slate-500 font-medium">Lesson {lesson.lessonNumber}</span>
+                        <span className="text-xs text-slate-600 font-medium">Lesson {lesson.lessonNumber}</span>
                         <h3 className="text-lg font-semibold text-white truncate mt-0.5">
                             {lesson.title}
                         </h3>
@@ -58,13 +58,13 @@ export default function LessonCard({ lesson, onClick, isLocked = false }) {
                             {lesson.keyConcepts?.slice(0, 3).map((concept, idx) => (
                                 <span
                                     key={idx}
-                                    className="px-2 py-0.5 bg-slate-700/50 text-slate-400 text-xs rounded-md"
+                                    className="px-2 py-0.5 bg-slate-700/50 text-slate-500 text-xs rounded-md"
                                 >
                                     {concept}
                                 </span>
                             ))}
                             {lesson.keyConcepts?.length > 3 && (
-                                <span className="px-2 py-0.5 text-slate-500 text-xs">
+                                <span className="px-2 py-0.5 text-slate-600 text-xs">
                                     +{lesson.keyConcepts.length - 3}
                                 </span>
                             )}
@@ -74,7 +74,7 @@ export default function LessonCard({ lesson, onClick, isLocked = false }) {
 
                 {/* Action Button */}
                 <div className="mt-4 flex items-center justify-between">
-                    <span className="text-xs text-slate-500">
+                    <span className="text-xs text-slate-600">
                         {lesson.quiz?.questions?.length || 0} quiz questions
                     </span>
                     <div className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium transition-colors

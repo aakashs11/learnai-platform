@@ -22,7 +22,7 @@ export default function CodePlayground({ code, language = 'python', title, expla
                         <span className="w-3 h-3 rounded-full bg-yellow-500/80" />
                         <span className="w-3 h-3 rounded-full bg-green-500/80" />
                     </div>
-                    <span className="text-xs text-slate-400 ml-2">{title || `${language} code`}</span>
+                    <span className="text-xs text-slate-500 ml-2">{title || `${language} code`}</span>
                 </div>
                 <div className="flex items-center gap-2">
                     <button
@@ -33,7 +33,7 @@ export default function CodePlayground({ code, language = 'python', title, expla
                         {copied ? (
                             <Check className="w-4 h-4 text-emerald-400" />
                         ) : (
-                            <Copy className="w-4 h-4 text-slate-400" />
+                            <Copy className="w-4 h-4 text-slate-500" />
                         )}
                     </button>
                 </div>
@@ -83,7 +83,7 @@ function highlightSyntax(line, language) {
     while (remaining.length > 0) {
         // Check for comments
         if (remaining.startsWith('#')) {
-            result.push(<span key={result.length} className="text-slate-500">{remaining}</span>)
+            result.push(<span key={result.length} className="text-slate-600">{remaining}</span>)
             break
         }
 

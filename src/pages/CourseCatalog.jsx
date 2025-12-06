@@ -89,7 +89,7 @@ export default function CourseCatalog() {
                         <div className="flex items-center gap-4">
                             <button
                                 onClick={() => navigate('/')}
-                                className="flex items-center gap-2 text-slate-400 hover:text-white transition-colors"
+                                className="flex items-center gap-2 text-slate-500 hover:text-white transition-colors"
                             >
                                 <ArrowLeft className="w-4 h-4" />
                                 <span className="hidden sm:inline">Home</span>
@@ -104,10 +104,10 @@ export default function CourseCatalog() {
 
                         {user ? (
                             <div className="flex items-center gap-4">
-                                <span className="text-sm text-slate-400">{user.email}</span>
+                                <span className="text-sm text-slate-500">{user.email}</span>
                                 <button
                                     onClick={signOut}
-                                    className="text-sm text-slate-400 hover:text-white transition-colors"
+                                    className="text-sm text-slate-500 hover:text-white transition-colors"
                                 >
                                     Sign Out
                                 </button>
@@ -129,13 +129,13 @@ export default function CourseCatalog() {
                 {/* Page Header */}
                 <div className="mb-12">
                     <h1 className="text-4xl font-bold mb-4">Course Catalog</h1>
-                    <p className="text-slate-400">Choose a course to start your learning journey</p>
+                    <p className="text-slate-500">Choose a course to start your learning journey</p>
                 </div>
 
                 {/* Filters */}
                 <div className="flex flex-col sm:flex-row gap-4 mb-8">
                     <div className="relative flex-1">
-                        <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
+                        <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-500" />
                         <input
                             type="text"
                             placeholder="Search courses..."
@@ -152,7 +152,7 @@ export default function CourseCatalog() {
                                 onClick={() => setSelectedClass(level)}
                                 className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${selectedClass === level
                                         ? 'bg-indigo-500 text-white'
-                                        : 'bg-slate-900/50 text-slate-400 hover:text-white border border-slate-800'
+                                        : 'bg-slate-900/50 text-slate-500 hover:text-white border border-slate-800'
                                     }`}
                             >
                                 {level === 'all' ? 'All' : `Class ${level}`}
@@ -194,7 +194,7 @@ export default function CourseCatalog() {
                                     <div className="flex items-center gap-2 mb-3">
                                         <span className={`text-xs font-medium px-2 py-1 rounded ${course.isPublished
                                                 ? 'bg-emerald-500/20 text-emerald-400'
-                                                : 'bg-slate-800 text-slate-500'
+                                                : 'bg-slate-800 text-slate-600'
                                             }`}>
                                             {course.isPublished ? `Class ${course.classLevel}` : 'Coming Soon'}
                                         </span>
@@ -206,11 +206,11 @@ export default function CourseCatalog() {
                                     </div>
 
                                     <h3 className="text-xl font-semibold mb-1">{course.title}</h3>
-                                    <p className="text-sm text-slate-500 mb-3">{course.subtitle}</p>
-                                    <p className="text-sm text-slate-400 line-clamp-2 mb-4">{course.description}</p>
+                                    <p className="text-sm text-slate-600 mb-3">{course.subtitle}</p>
+                                    <p className="text-sm text-slate-500 line-clamp-2 mb-4">{course.description}</p>
 
                                     {/* Meta */}
-                                    <div className="flex items-center justify-between text-sm text-slate-500">
+                                    <div className="flex items-center justify-between text-sm text-slate-600">
                                         <div className="flex items-center gap-4">
                                             <span className="flex items-center gap-1">
                                                 <BookOpen className="w-4 h-4" />
@@ -230,7 +230,7 @@ export default function CourseCatalog() {
                                     {course.progress > 0 && (
                                         <div className="mt-4">
                                             <div className="flex items-center justify-between text-xs mb-1">
-                                                <span className="text-slate-400">Progress</span>
+                                                <span className="text-slate-500">Progress</span>
                                                 <span className="text-indigo-400">{course.progress}%</span>
                                             </div>
                                             <div className="h-1.5 bg-slate-800 rounded-full overflow-hidden">
@@ -249,7 +249,7 @@ export default function CourseCatalog() {
 
                 {filteredCourses.length === 0 && !loading && (
                     <div className="text-center py-20">
-                        <p className="text-slate-400">No courses found matching your criteria.</p>
+                        <p className="text-slate-500">No courses found matching your criteria.</p>
                     </div>
                 )}
             </main>

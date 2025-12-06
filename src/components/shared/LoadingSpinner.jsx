@@ -10,7 +10,7 @@ export default function LoadingSpinner({ size = 'md', text }) {
             <div
                 className={`animate-spin rounded-full border-indigo-500 border-t-transparent ${sizes[size]}`}
             />
-            {text && <p className="text-sm text-slate-400">{text}</p>}
+            {text && <p className="text-sm text-slate-500">{text}</p>}
         </div>
     )
 }

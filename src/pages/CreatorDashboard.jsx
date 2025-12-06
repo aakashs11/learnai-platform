@@ -147,11 +147,11 @@ export default function CreatorDashboard() {
                         <div key={s.num} className="flex items-center">
                             <div className={`w-10 h-10 rounded-full flex items-center justify-center font-medium text-sm transition-all ${step >= s.num
                                 ? 'bg-indigo-500 text-white'
-                                : 'bg-slate-800 text-slate-500'
+                                : 'bg-slate-800 text-slate-600'
                                 }`}>
                                 {step > s.num ? <CheckCircle className="w-5 h-5" /> : s.num}
                             </div>
-                            <span className={`ml-2 text-sm ${step >= s.num ? 'text-white' : 'text-slate-500'}`}>
+                            <span className={`ml-2 text-sm ${step >= s.num ? 'text-white' : 'text-slate-600'}`}>
                                 {s.label}
                             </span>
                             {idx < 3 && <div className={`w-12 h-0.5 mx-4 ${step > s.num ? 'bg-indigo-500' : 'bg-slate-800'}`} />}
@@ -167,7 +167,7 @@ export default function CreatorDashboard() {
                     >
                         <div className="text-center mb-8">
                             <h2 className="text-2xl font-bold mb-2">Upload Your PDF Handbook</h2>
-                            <p className="text-slate-400">We'll automatically extract content and create interactive lessons</p>
+                            <p className="text-slate-500">We'll automatically extract content and create interactive lessons</p>
                         </div>
 
                         <div
@@ -185,18 +185,18 @@ export default function CreatorDashboard() {
                                 onChange={handleDrop}
                                 className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
                             />
-                            <Upload className={`w-12 h-12 mx-auto mb-4 ${dragActive ? 'text-indigo-400' : 'text-slate-500'}`} />
+                            <Upload className={`w-12 h-12 mx-auto mb-4 ${dragActive ? 'text-indigo-400' : 'text-slate-600'}`} />
                             <p className="text-lg font-medium mb-1">
                                 {dragActive ? 'Drop your PDF here' : 'Drag & drop your PDF here'}
                             </p>
-                            <p className="text-slate-500 text-sm">or click to browse</p>
+                            <p className="text-slate-600 text-sm">or click to browse</p>
                         </div>
 
                         <div className="mt-8 grid grid-cols-3 gap-4">
                             {['Class 10 AI', 'Class 11 Python', 'Custom PDF'].map((example, idx) => (
                                 <div key={idx} className="p-4 bg-slate-900/50 rounded-xl border border-slate-800 text-center">
-                                    <FileText className="w-8 h-8 mx-auto mb-2 text-slate-500" />
-                                    <span className="text-sm text-slate-400">{example}</span>
+                                    <FileText className="w-8 h-8 mx-auto mb-2 text-slate-600" />
+                                    <span className="text-sm text-slate-500">{example}</span>
                                 </div>
                             ))}
                         </div>
@@ -212,29 +212,29 @@ export default function CreatorDashboard() {
                     >
                         <div className="text-center mb-8">
                             <h2 className="text-2xl font-bold mb-2">Configure Your Course</h2>
-                            <p className="text-slate-400">Customize how content is generated</p>
+                            <p className="text-slate-500">Customize how content is generated</p>
                         </div>
 
                         {/* PDF Preview */}
                         <div className="flex items-center gap-4 p-4 bg-slate-900/50 rounded-xl border border-slate-800">
                             <div className="w-16 h-20 bg-slate-800 rounded-lg flex items-center justify-center">
-                                <FileText className="w-8 h-8 text-slate-500" />
+                                <FileText className="w-8 h-8 text-slate-600" />
                             </div>
                             <div className="flex-1">
                                 <p className="font-medium text-white">{pdfFile?.name}</p>
-                                <p className="text-sm text-slate-500">{(pdfFile?.size / 1024 / 1024).toFixed(2)} MB</p>
+                                <p className="text-sm text-slate-600">{(pdfFile?.size / 1024 / 1024).toFixed(2)} MB</p>
                             </div>
                             <button
                                 onClick={() => { setPdfFile(null); setStep(1); }}
                                 className="p-2 hover:bg-white/10 rounded-lg transition-colors"
                             >
-                                <X className="w-5 h-5 text-slate-400" />
+                                <X className="w-5 h-5 text-slate-500" />
                             </button>
                         </div>
 
                         {/* Course Title */}
                         <div>
-                            <label className="block text-sm font-medium text-slate-400 mb-2">Course Title</label>
+                            <label className="block text-sm font-medium text-slate-500 mb-2">Course Title</label>
                             <input
                                 type="text"
                                 value={config.title}
@@ -246,7 +246,7 @@ export default function CreatorDashboard() {
 
                         {/* Template Selection */}
                         <div>
-                            <label className="block text-sm font-medium text-slate-400 mb-2">Course Template</label>
+                            <label className="block text-sm font-medium text-slate-500 mb-2">Course Template</label>
                             <div className="grid grid-cols-3 gap-4">
                                 {COURSE_TEMPLATES.map(template => (
                                     <button
@@ -266,7 +266,7 @@ export default function CreatorDashboard() {
 
                         {/* Class Level */}
                         <div>
-                            <label className="block text-sm font-medium text-slate-400 mb-2">Class Level</label>
+                            <label className="block text-sm font-medium text-slate-500 mb-2">Class Level</label>
                             <div className="flex gap-2">
                                 {CLASS_LEVELS.map(level => (
                                     <button
@@ -274,7 +274,7 @@ export default function CreatorDashboard() {
                                         onClick={() => setConfig(p => ({ ...p, classLevel: level }))}
                                         className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${config.classLevel === level
                                             ? 'bg-indigo-500 text-white'
-                                            : 'bg-slate-800 text-slate-400 hover:text-white'
+                                            : 'bg-slate-800 text-slate-500 hover:text-white'
                                             }`}
                                     >
                                         {level}
@@ -285,7 +285,7 @@ export default function CreatorDashboard() {
 
                         {/* Generation Options */}
                         <div>
-                            <label className="block text-sm font-medium text-slate-400 mb-2">Generation Options</label>
+                            <label className="block text-sm font-medium text-slate-500 mb-2">Generation Options</label>
                             <div className="space-y-3">
                                 {[
                                     { key: 'generateQuestions', label: 'Generate inline questions', desc: '5-7 comprehension checks per lesson' },
@@ -304,7 +304,7 @@ export default function CreatorDashboard() {
                                         />
                                         <div>
                                             <p className="font-medium text-white">{option.label}</p>
-                                            <p className="text-sm text-slate-500">{option.desc}</p>
+                                            <p className="text-sm text-slate-600">{option.desc}</p>
                                         </div>
                                     </label>
                                 ))}
@@ -351,7 +351,7 @@ export default function CreatorDashboard() {
                         </div>
 
                         <h2 className="text-2xl font-bold mb-2">Generating Your Course</h2>
-                        <p className="text-slate-400 mb-8">{processing.currentStep}</p>
+                        <p className="text-slate-500 mb-8">{processing.currentStep}</p>
 
                         {/* Progress Steps */}
                         <div className="max-w-md mx-auto space-y-3">
@@ -362,7 +362,7 @@ export default function CreatorDashboard() {
                                 { label: 'Generate content', done: processing.progress >= 80 },
                                 { label: 'Create questions & diagrams', done: processing.progress >= 100 }
                             ].map((s, idx) => (
-                                <div key={idx} className={`flex items-center gap-3 text-left ${s.done ? 'text-white' : 'text-slate-500'}`}>
+                                <div key={idx} className={`flex items-center gap-3 text-left ${s.done ? 'text-white' : 'text-slate-600'}`}>
                                     {s.done ? (
                                         <CheckCircle className="w-5 h-5 text-emerald-400" />
                                     ) : (
@@ -387,7 +387,7 @@ export default function CreatorDashboard() {
                                 <CheckCircle className="w-8 h-8 text-emerald-400" />
                             </div>
                             <h2 className="text-2xl font-bold mb-2">Course Generated!</h2>
-                            <p className="text-slate-400">Review and publish your new course</p>
+                            <p className="text-slate-500">Review and publish your new course</p>
                         </div>
 
                         {/* Stats */}
@@ -401,7 +401,7 @@ export default function CreatorDashboard() {
                                 <div key={idx} className="p-4 bg-slate-900/50 rounded-xl border border-slate-800 text-center">
                                     <stat.icon className="w-6 h-6 mx-auto mb-2 text-indigo-400" />
                                     <div className="text-2xl font-bold text-white">{stat.value}</div>
-                                    <div className="text-sm text-slate-500">{stat.label}</div>
+                                    <div className="text-sm text-slate-600">{stat.label}</div>
                                 </div>
                             ))}
                         </div>
@@ -418,7 +418,7 @@ export default function CreatorDashboard() {
                                             </span>
                                             <span className="font-medium">{unit.title}</span>
                                         </div>
-                                        <span className="text-sm text-slate-500">{unit.lessons} lessons</span>
+                                        <span className="text-sm text-slate-600">{unit.lessons} lessons</span>
                                     </div>
                                 ))}
                             </div>

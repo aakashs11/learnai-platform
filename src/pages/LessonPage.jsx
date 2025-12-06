@@ -94,7 +94,7 @@ export default function LessonPage() {
 
     if (!lesson) {
         return (
-            <div className="min-h-screen bg-white dark:bg-slate-950 flex items-center justify-center text-slate-500">
+            <div className="min-h-screen bg-white dark:bg-slate-950 flex items-center justify-center text-slate-600">
                 <div className="text-center">
                     <p className="text-xl mb-4">Lesson not found</p>
                     <Link to={`/courses/${courseId}`} className="text-indigo-500 hover:underline">
@@ -128,7 +128,7 @@ export default function LessonPage() {
 
                         <Link
                             to={`/courses/${courseId}`}
-                            className="flex items-center gap-2 text-slate-500 hover:text-slate-900 dark:hover:text-white transition-colors"
+                            className="flex items-center gap-2 text-slate-600 hover:text-slate-900 dark:hover:text-white transition-colors"
                         >
                             <ArrowLeft className="w-4 h-4" />
                             <span className="hidden sm:inline">Back to Course</span>
@@ -166,21 +166,21 @@ export default function LessonPage() {
                         >
                             {/* Lesson Info */}
                             <div className="p-4 border-b border-slate-200 dark:border-slate-800">
-                                <div className="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400 mb-2">
+                                <div className="flex items-center gap-2 text-xs text-slate-600 dark:text-slate-400 mb-2">
                                     <span className="px-2 py-0.5 bg-indigo-100 dark:bg-indigo-500/20 text-indigo-600 dark:text-indigo-400 rounded-full font-medium">
                                         Lesson {lesson.lessonNumber}
                                     </span>
                                     <span>Unit {lesson.unit?.number}</span>
                                 </div>
                                 <h2 className="font-semibold text-slate-900 dark:text-white">{lesson.title}</h2>
-                                <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
+                                <p className="text-xs text-slate-600 dark:text-slate-400 mt-1">
                                     {lesson.unit?.title}
                                 </p>
                             </div>
 
                             {/* Section Navigation */}
                             <nav className="p-3">
-                                <p className="text-xs font-medium text-slate-400 dark:text-slate-500 uppercase tracking-wide px-2 mb-2">
+                                <p className="text-xs font-medium text-slate-500 dark:text-slate-600 uppercase tracking-wide px-2 mb-2">
                                     Sections
                                 </p>
                                 <div className="space-y-1">
@@ -196,7 +196,7 @@ export default function LessonPage() {
                                             <section.icon className="w-4 h-4" />
                                             {section.label}
                                             {section.id === 'quiz' && lesson.quiz?.questions?.length && (
-                                                <span className="ml-auto text-xs text-slate-400">
+                                                <span className="ml-auto text-xs text-slate-500">
                                                     {lesson.quiz.questions.length} Q
                                                 </span>
                                             )}
@@ -224,14 +224,14 @@ export default function LessonPage() {
 
                             {/* Lesson Navigation */}
                             <div className="p-3 border-t border-slate-200 dark:border-slate-800">
-                                <p className="text-xs font-medium text-slate-400 dark:text-slate-500 uppercase tracking-wide px-2 mb-2">
+                                <p className="text-xs font-medium text-slate-500 dark:text-slate-600 uppercase tracking-wide px-2 mb-2">
                                     Navigation
                                 </p>
                                 <div className="space-y-1">
                                     {prevLesson && (
                                         <button
                                             onClick={() => navigateLesson('prev')}
-                                            className="w-full flex items-center gap-2 px-3 py-2 text-sm text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg transition-colors"
+                                            className="w-full flex items-center gap-2 px-3 py-2 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg transition-colors"
                                         >
                                             <ChevronLeft className="w-4 h-4" />
                                             <span className="truncate">{prevLesson.title}</span>
@@ -240,7 +240,7 @@ export default function LessonPage() {
                                     {nextLesson && (
                                         <button
                                             onClick={() => navigateLesson('next')}
-                                            className="w-full flex items-center gap-2 px-3 py-2 text-sm text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg transition-colors"
+                                            className="w-full flex items-center gap-2 px-3 py-2 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg transition-colors"
                                         >
                                             <span className="truncate">{nextLesson.title}</span>
                                             <ChevronRight className="w-4 h-4 ml-auto" />
@@ -271,7 +271,7 @@ export default function LessonPage() {
                             <h1 className="text-3xl font-bold text-slate-900 dark:text-white mb-2">
                                 {lesson.title}
                             </h1>
-                            <div className="flex flex-wrap items-center gap-4 text-sm text-slate-500 dark:text-slate-400">
+                            <div className="flex flex-wrap items-center gap-4 text-sm text-slate-600 dark:text-slate-400">
                                 <span className="flex items-center gap-1">
                                     <Clock className="w-4 h-4" />
                                     ~15 min
@@ -355,7 +355,7 @@ export default function LessonPage() {
                                         </div>
                                         <div>
                                             <h3 className="font-semibold text-slate-900 dark:text-white">Code Examples</h3>
-                                            <p className="text-sm text-slate-500 dark:text-slate-400">Run and modify code directly in your browser</p>
+                                            <p className="text-sm text-slate-600 dark:text-slate-400">Run and modify code directly in your browser</p>
                                         </div>
                                     </div>
 
@@ -369,7 +369,7 @@ export default function LessonPage() {
                                             />
                                         ))
                                     ) : (
-                                        <div className="text-center py-12 text-slate-400">
+                                        <div className="text-center py-12 text-slate-500">
                                             <Code className="w-12 h-12 mx-auto mb-3 opacity-50" />
                                             <p>No code examples for this lesson yet.</p>
                                         </div>
@@ -403,7 +403,7 @@ export default function LessonPage() {
                                             onComplete={handleQuizComplete}
                                         />
                                     ) : (
-                                        <div className="text-center py-12 text-slate-400">
+                                        <div className="text-center py-12 text-slate-500">
                                             <HelpCircle className="w-12 h-12 mx-auto mb-3 opacity-50" />
                                             <p>No quiz for this lesson yet.</p>
                                         </div>
@@ -421,7 +421,7 @@ export default function LessonPage() {
                                 >
                                     <ChevronLeft className="w-4 h-4" />
                                     <div className="text-left">
-                                        <div className="text-xs text-slate-400">Previous</div>
+                                        <div className="text-xs text-slate-500">Previous</div>
                                         <div className="text-sm font-medium">{prevLesson.title}</div>
                                     </div>
                                 </button>

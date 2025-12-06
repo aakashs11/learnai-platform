@@ -53,7 +53,7 @@ export default function CheckBlock({
                                     ? 'bg-emerald-500/20 border-emerald-500/50 text-emerald-300'
                                     : selectedAnswer === idx
                                         ? 'bg-red-500/20 border-red-500/50 text-red-300'
-                                        : 'bg-slate-800/30 border-slate-700/50 text-slate-400'
+                                        : 'bg-slate-800/30 border-slate-700/50 text-slate-500'
                                 : selectedAnswer === idx
                                     ? 'bg-indigo-500/20 border-indigo-500/50 text-white'
                                     : 'bg-slate-800/30 border-slate-700/50 text-slate-300 hover:border-slate-600'
@@ -92,7 +92,7 @@ export default function CheckBlock({
                         exit={{ opacity: 0 }}
                         onClick={handleSubmit}
                         disabled={selectedAnswer === null}
-                        className="w-full py-2.5 bg-purple-500 hover:bg-purple-600 disabled:bg-slate-700 disabled:text-slate-500 text-white font-medium rounded-lg transition-colors"
+                        className="w-full py-2.5 bg-purple-500 hover:bg-purple-600 disabled:bg-slate-700 disabled:text-slate-600 text-white font-medium rounded-lg transition-colors"
                     >
                         Check Answer
                     </motion.button>

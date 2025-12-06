@@ -37,7 +37,7 @@ export default function ProtectedRoute({
                 <div className="min-h-screen bg-slate-950 flex items-center justify-center">
                     <div className="text-center">
                         <h1 className="text-2xl font-bold text-white mb-2">Access Denied</h1>
-                        <p className="text-slate-400">You don't have permission to access this page.</p>
+                        <p className="text-slate-500">You don't have permission to access this page.</p>
                     </div>
                 </div>
             )

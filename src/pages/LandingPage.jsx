@@ -152,12 +152,12 @@ export default function LandingPage() {
                             <span className="block mt-2 bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
                                 Mastering AI
                             </span>
-                            <span className="block text-3xl lg:text-4xl mt-4 text-slate-400 font-normal">
+                            <span className="block text-3xl lg:text-4xl mt-4 text-slate-500 font-normal">
                                 Starts Here
                             </span>
                         </h1>
 
-                        <p className="text-lg lg:text-xl text-slate-400 max-w-xl mb-8 leading-relaxed">
+                        <p className="text-lg lg:text-xl text-slate-500 max-w-xl mb-8 leading-relaxed">
                             Experience AI learning like never before. Interactive Python coding,
                             visual explanations, and personalized quizzes - all designed to help
                             you truly understand and ace your exams.
@@ -188,7 +188,7 @@ export default function LandingPage() {
                             {stats.slice(0, 3).map((stat, idx) => (
                                 <div key={idx} className="text-center">
                                     <div className="text-2xl lg:text-3xl font-bold text-white">{stat.value}</div>
-                                    <div className="text-sm text-slate-500">{stat.label}</div>
+                                    <div className="text-sm text-slate-600">{stat.label}</div>
                                 </div>
                             ))}
                         </div>
@@ -245,7 +245,7 @@ export default function LandingPage() {
                             One Course.
                             <span className="text-indigo-400"> Complete Mastery.</span>
                         </h2>
-                        <p className="text-xl text-slate-400 max-w-2xl mx-auto">
+                        <p className="text-xl text-slate-500 max-w-2xl mx-auto">
                             Everything you need to ace AI in Class XII, beautifully organized and truly interactive.
                         </p>
                     </motion.div>
@@ -285,7 +285,7 @@ export default function LandingPage() {
                                             <div key={idx} className="text-center py-4 bg-white/5 rounded-xl">
                                                 <stat.icon className="w-6 h-6 mx-auto mb-2 text-indigo-400" />
                                                 <div className="text-xl font-bold">{stat.value}</div>
-                                                <div className="text-xs text-slate-500">{stat.label}</div>
+                                                <div className="text-xs text-slate-600">{stat.label}</div>
                                             </div>
                                         ))}
                                     </div>
@@ -322,7 +322,7 @@ export default function LandingPage() {
                         Learning That Actually
                         <span className="text-purple-400"> Works</span>
                     </h2>
-                    <p className="text-xl text-slate-400 max-w-2xl mx-auto">
+                    <p className="text-xl text-slate-500 max-w-2xl mx-auto">
                         We've combined the best of educational research with modern technology
                     </p>
                 </motion.div>
@@ -343,7 +343,7 @@ export default function LandingPage() {
                                     <feature.icon className="w-7 h-7 text-white" />
                                 </div>
                                 <h3 className="text-xl font-semibold mb-3">{feature.title}</h3>
-                                <p className="text-slate-400">{feature.description}</p>
+                                <p className="text-slate-500">{feature.description}</p>
                             </div>
                         </motion.div>
                     ))}
@@ -362,7 +362,7 @@ export default function LandingPage() {
                         What You'll
                         <span className="text-emerald-400"> Master</span>
                     </h2>
-                    <p className="text-xl text-slate-400 max-w-2xl mx-auto">
+                    <p className="text-xl text-slate-500 max-w-2xl mx-auto">
                         Complete CBSE Class XII AI syllabus coverage
                     </p>
                 </motion.div>
@@ -437,7 +437,7 @@ export default function LandingPage() {
                             </div>
                             <span className="font-semibold text-lg">LearnAI</span>
                         </div>
-                        <p className="text-slate-500 text-sm">
+                        <p className="text-slate-600 text-sm">
                             © {new Date().getFullYear()} LearnAI. Made with ❤️ for students in India.
                         </p>
                     </div>

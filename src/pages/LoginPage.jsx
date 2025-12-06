@@ -82,7 +82,7 @@ export default function LoginPage() {
                     <h1 className="text-3xl font-bold mb-2">
                         {mode === 'login' ? 'Welcome back' : 'Create account'}
                     </h1>
-                    <p className="text-slate-500 dark:text-slate-400">
+                    <p className="text-slate-600 dark:text-slate-400">
                         {mode === 'login'
                             ? 'Sign in to track your progress'
                             : 'Start your AI learning journey'}
@@ -105,7 +105,7 @@ export default function LoginPage() {
                             <div className="w-full border-t border-slate-200 dark:border-slate-800" />
                         </div>
                         <div className="relative flex justify-center text-sm">
-                            <span className="px-4 bg-white dark:bg-slate-900 text-slate-500">or</span>
+                            <span className="px-4 bg-white dark:bg-slate-900 text-slate-600">or</span>
                         </div>
                     </div>
 
@@ -114,7 +114,7 @@ export default function LoginPage() {
                         <div>
                             <label className="block text-sm font-medium text-slate-600 dark:text-slate-400 mb-1.5">Email</label>
                             <div className="relative">
-                                <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
+                                <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-500" />
                                 <input
                                     type="email"
                                     value={email}
@@ -129,7 +129,7 @@ export default function LoginPage() {
                         <div>
                             <label className="block text-sm font-medium text-slate-600 dark:text-slate-400 mb-1.5">Password</label>
                             <div className="relative">
-                                <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
+                                <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-500" />
                                 <input
                                     type="password"
                                     value={password}
@@ -169,7 +169,7 @@ export default function LoginPage() {
                     </form>
 
                     {/* Toggle mode */}
-                    <p className="text-center text-slate-500 dark:text-slate-400 text-sm mt-6">
+                    <p className="text-center text-slate-600 dark:text-slate-400 text-sm mt-6">
                         {mode === 'login' ? "Don't have an account?" : 'Already have an account?'}
                         <button
                             onClick={() => setMode(mode === 'login' ? 'signup' : 'login')}
@@ -182,7 +182,7 @@ export default function LoginPage() {
 
                 {/* Browse as Guest */}
                 <div className="text-center mt-6 space-y-3">
-                    <p className="text-slate-500 dark:text-slate-500 text-sm">
+                    <p className="text-slate-600 dark:text-slate-600 text-sm">
                         Don't want to sign up yet?
                     </p>
                     <Link
@@ -192,7 +192,7 @@ export default function LoginPage() {
                         <BookOpen className="w-4 h-4" />
                         Browse Courses as Guest
                     </Link>
-                    <p className="text-xs text-slate-400">
+                    <p className="text-xs text-slate-500">
                         (Progress won't be saved across devices)
                     </p>
                 </div>

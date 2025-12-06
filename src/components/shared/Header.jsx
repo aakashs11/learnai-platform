@@ -20,7 +20,7 @@ export default function Header({
                     {showBack && (
                         <button
                             onClick={() => navigate(backTo)}
-                            className="flex items-center gap-1 text-slate-400 hover:text-white transition-colors text-sm"
+                            className="flex items-center gap-1 text-slate-500 hover:text-white transition-colors text-sm"
                         >
                             <ArrowLeft className="w-4 h-4" />
                             <span className="hidden sm:inline">{backLabel}</span>
@@ -34,7 +34,7 @@ export default function Header({
                         {title ? (
                             <div>
                                 <h1 className="text-lg font-bold text-white">{title}</h1>
-                                {subtitle && <p className="text-xs text-slate-500">{subtitle}</p>}
+                                {subtitle && <p className="text-xs text-slate-600">{subtitle}</p>}
                             </div>
                         ) : (
                             <span className="text-lg font-bold bg-gradient-to-r from-white to-slate-400 bg-clip-text text-transparent">
@@ -63,7 +63,7 @@ export default function Header({
                             )}
                             <button
                                 onClick={signOut}
-                                className="text-sm text-slate-400 hover:text-white transition-colors"
+                                className="text-sm text-slate-500 hover:text-white transition-colors"
                             >
                                 Sign Out
                             </button>

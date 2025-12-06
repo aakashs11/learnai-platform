@@ -79,7 +79,7 @@ export default function CoursePage() {
           <div className="flex items-center gap-4">
             <Link
               to="/courses"
-              className="flex items-center gap-1 text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors text-sm"
+              className="flex items-center gap-1 text-slate-500 hover:text-slate-900 dark:hover:text-white transition-colors text-sm"
             >
               <ArrowLeft className="w-4 h-4" />
               <span className="hidden sm:inline">All Courses</span>
@@ -90,7 +90,7 @@ export default function CoursePage() {
               </div>
               <div>
                 <h1 className="text-lg font-bold">AI Class XII</h1>
-                <p className="text-xs text-slate-500">CBSE • {lessons.length} Lessons</p>
+                <p className="text-xs text-slate-600">CBSE • {lessons.length} Lessons</p>
               </div>
             </div>
           </div>
@@ -110,7 +110,7 @@ export default function CoursePage() {
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
             <div>
               <h2 className="text-xl font-semibold mb-1">Your Progress</h2>
-              <p className="text-slate-500 text-sm">
+              <p className="text-slate-600 text-sm">
                 {completedCount} of {lessons.length} lessons completed
               </p>
             </div>
@@ -119,12 +119,12 @@ export default function CoursePage() {
                 <div className="text-2xl font-bold text-indigo-600 dark:text-indigo-400">
                   {Math.round((completedCount / lessons.length) * 100) || 0}%
                 </div>
-                <div className="text-xs text-slate-500">Complete</div>
+                <div className="text-xs text-slate-600">Complete</div>
               </div>
               <div className="h-12 w-px bg-slate-200 dark:bg-slate-800" />
               <div className="text-center">
                 <div className="text-2xl font-bold text-amber-600 dark:text-amber-400">{progress.xp}</div>
-                <div className="text-xs text-slate-500">Total XP</div>
+                <div className="text-xs text-slate-600">Total XP</div>
               </div>
             </div>
           </div>
@@ -212,7 +212,7 @@ export default function CoursePage() {
                     {lesson.title}
                   </h3>
 
-                  <div className="flex items-center gap-3 text-xs text-slate-500">
+                  <div className="flex items-center gap-3 text-xs text-slate-600">
                     <span className="flex items-center gap-1">
                       <Clock className="w-3.5 h-3.5" />
                       ~15 min
@@ -239,7 +239,7 @@ export default function CoursePage() {
                         ? 'text-emerald-600 dark:text-emerald-400'
                         : lessonProgress > 0
                           ? 'text-indigo-600 dark:text-indigo-400'
-                          : 'text-slate-400'
+                          : 'text-slate-500'
                       }`}>
                       {isCompleted ? 'Completed' : lessonProgress > 0 ? `${lessonProgress}% complete` : 'Not started'}
                     </span>

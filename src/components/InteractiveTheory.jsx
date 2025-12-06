@@ -48,7 +48,7 @@ export default function InteractiveTheory({ sections, keyConcepts, unit }) {
                         <h3 className="font-semibold text-white">Theory Content</h3>
                     </div>
                     <div className="flex items-center gap-2 text-sm">
-                        <span className="text-slate-400">{completedSections.size}/{sections.length} sections</span>
+                        <span className="text-slate-500">{completedSections.size}/{sections.length} sections</span>
                         <span className="text-emerald-400">{Math.round(progress)}%</span>
                     </div>
                 </div>
@@ -167,17 +167,17 @@ function TheorySection({ section, index, isExpanded, isCompleted, checkState, on
 
                 <div className="flex-1">
                     <div className="flex items-center gap-2">
-                        <span className="text-xs text-slate-500 font-medium">
+                        <span className="text-xs text-slate-600 font-medium">
                             {index + 1}/{totalSections}
                         </span>
                         <h4 className="font-medium text-white">{section.title}</h4>
                     </div>
                     {section.duration && (
-                        <span className="text-xs text-slate-500">~{section.duration} min read</span>
+                        <span className="text-xs text-slate-600">~{section.duration} min read</span>
                     )}
                 </div>
 
-                <ChevronDown className={`w-5 h-5 text-slate-400 transition-transform ${isExpanded ? 'rotate-180' : ''
+                <ChevronDown className={`w-5 h-5 text-slate-500 transition-transform ${isExpanded ? 'rotate-180' : ''
                     }`} />
             </button>
 
@@ -310,7 +310,7 @@ function ComprehensionCheck({ check, state, onAnswer }) {
                                 ? 'bg-emerald-500/20 border-emerald-500/50 text-emerald-300'
                                 : idx === selected && selected !== check.correctAnswer
                                     ? 'bg-red-500/20 border-red-500/50 text-red-300'
-                                    : 'bg-slate-800/50 border-slate-700/50 text-slate-400'
+                                    : 'bg-slate-800/50 border-slate-700/50 text-slate-500'
                             : selected === idx
                                 ? 'bg-indigo-500/20 border-indigo-500/50 text-white'
                                 : 'bg-slate-800/50 border-slate-700/50 text-slate-300 hover:bg-slate-700/50'

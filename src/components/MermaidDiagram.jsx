@@ -68,7 +68,7 @@ export default function MermaidDiagram({
         return (
             <div className="bg-red-500/10 border border-red-500/30 rounded-xl p-4 text-red-400 text-sm">
                 <p>⚠️ {error}</p>
-                <pre className="mt-2 text-xs text-slate-500 overflow-x-auto">{code}</pre>
+                <pre className="mt-2 text-xs text-slate-600 overflow-x-auto">{code}</pre>
             </div>
         )
     }
@@ -92,7 +92,7 @@ export default function MermaidDiagram({
 
             {caption && (
                 <div className="px-4 py-2 border-t border-slate-700/50 bg-slate-900/30">
-                    <p className="text-xs text-slate-500 text-center italic">{caption}</p>
+                    <p className="text-xs text-slate-600 text-center italic">{caption}</p>
                 </div>
             )}
         </div>

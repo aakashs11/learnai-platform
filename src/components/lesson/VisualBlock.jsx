@@ -32,7 +32,7 @@ export default function VisualBlock({
                     />
                 ) : (
                     <div className="w-full h-48 bg-slate-800 rounded-lg flex items-center justify-center">
-                        <span className="text-slate-500 text-sm">Image coming soon</span>
+                        <span className="text-slate-600 text-sm">Image coming soon</span>
                     </div>
                 )}
             </div>
@@ -40,7 +40,7 @@ export default function VisualBlock({
             {/* Caption */}
             {caption && (
                 <div className="px-4 py-3 bg-slate-800/30 border-t border-slate-700/50">
-                    <p className="text-sm text-slate-400 text-center">{caption}</p>
+                    <p className="text-sm text-slate-500 text-center">{caption}</p>
                 </div>
             )}
         </motion.div>
