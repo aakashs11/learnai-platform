@@ -6,6 +6,7 @@ import {
     ArrowRight, Sparkles, BookOpen, X, Settings
 } from 'lucide-react'
 import { Header } from '../components/shared'
+import { processPdfToCourse } from '../lib/pdfCourseGenerator'
 
 const COURSE_TEMPLATES = [
     { id: 'ai-cbse', name: 'AI (CBSE)', icon: '🤖', subjects: ['AI', 'ML', 'Python'] },
@@ -68,58 +69,63 @@ export default function CreatorDashboard() {
     // Process PDF and generate content
     const handleGenerate = async () => {
         setStep(3)
-        setProcessing({ status: 'uploading', progress: 10, currentStep: 'Uploading PDF...', results: null })
+        setProcessing({ status: 'uploading', progress: 10, currentStep: 'Reading PDF file...', results: null })
 
         try {
-            // Step 1: Upload PDF (simulated for now - would go to Supabase Storage)
-            await new Promise(r => setTimeout(r, 1000))
-            setProcessing(p => ({ ...p, progress: 20, currentStep: 'Extracting text from PDF...' }))
+            // Step 1: Read PDF
+            const arrayBuffer = await pdfFile.arrayBuffer()
+            setProcessing(p => ({ ...p, progress: 30, currentStep: 'Extracting text and structure...' }))
 
-            // Step 2: Extract text with page numbers
-            await new Promise(r => setTimeout(r, 1500))
-            setProcessing(p => ({ ...p, status: 'parsing', progress: 40, currentStep: 'Identifying sections and chapters...' }))
+            // Step 2: Process PDF with generator
+            const result = await processPdfToCourse(arrayBuffer)
 
-            // Step 3: Identify structure
-            await new Promise(r => setTimeout(r, 1500))
-            setProcessing(p => ({ ...p, progress: 60, currentStep: 'Generating lesson content...' }))
+            if (!result.success) {
+                throw new Error(result.error || 'Failed to process PDF')
+            }
 
-            // Step 4: Generate content (would call AI API)
-            await new Promise(r => setTimeout(r, 2000))
-            setProcessing(p => ({ ...p, status: 'generating', progress: 80, currentStep: 'Creating questions and diagrams...' }))
+            setProcessing(p => ({ ...p, status: 'generating', progress: 70, currentStep: 'Generating interactive elements...' }))
 
-            // Step 5: Create final structure
+            // Step 3: Simulate AI enhancement (since we don't have real AI API yet)
             await new Promise(r => setTimeout(r, 1500))
 
-            // Simulated results - in production this comes from AI
-            const results = {
+            // Step 4: Finalize
+            const finalResults = {
                 courseId: `course-${Date.now()}`,
                 title: config.title,
-                unitsCount: 5,
-                lessonsCount: 14,
-                questionsCount: 42,
-                diagramsCount: 8,
-                units: [
-                    { number: 1, title: 'Introduction', lessons: 3 },
-                    { number: 2, title: 'Core Concepts', lessons: 4 },
-                    { number: 3, title: 'Advanced Topics', lessons: 3 },
-                    { number: 4, title: 'Practical Applications', lessons: 2 },
-                    { number: 5, title: 'Review & Assessment', lessons: 2 }
-                ]
+                unitsCount: result.unitsDetected,
+                lessonsCount: result.lessons.length,
+                questionsCount: result.lessons.reduce((acc, l) => acc + (l.quiz?.questions?.length || 0), 0),
+                diagramsCount: result.lessons.reduce((acc, l) => acc + (l.suggestedDiagrams?.length || 0), 0),
+                units: result.lessons.reduce((acc, lesson) => {
+                    const unit = acc.find(u => u.number === lesson.unit.number)
+                    if (unit) {
+                        unit.lessons++
+                    } else {
+                        acc.push({
+                            number: lesson.unit.number,
+                            title: lesson.unit.title,
+                            lessons: 1
+                        })
+                    }
+                    return acc
+                }, []),
+                rawData: result // Store full data for saving
             }
 
             setProcessing({
                 status: 'complete',
                 progress: 100,
                 currentStep: 'Complete!',
-                results
+                results: finalResults
             })
             setStep(4)
 
         } catch (error) {
+            console.error(error)
             setProcessing({
                 status: 'error',
                 progress: 0,
-                currentStep: error.message,
+                currentStep: `Error: ${error.message}`,
                 results: null
             })
         }
@@ -140,8 +146,8 @@ export default function CreatorDashboard() {
                     ].map((s, idx) => (
                         <div key={s.num} className="flex items-center">
                             <div className={`w-10 h-10 rounded-full flex items-center justify-center font-medium text-sm transition-all ${step >= s.num
-                                    ? 'bg-indigo-500 text-white'
-                                    : 'bg-slate-800 text-slate-500'
+                                ? 'bg-indigo-500 text-white'
+                                : 'bg-slate-800 text-slate-500'
                                 }`}>
                                 {step > s.num ? <CheckCircle className="w-5 h-5" /> : s.num}
                             </div>
@@ -169,8 +175,8 @@ export default function CreatorDashboard() {
                             onDragOver={handleDragOver}
                             onDragLeave={handleDragLeave}
                             className={`relative border-2 border-dashed rounded-2xl p-12 text-center transition-all ${dragActive
-                                    ? 'border-indigo-500 bg-indigo-500/10'
-                                    : 'border-slate-700 hover:border-slate-600'
+                                ? 'border-indigo-500 bg-indigo-500/10'
+                                : 'border-slate-700 hover:border-slate-600'
                                 }`}
                         >
                             <input
@@ -247,8 +253,8 @@ export default function CreatorDashboard() {
                                         key={template.id}
                                         onClick={() => setConfig(p => ({ ...p, template: template.id }))}
                                         className={`p-4 rounded-xl border text-left transition-all ${config.template === template.id
-                                                ? 'bg-indigo-500/20 border-indigo-500/50'
-                                                : 'bg-slate-900/50 border-slate-800 hover:border-slate-700'
+                                            ? 'bg-indigo-500/20 border-indigo-500/50'
+                                            : 'bg-slate-900/50 border-slate-800 hover:border-slate-700'
                                             }`}
                                     >
                                         <span className="text-2xl">{template.icon}</span>
@@ -267,8 +273,8 @@ export default function CreatorDashboard() {
                                         key={level}
                                         onClick={() => setConfig(p => ({ ...p, classLevel: level }))}
                                         className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${config.classLevel === level
-                                                ? 'bg-indigo-500 text-white'
-                                                : 'bg-slate-800 text-slate-400 hover:text-white'
+                                            ? 'bg-indigo-500 text-white'
+                                            : 'bg-slate-800 text-slate-400 hover:text-white'
                                             }`}
                                     >
                                         {level}
