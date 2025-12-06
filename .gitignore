@@ -22,3 +22,23 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Jupyter Notebooks (keep in parent folder, not deployed)
+*.ipynb
+.ipynb_checkpoints/
+
+# PDFs (keep public/handbook.pdf for the app)
+# *.pdf
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+Pipfile
+Pipfile.lock
+
