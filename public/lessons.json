@@ -1,0 +1,1491 @@
+[
+  {
+    "id": "lesson01_intro_numpy_pandas",
+    "title": "Intro to NumPy & Pandas",
+    "lessonNumber": 1,
+    "unit": {
+      "number": 1,
+      "title": "Python Programming-II",
+      "pageStart": 1,
+      "pageEnd": 16
+    },
+    "objectives": [
+      "Review basics of NumPy and Pandas libraries",
+      "Understand NumPy arrays and operations",
+      "Work with Pandas Series and DataFrames",
+      "Efficiently import and export data between CSV files and DataFrames"
+    ],
+    "keyConcepts": [
+      "NumPy Arrays",
+      "Pandas Series",
+      "DataFrames",
+      "Array Operations",
+      "Data Structures"
+    ],
+    "realWorldApplication": "NumPy powers image processing (pixels as arrays), while Pandas is essential for analyzing financial datasets, customer data, and scientific research.",
+    "progress": 0,
+    "xpEarned": 0,
+    "mastery": "beginner",
+    "theory": [
+      {
+        "title": "What is NumPy?",
+        "type": "concept",
+        "duration": 2,
+        "content": "NumPy (Numerical Python) is the foundational library for scientific computing in Python. Think of it as a supercharged version of Python lists, but specifically designed for numbers and mathematical operations.\n\nUnlike regular Python lists, NumPy arrays store data more efficiently in memory and allow you to perform operations on entire arrays at once (called 'vectorization'), making your code both cleaner and faster.",
+        "didYouKnow": "NumPy operations can be up to 100x faster than regular Python loops! This is because NumPy is written in C and optimized for mathematical operations.",
+        "keyTakeaway": "NumPy arrays are faster and more memory-efficient than Python lists for numerical computations.",
+        "pageRef": 2,
+        "check": {
+          "question": "Why is NumPy faster than regular Python lists?",
+          "options": [
+            "It uses more memory",
+            "It's written in C and uses vectorization",
+            "It only works with small datasets",
+            "It doesn't support mathematical operations"
+          ],
+          "correctAnswer": 1,
+          "explanation": "NumPy is implemented in C and uses vectorization to perform operations on entire arrays at once."
+        }
+      },
+      {
+        "title": "NumPy Arrays Explained",
+        "type": "concept",
+        "duration": 3,
+        "content": "The main data structure in NumPy is the ndarray (n-dimensional array). Let's break this down:\n\n• 1D array (Vector): A single row of values → [1, 2, 3, 4, 5]\n• 2D array (Matrix): Rows and columns → [[1, 2], [3, 4]]\n• 3D+ arrays: Think of stacked matrices (used in images, videos)\n\nEvery array has a 'shape' (its dimensions) and a 'dtype' (the data type it stores). For example, a 3×4 matrix has shape (3, 4).",
+        "didYouKnow": "Digital images are stored as 3D NumPy arrays! A color image has shape (height, width, 3), where 3 represents the Red, Green, and Blue color channels.",
+        "keyTakeaway": "Arrays have dimensions (shape) - 1D for lists, 2D for tables, 3D+ for complex data like images.",
+        "pageRef": 2,
+        "check": {
+          "question": "What is the shape of a 2D array with 3 rows and 5 columns?",
+          "options": [
+            "(5, 3)",
+            "(3, 5)",
+            "(15,)",
+            "(2, 15)"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Shape is always (rows, columns), so 3 rows × 5 columns = (3, 5)."
+        }
+      },
+      {
+        "title": "Introduction to Pandas",
+        "type": "concept",
+        "duration": 3,
+        "content": "While NumPy is great for numerical operations, Pandas makes working with real-world data much easier. It provides two key data structures:\n\n📊 Series: Like a labeled list (1D)\nImagine a column from Excel with row labels.\n\n📋 DataFrame: Like a spreadsheet (2D)\nRows and columns with labels - the most commonly used structure.\n\nPandas excels at: loading data from files, handling missing values, filtering and grouping, merging multiple datasets.",
+        "didYouKnow": "The name 'Pandas' comes from 'Panel Data', a term used in econometrics. It was created by Wes McKinney in 2008 while working at a hedge fund!",
+        "keyTakeaway": "Use Series for single columns of data, DataFrames for full tables. Pandas makes data manipulation intuitive.",
+        "pageRef": 3,
+        "check": {
+          "question": "Which Pandas structure is like a spreadsheet with rows and columns?",
+          "options": [
+            "Array",
+            "Series",
+            "DataFrame",
+            "Matrix"
+          ],
+          "correctAnswer": 2,
+          "explanation": "DataFrame is a 2D labeled data structure, similar to a spreadsheet or SQL table."
+        }
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Creating a NumPy Array",
+        "code": "import numpy as np\n\n# Create a 1D array\narr1 = np.array([1, 2, 3, 4, 5])\nprint(arr1)\n\n# Create a 2D array\narr2 = np.array([[1, 2, 3], [4, 5, 6]])\nprint(arr2)\nprint(\"Shape:\", arr2.shape)",
+        "explanation": "np.array() creates NumPy arrays from Python lists. The shape attribute returns dimensions."
+      },
+      {
+        "title": "Creating a Pandas Series",
+        "code": "import pandas as pd\n\n# Create a Series with custom index\nmarks = pd.Series([85, 92, 78, 90], \n                  index=['Math', 'Science', 'English', 'AI'])\nprint(marks)\nprint(\"AI marks:\", marks['AI'])",
+        "explanation": "A Series is like a labeled array. You can access values by their index labels."
+      },
+      {
+        "title": "Creating a DataFrame",
+        "code": "import pandas as pd\n\n# Create DataFrame from dictionary\ndata = {\n    'Name': ['Arnav', 'Neha', 'Priya'],\n    'Age': [16, 17, 16],\n    'Marks': [85, 92, 78]\n}\ndf = pd.DataFrame(data)\nprint(df)\nprint(\"\\nShape:\", df.shape)",
+        "explanation": "DataFrames are 2D tables with labeled rows and columns, ideal for tabular data."
+      },
+      {
+        "title": "📊 Visualizing Arrays with Heatmap",
+        "code": "import numpy as np\nimport matplotlib.pyplot as plt\n\n# Create a 5x5 matrix\ndata = np.random.randint(0, 100, (5, 5))\nprint(\"Matrix:\\n\", data)\n\n# Visualize as heatmap\nplt.figure(figsize=(6, 5))\nplt.imshow(data, cmap='viridis')\nplt.colorbar(label='Value')\nplt.title('NumPy Array Heatmap')\n\n# Add value annotations\nfor i in range(5):\n    for j in range(5):\n        plt.text(j, i, data[i, j], ha='center', va='center', color='white')\n\nplt.tight_layout()\nplt.show()",
+        "explanation": "Heatmaps are great for visualizing 2D arrays. Colors show relative values."
+      }
+    ],
+    "quiz": {
+      "questions": [
+        {
+          "id": "q1_1",
+          "question": "Which of the following is a primary data structure in Pandas?",
+          "options": [
+            "List",
+            "Tuple",
+            "Series",
+            "Matrix"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Series is a primary data structure in Pandas, along with DataFrame.",
+          "pageRef": 3
+        },
+        {
+          "id": "q1_2",
+          "question": "What does NumPy stand for?",
+          "options": [
+            "Number Python",
+            "Numerical Python",
+            "Numeric Python",
+            "New Python"
+          ],
+          "correctAnswer": 1,
+          "explanation": "NumPy is short for Numerical Python, a library for numerical computing.",
+          "pageRef": 2
+        },
+        {
+          "id": "q1_3",
+          "question": "In NumPy, the number of dimensions of an array is called the:",
+          "options": [
+            "Shape",
+            "Rank",
+            "Size",
+            "Length"
+          ],
+          "correctAnswer": 1,
+          "explanation": "The term 'rank' refers to the number of dimensions in a NumPy array.",
+          "pageRef": 2
+        },
+        {
+          "id": "q1_4",
+          "question": "Which attribute returns the number of rows and columns in a DataFrame?",
+          "options": [
+            "df.size",
+            "df.shape",
+            "df.dimensions",
+            "df.count"
+          ],
+          "correctAnswer": 1,
+          "explanation": "df.shape returns a tuple (rows, columns) indicating the DataFrame dimensions.",
+          "pageRef": 6
+        },
+        {
+          "id": "q1_5",
+          "question": "How do you create a DataFrame from a dictionary?",
+          "options": [
+            "pd.create(dict)",
+            "pd.DataFrame(dict)",
+            "DataFrame.new(dict)",
+            "pd.new_DataFrame(dict)"
+          ],
+          "correctAnswer": 1,
+          "explanation": "pd.DataFrame(dictionary) creates a DataFrame where keys become column names.",
+          "pageRef": 3
+        }
+      ]
+    }
+  },
+  {
+    "id": "lesson02_dataframes_csv_missing_lr",
+    "title": "CSV Operations & Missing Values",
+    "lessonNumber": 2,
+    "unit": {
+      "number": 1,
+      "title": "Python Programming-II",
+      "pageStart": 1,
+      "pageEnd": 16
+    },
+    "objectives": [
+      "Import data from CSV files into DataFrames",
+      "Export DataFrames to CSV files",
+      "Identify and handle missing values",
+      "Apply strategies: dropping vs. filling missing data"
+    ],
+    "keyConcepts": [
+      "read_csv()",
+      "to_csv()",
+      "isnull()",
+      "dropna()",
+      "fillna()",
+      "Missing Values"
+    ],
+    "realWorldApplication": "Real-world datasets often have missing values. Healthcare records, survey data, and sensor readings frequently require cleaning before analysis.",
+    "progress": 0,
+    "xpEarned": 0,
+    "mastery": "beginner",
+    "theory": [
+      {
+        "title": "Understanding CSV Files",
+        "type": "concept",
+        "duration": 2,
+        "content": "CSV (Comma-Separated Values) is the universal language for data exchange. It's a plain text format where:\n\n• Each row is one line in the file\n• Each column is separated by a comma\n• The first row usually contains column headers\n\nCSV is popular because it's simple, human-readable, and can be opened in Excel, Google Sheets, or any text editor.",
+        "didYouKnow": "CSV files can actually use any separator! Tab-separated files (TSV) use tabs. In Europe, semicolons are often used since commas are decimal separators.",
+        "keyTakeaway": "CSV is the simplest way to store and share tabular data. Use pd.read_csv() to load and pd.to_csv() to save.",
+        "pageRef": 6,
+        "check": {
+          "question": "What separates values in a standard CSV file?",
+          "options": [
+            "Tabs",
+            "Semicolons",
+            "Commas",
+            "Spaces"
+          ],
+          "correctAnswer": 2,
+          "explanation": "CSV stands for 'Comma-Separated Values' - commas separate each column value."
+        }
+      },
+      {
+        "title": "Why Missing Values Matter",
+        "type": "concept",
+        "duration": 3,
+        "content": "Real-world data is messy! Missing values (shown as NaN - 'Not a Number') occur because:\n\n• Survey respondents skip questions\n• Sensors fail or lose connection\n• Records were incomplete\n• Data entry errors\n\nMissing values can break your analysis - many algorithms can't handle them. You MUST deal with them before training models.",
+        "didYouKnow": "In healthcare data, about 30-50% of records have at least one missing value! This is why data cleaning often takes 80% of a data scientist's time.",
+        "keyTakeaway": "Always check for missing values using df.isnull().sum() before analysis.",
+        "pageRef": 9,
+        "check": {
+          "question": "What does NaN stand for in Pandas?",
+          "options": [
+            "No Available Number",
+            "Not a Number",
+            "Null and None",
+            "New Array Notation"
+          ],
+          "correctAnswer": 1,
+          "explanation": "NaN means 'Not a Number' - it represents missing or undefined values."
+        }
+      },
+      {
+        "title": "Strategies for Missing Data",
+        "type": "application",
+        "duration": 3,
+        "content": "You have two main choices when dealing with missing values:\n\n🗑️ Delete (dropna)\n• Remove entire rows with any missing values\n• Use when: You have lots of data and few missing values\n\n✏️ Fill (fillna)\n• Replace NaN with a value: 0, mean, median, or mode\n• Use when: You can't afford to lose data\n\nChoosing the right strategy depends on your data and problem!",
+        "keyTakeaway": "Use dropna() when missing data is rare. Use fillna() with mean/median when you need to keep all rows.",
+        "pageRef": 9,
+        "check": {
+          "question": "When should you use fillna() instead of dropna()?",
+          "options": [
+            "When you have too much data",
+            "When you have very few missing values",
+            "When you can't afford to lose rows",
+            "When missing values are errors"
+          ],
+          "correctAnswer": 2,
+          "explanation": "fillna() preserves your data by replacing NaN with estimated values."
+        }
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Reading a CSV File",
+        "code": "import pandas as pd\n\n# Read CSV file into DataFrame\ndf = pd.read_csv('students.csv')\n\n# Display first 5 rows\nprint(df.head())\n\n# Display last 3 rows\nprint(df.tail(3))",
+        "explanation": "read_csv() imports CSV data. head() and tail() show the first/last rows."
+      },
+      {
+        "title": "Exporting to CSV",
+        "code": "import pandas as pd\n\n# Create sample DataFrame\ndf = pd.DataFrame({\n    'Name': ['Ravi', 'Priya'],\n    'Score': [85, 92]\n})\n\n# Export to CSV (without row indices)\ndf.to_csv('output.csv', index=False)\nprint(\"File saved successfully!\")",
+        "explanation": "to_csv() exports DataFrame. index=False prevents writing row numbers."
+      },
+      {
+        "title": "Checking for Missing Values",
+        "code": "import pandas as pd\nimport numpy as np\n\n# Create DataFrame with missing values\ndf = pd.DataFrame({\n    'A': [1, 2, np.NaN, 4],\n    'B': [5, np.NaN, np.NaN, 8]\n})\n\n# Check for missing values\nprint(df.isnull())\nprint(\"\\nTotal missing per column:\")\nprint(df.isnull().sum())",
+        "explanation": "isnull() returns True where values are missing. sum() counts missing values."
+      },
+      {
+        "title": "Handling Missing Values",
+        "code": "import pandas as pd\nimport numpy as np\n\ndf = pd.DataFrame({\n    'Score': [85, np.NaN, 92, np.NaN, 78]\n})\n\n# Method 1: Drop rows with missing values\ndf_dropped = df.dropna()\nprint(\"After dropna():\", df_dropped)\n\n# Method 2: Fill with a specific value\ndf_filled = df.fillna(0)\nprint(\"After fillna(0):\", df_filled)\n\n# Method 3: Fill with mean\ndf_mean = df.fillna(df['Score'].mean())\nprint(\"After fillna(mean):\", df_mean)",
+        "explanation": "dropna() removes missing rows. fillna() replaces NaN with specified values."
+      }
+    ],
+    "quiz": {
+      "questions": [
+        {
+          "id": "q2_1",
+          "question": "What does the fillna(0) function do in Pandas?",
+          "options": [
+            "Removes rows with missing values",
+            "Fills missing values with zeros",
+            "Estimates missing values based on averages",
+            "Converts all data to zero"
+          ],
+          "correctAnswer": 1,
+          "explanation": "The fillna(num) function replaces missing values (NaN) with the specified value.",
+          "pageRef": 9
+        },
+        {
+          "id": "q2_2",
+          "question": "What is the correct syntax to read a CSV file into a Pandas DataFrame?",
+          "options": [
+            "pd.DataFrame('file.csv')",
+            "pd.read_csv('file.csv')",
+            "pandas.read_file('file.csv')",
+            "pd.load_csv('file.csv')"
+          ],
+          "correctAnswer": 1,
+          "explanation": "pd.read_csv() is the standard function to import CSV files into DataFrames.",
+          "pageRef": 7
+        },
+        {
+          "id": "q2_3",
+          "question": "Which function is used to check for missing values?",
+          "options": [
+            "df.missing()",
+            "df.isna()",
+            "df.isnull()",
+            "Both B and C"
+          ],
+          "correctAnswer": 3,
+          "explanation": "Both isna() and isnull() work identically to detect missing values in Pandas.",
+          "pageRef": 9
+        },
+        {
+          "id": "q2_4",
+          "question": "Which function exports a DataFrame to CSV?",
+          "options": [
+            "df.export_csv()",
+            "df.save_csv()",
+            "df.to_csv()",
+            "df.write_csv()"
+          ],
+          "correctAnswer": 2,
+          "explanation": "df.to_csv() saves a DataFrame to a CSV file with optional parameters.",
+          "pageRef": 8
+        },
+        {
+          "id": "q2_5",
+          "question": "What does dropna() do to a DataFrame?",
+          "options": [
+            "Fills NaN with 0",
+            "Removes rows containing NaN",
+            "Counts NaN values",
+            "Replaces NaN with mean"
+          ],
+          "correctAnswer": 1,
+          "explanation": "dropna() removes any row (or column) that contains missing values.",
+          "pageRef": 9
+        }
+      ]
+    }
+  },
+  {
+    "id": "lesson03_ds_methodology_overview",
+    "title": "Data Science Methodology",
+    "lessonNumber": 3,
+    "unit": {
+      "number": 2,
+      "title": "Data Science Methodology",
+      "pageStart": 17,
+      "pageEnd": 42
+    },
+    "objectives": [
+      "Understand the 10 steps of Data Science Methodology",
+      "Apply Business Understanding and Analytic Approach",
+      "Distinguish between types of analytics",
+      "Map problems to appropriate methodologies"
+    ],
+    "keyConcepts": [
+      "Business Understanding",
+      "Analytic Approach",
+      "Descriptive Analytics",
+      "Predictive Analytics",
+      "Prescriptive Analytics"
+    ],
+    "realWorldApplication": "This methodology is used by data scientists at companies like IBM to systematically solve business problems, from defining requirements to deploying and getting feedback on AI solutions.",
+    "progress": 0,
+    "xpEarned": 0,
+    "mastery": "beginner",
+    "theory": [
+      {
+        "title": "What is Data Science Methodology?",
+        "type": "concept",
+        "duration": 3,
+        "content": "Imagine building a house without a blueprint - chaos! Data Science Methodology is your blueprint for solving problems with data.\n\nDeveloped by John Rollins at IBM, it's a 10-step framework that ensures you:\n• Ask the right questions\n• Collect the right data\n• Build the right solution\n• Actually solve the business problem",
+        "didYouKnow": "According to IBM research, projects that follow this methodology are 3x more likely to succeed than ad-hoc approaches!",
+        "keyTakeaway": "Always follow a structured approach. Skipping steps leads to solutions that don't solve the real problem.",
+        "pageRef": 18,
+        "check": {
+          "question": "Why is a methodology important in data science?",
+          "options": [
+            "It makes projects longer",
+            "It ensures no critical steps are missed",
+            "It replaces the need for data",
+            "It eliminates the need for testing"
+          ],
+          "correctAnswer": 1,
+          "explanation": "A methodology provides structure and ensures all critical steps are covered."
+        }
+      },
+      {
+        "title": "The 10-Step Journey",
+        "type": "concept",
+        "duration": 4,
+        "content": "Think of these as milestones on your data science journey:\n\n📋 Problem Understanding (Steps 1-2)\n1. Business Understanding - What's the problem?\n2. Analytic Approach - How will we solve it?\n\n📊 Data Preparation (Steps 3-6)\n3. Data Requirements - What data do we need?\n4. Data Collection - Gather the data\n5. Data Understanding - Explore and visualize\n6. Data Preparation - Clean and transform\n\n🤖 Modeling & Deployment (Steps 7-10)\n7. Modeling - Build the model\n8. Evaluation - Does it work?\n9. Deployment - Put it in production\n10. Feedback - Learn and improve",
+        "keyTakeaway": "The methodology is iterative - you often go back to earlier steps as you learn more.",
+        "pageRef": 18,
+        "check": {
+          "question": "Which step comes FIRST in Data Science Methodology?",
+          "options": [
+            "Data Collection",
+            "Modeling",
+            "Business Understanding",
+            "Evaluation"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Always start with Business Understanding - you must understand the problem before solving it."
+        }
+      },
+      {
+        "title": "Types of Analytics",
+        "type": "application",
+        "duration": 3,
+        "content": "Each type of analytics answers a different question:\n\n📈 Descriptive - 'What happened?'\n→ Sales reports, dashboards\n\n🔍 Diagnostic - 'Why did it happen?'\n→ Root cause analysis\n\n🔮 Predictive - 'What will happen?'\n→ Forecasting, predictions\n\n💡 Prescriptive - 'What should we do?'\n→ Recommendations, optimization\n\nAs you move down, analytics becomes more complex but also more valuable!",
+        "didYouKnow": "Most companies are stuck at Descriptive analytics. Only 3% have achieved true Prescriptive analytics!",
+        "keyTakeaway": "Descriptive tells you the past, Predictive tells the future, Prescriptive tells you what to DO.",
+        "pageRef": 21,
+        "check": {
+          "question": "Which type of analytics would forecast next month's sales?",
+          "options": [
+            "Descriptive",
+            "Diagnostic",
+            "Predictive",
+            "Prescriptive"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Predictive analytics uses historical data to forecast future outcomes."
+        }
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Defining a Data Science Problem",
+        "code": "# Step 1: Business Understanding\n# Example: Restaurant cuisine prediction\n\nproblem = \"\"\"\nGoal: Predict the cuisine type of a dish\nbased on its ingredients.\n\nBusiness Question: \n- Can we help customers identify cuisines?\n- Which ingredients are unique to each cuisine?\n\nSuccess Metric:\n- Accuracy of cuisine prediction > 85%\n\"\"\"",
+        "explanation": "Always start by clearly defining the business problem and success criteria."
+      },
+      {
+        "title": "Choosing an Analytic Approach",
+        "code": "# Step 2: Analytic Approach Decision Tree\n\napproach_questions = {\n    'How much/many?': 'Regression',\n    'Which category?': 'Classification',\n    'Is this unusual?': 'Anomaly Detection',\n    'How to group?': 'Clustering',\n    'What to recommend?': 'Recommendation'\n}\n\n# For cuisine prediction:\n# \"Which category does the dish belong to?\"\n# Answer: Classification approach",
+        "explanation": "Match your question type to the appropriate analytical approach."
+      }
+    ],
+    "quiz": {
+      "questions": [
+        {
+          "id": "q3_1",
+          "question": "How many steps are in the Data Science Methodology?",
+          "options": [
+            "5",
+            "8",
+            "10",
+            "12"
+          ],
+          "correctAnswer": 2,
+          "explanation": "John Rollins' Data Science Methodology consists of 10 iterative steps.",
+          "pageRef": 18
+        },
+        {
+          "id": "q3_2",
+          "question": "Which analytics type answers 'What happened?'",
+          "options": [
+            "Descriptive",
+            "Diagnostic",
+            "Predictive",
+            "Prescriptive"
+          ],
+          "correctAnswer": 0,
+          "explanation": "Descriptive Analytics summarizes historical data to understand what occurred.",
+          "pageRef": 21
+        },
+        {
+          "id": "q3_3",
+          "question": "What is the first step in Data Science Methodology?",
+          "options": [
+            "Data Collection",
+            "Business Understanding",
+            "Modeling",
+            "Evaluation"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Business Understanding comes first - you must understand the problem before solving it.",
+          "pageRef": 19
+        },
+        {
+          "id": "q3_4",
+          "question": "Which analytics type answers 'What will happen?'",
+          "options": [
+            "Descriptive",
+            "Diagnostic",
+            "Predictive",
+            "Prescriptive"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Predictive Analytics uses historical data to forecast future outcomes.",
+          "pageRef": 21
+        },
+        {
+          "id": "q3_5",
+          "question": "For a classification problem, which approach is appropriate?",
+          "options": [
+            "Regression",
+            "Clustering",
+            "Decision Tree/Classification",
+            "Statistical Analysis"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Classification problems require algorithms that categorize data into classes.",
+          "pageRef": 20
+        }
+      ]
+    }
+  },
+  {
+    "id": "lesson04_validation_metrics",
+    "title": "Model Validation & Metrics",
+    "lessonNumber": 4,
+    "unit": {
+      "number": 2,
+      "title": "Data Science Methodology",
+      "pageStart": 17,
+      "pageEnd": 42
+    },
+    "objectives": [
+      "Understand train/test split and cross-validation",
+      "Calculate classification metrics from confusion matrix",
+      "Compute regression metrics (MSE, RMSE)",
+      "Interpret model performance results"
+    ],
+    "keyConcepts": [
+      "Train-Test Split",
+      "K-Fold Cross Validation",
+      "Confusion Matrix",
+      "Precision",
+      "Recall",
+      "F1-Score",
+      "MSE",
+      "RMSE",
+      "Accuracy"
+    ],
+    "realWorldApplication": "Proper validation ensures your model works on new data. Medical diagnosis models must be thoroughly validated before deployment to ensure reliable predictions.",
+    "progress": 0,
+    "xpEarned": 0,
+    "mastery": "beginner",
+    "theory": [
+      {
+        "title": "Train-Test Split",
+        "content": "Divide your dataset into training data (to build the model) and testing data (to evaluate it). Common splits: 80-20, 70-30, or 67-33. This helps estimate how the model will perform on unseen data.",
+        "pageRef": 32
+      },
+      {
+        "title": "Confusion Matrix",
+        "content": "A table showing: True Positives (correctly predicted positive), True Negatives (correctly predicted negative), False Positives (wrongly predicted positive), False Negatives (wrongly predicted negative).",
+        "pageRef": 34
+      },
+      {
+        "title": "Key Metrics",
+        "content": "Accuracy = (TP+TN)/Total. Precision = TP/(TP+FP) - 'Of predicted positives, how many are correct?' Recall = TP/(TP+FN) - 'Of actual positives, how many did we find?' F1 = 2×(Precision×Recall)/(Precision+Recall)",
+        "pageRef": 35
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Train-Test Split in Python",
+        "code": "from sklearn.model_selection import train_test_split\n\n# Features and target\nX = df[['feature1', 'feature2']]\ny = df['target']\n\n# Split: 80% train, 20% test\nX_train, X_test, y_train, y_test = train_test_split(\n    X, y, test_size=0.2, random_state=42\n)\n\nprint(f\"Training set: {len(X_train)} samples\")\nprint(f\"Test set: {len(X_test)} samples\")",
+        "explanation": "train_test_split randomly divides data. random_state ensures reproducibility."
+      },
+      {
+        "title": "Calculating Metrics from Confusion Matrix",
+        "code": "# Given confusion matrix values:\nTP = 35  # True Positives\nTN = 50  # True Negatives\nFP = 10  # False Positives\nFN = 5   # False Negatives\n\n# Calculate metrics\naccuracy = (TP + TN) / (TP + TN + FP + FN)\nprecision = TP / (TP + FP)\nrecall = TP / (TP + FN)\nf1 = 2 * (precision * recall) / (precision + recall)\n\nprint(f\"Accuracy: {accuracy:.2%}\")\nprint(f\"Precision: {precision:.2%}\")\nprint(f\"Recall: {recall:.2%}\")\nprint(f\"F1 Score: {f1:.2%}\")",
+        "explanation": "These formulas are fundamental for evaluating classification models."
+      },
+      {
+        "title": "MSE and RMSE Calculation",
+        "code": "import numpy as np\n\n# Actual and predicted values\nactual = np.array([100, 120, 150, 170, 200])\npredicted = np.array([110, 125, 145, 165, 190])\n\n# Calculate MSE\nmse = np.mean((actual - predicted) ** 2)\n\n# Calculate RMSE\nrmse = np.sqrt(mse)\n\nprint(f\"MSE: {mse}\")\nprint(f\"RMSE: {rmse}\")",
+        "explanation": "MSE penalizes large errors. RMSE is in the same units as the target variable."
+      }
+    ],
+    "quiz": {
+      "questions": [
+        {
+          "id": "q4_1",
+          "question": "What is the most common train-test split percentage?",
+          "options": [
+            "50-50",
+            "60-40",
+            "80-20",
+            "90-10"
+          ],
+          "correctAnswer": 2,
+          "explanation": "80-20 is most common: 80% for training, 20% for testing.",
+          "pageRef": 32
+        },
+        {
+          "id": "q4_2",
+          "question": "What does Precision measure?",
+          "options": [
+            "Proportion of actual positives correctly identified",
+            "Proportion of predicted positives that are truly positive",
+            "Overall accuracy",
+            "Error rate"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Precision = TP/(TP+FP) - of all predicted positives, how many are correct?",
+          "pageRef": 35
+        },
+        {
+          "id": "q4_3",
+          "question": "In k-fold cross validation, what does k represent?",
+          "options": [
+            "Number of features",
+            "Number of folds/subsets",
+            "Number of predictions",
+            "Number of classes"
+          ],
+          "correctAnswer": 1,
+          "explanation": "k is the number of subsets (folds) the data is divided into for validation.",
+          "pageRef": 33
+        },
+        {
+          "id": "q4_4",
+          "question": "What does Recall measure?",
+          "options": [
+            "Proportion of predicted positives that are correct",
+            "Proportion of actual positives that were identified",
+            "Total accuracy",
+            "False positive rate"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Recall = TP/(TP+FN) - of all actual positives, how many did we find?",
+          "pageRef": 35
+        },
+        {
+          "id": "q4_5",
+          "question": "Which metric is the harmonic mean of Precision and Recall?",
+          "options": [
+            "Accuracy",
+            "MSE",
+            "F1-Score",
+            "RMSE"
+          ],
+          "correctAnswer": 2,
+          "explanation": "F1-Score = 2×(Precision×Recall)/(Precision+Recall), balancing both metrics.",
+          "pageRef": 35
+        }
+      ]
+    }
+  },
+  {
+    "id": "lesson05_computer_vision_basics",
+    "title": "Computer Vision Basics",
+    "lessonNumber": 5,
+    "unit": {
+      "number": 3,
+      "title": "Making Machines See",
+      "pageStart": 43,
+      "pageEnd": 64
+    },
+    "objectives": [
+      "Understand how computers see images as pixels",
+      "Learn RGB color representation",
+      "Explore the computer vision process pipeline",
+      "Identify real-world CV applications"
+    ],
+    "keyConcepts": [
+      "Pixels",
+      "RGB Color Model",
+      "Image Acquisition",
+      "Preprocessing",
+      "Feature Extraction",
+      "Object Detection",
+      "Segmentation"
+    ],
+    "realWorldApplication": "Self-driving cars use computer vision to detect lanes, pedestrians, and signs. Medical imaging uses CV to identify tumors. Smartphones use face detection for unlocking.",
+    "progress": 0,
+    "xpEarned": 0,
+    "mastery": "beginner",
+    "theory": [
+      {
+        "title": "How Computers See Images",
+        "content": "A digital image is stored as a grid of pixels (picture elements). Each pixel has a numerical value representing its color. For grayscale images, values range from 0 (black) to 255 (white).",
+        "pageRef": 45
+      },
+      {
+        "title": "RGB Color Model",
+        "content": "Color images use three channels: Red, Green, Blue. Each channel has values 0-255. By combining intensities of these three colors, over 16 million colors (256³) can be represented.",
+        "pageRef": 48
+      },
+      {
+        "title": "Computer Vision Process",
+        "content": "5 main stages: 1) Image Acquisition (capture) 2) Preprocessing (noise reduction, normalization) 3) Feature Extraction (edges, corners, textures) 4) Detection/Segmentation 5) High-level Processing (recognition)",
+        "pageRef": 48
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Loading an Image with OpenCV",
+        "code": "import cv2\n\n# Read an image\nimage = cv2.imread('photo.jpg')\n\n# Display the image\ncv2.imshow('My Image', image)\ncv2.waitKey(0)  # Wait for key press\ncv2.destroyAllWindows()\n\n# Get image properties\nprint(f\"Shape: {image.shape}\")\nprint(f\"Height: {image.shape[0]}\")\nprint(f\"Width: {image.shape[1]}\")\nprint(f\"Channels: {image.shape[2]}\")",
+        "explanation": "OpenCV reads images as NumPy arrays. Shape is (height, width, channels)."
+      },
+      {
+        "title": "Converting to Grayscale",
+        "code": "import cv2\n\n# Read color image\nimage = cv2.imread('photo.jpg')\n\n# Convert to grayscale\ngray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)\n\nprint(f\"Original shape: {image.shape}\")\nprint(f\"Grayscale shape: {gray.shape}\")\n\n# Save the grayscale image\ncv2.imwrite('gray_photo.jpg', gray)",
+        "explanation": "cvtColor converts between color spaces. Grayscale removes the color channels."
+      },
+      {
+        "title": "Resizing an Image",
+        "code": "import cv2\n\n# Read image\nimage = cv2.imread('photo.jpg')\n\n# Resize to specific dimensions\nresized = cv2.resize(image, (300, 300))\n\n# Resize by scale factor\nscaled = cv2.resize(image, None, fx=0.5, fy=0.5)\n\nprint(f\"Resized: {resized.shape}\")\nprint(f\"Scaled: {scaled.shape}\")",
+        "explanation": "Resizing is a common preprocessing step to standardize input dimensions."
+      }
+    ],
+    "quiz": {
+      "questions": [
+        {
+          "id": "q5_1",
+          "question": "A computer sees an image as a series of _______",
+          "options": [
+            "Colors",
+            "Pixels",
+            "Objects",
+            "Shapes"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Computers process images as grids of pixels, each with numerical values.",
+          "pageRef": 45
+        },
+        {
+          "id": "q5_2",
+          "question": "How many colors can RGB represent?",
+          "options": [
+            "256",
+            "65,536",
+            "Over 16 million",
+            "1 million"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Each channel has 256 values: 256 × 256 × 256 = 16,777,216 colors.",
+          "pageRef": 48
+        },
+        {
+          "id": "q5_3",
+          "question": "Which technique identifies boundaries in an image?",
+          "options": [
+            "Edge detection",
+            "Noise reduction",
+            "Resizing",
+            "Color conversion"
+          ],
+          "correctAnswer": 0,
+          "explanation": "Edge detection finds boundaries where pixel intensity changes significantly.",
+          "pageRef": 50
+        },
+        {
+          "id": "q5_4",
+          "question": "What is the first stage in computer vision?",
+          "options": [
+            "Feature Extraction",
+            "Preprocessing",
+            "Image Acquisition",
+            "Detection"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Image Acquisition (capturing the image) is always the first step.",
+          "pageRef": 48
+        },
+        {
+          "id": "q5_5",
+          "question": "In grayscale, what value represents black?",
+          "options": [
+            "255",
+            "128",
+            "1",
+            "0"
+          ],
+          "correctAnswer": 3,
+          "explanation": "In grayscale, 0 = black and 255 = white.",
+          "pageRef": 45
+        }
+      ]
+    }
+  },
+  {
+    "id": "lesson06_orange_bigdata_overview",
+    "title": "Orange Tool & Big Data",
+    "lessonNumber": 6,
+    "unit": {
+      "number": 4,
+      "title": "AI with Orange Data Mining Tool",
+      "pageStart": 65,
+      "pageEnd": 102
+    },
+    "objectives": [
+      "Use Orange for visual data mining",
+      "Understand Big Data types and 5Vs",
+      "Apply classification algorithms visually",
+      "Evaluate models using Orange widgets"
+    ],
+    "keyConcepts": [
+      "Orange Widgets",
+      "Visual Programming",
+      "Structured Data",
+      "Unstructured Data",
+      "Big Data 5Vs",
+      "Data Mining"
+    ],
+    "realWorldApplication": "Orange is used in education and research for quick prototyping. Big Data analytics powers social media platforms, e-commerce recommendations, and smart city infrastructure.",
+    "progress": 0,
+    "xpEarned": 0,
+    "mastery": "beginner",
+    "theory": [
+      {
+        "title": "What is Orange?",
+        "content": "Orange is a visual programming tool for data mining, machine learning, and data visualization. It uses 'widgets' that you connect together to create analysis workflows, without writing code.",
+        "pageRef": 66
+      },
+      {
+        "title": "Big Data Definition",
+        "content": "Big Data refers to datasets so large and complex that traditional tools can't handle them. Sources include transactional data (purchases), machine data (sensors), and social data (posts).",
+        "pageRef": 87
+      },
+      {
+        "title": "Types of Data",
+        "content": "Structured (tables, databases), Semi-structured (XML, JSON), Unstructured (images, videos, text). Each type requires different storage and processing approaches.",
+        "pageRef": 87
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Orange Workflow (Conceptual)",
+        "code": "# Orange uses visual workflows instead of code.\n# A typical classification workflow:\n\n# 1. File Widget → Load dataset (e.g., iris.tab)\n# 2. Data Table → View the data\n# 3. Tree Widget → Apply Decision Tree algorithm\n# 4. Test & Score → Evaluate with cross-validation\n# 5. Confusion Matrix → View detailed results\n\n# In Python, equivalent would be:\nfrom sklearn.tree import DecisionTreeClassifier\nfrom sklearn.datasets import load_iris\n\niris = load_iris()\nmodel = DecisionTreeClassifier()\nmodel.fit(iris.data, iris.target)",
+        "explanation": "Orange provides a visual alternative to coding machine learning workflows."
+      }
+    ],
+    "quiz": {
+      "questions": [
+        {
+          "id": "q6_1",
+          "question": "What are Orange's graphical elements called?",
+          "options": [
+            "Nodes",
+            "Widgets",
+            "Blocks",
+            "Components"
+          ],
+          "correctAnswer": 1,
+          "explanation": "In Orange, functional components are called widgets that you connect together.",
+          "pageRef": 66
+        },
+        {
+          "id": "q6_2",
+          "question": "Which widget evaluates model accuracy in Orange?",
+          "options": [
+            "Confusion Matrix",
+            "Test and Score",
+            "Data Table",
+            "Both A and B"
+          ],
+          "correctAnswer": 3,
+          "explanation": "Test and Score shows metrics; Confusion Matrix shows detailed breakdown.",
+          "pageRef": 75
+        },
+        {
+          "id": "q6_3",
+          "question": "Which is an example of unstructured data?",
+          "options": [
+            "Excel spreadsheet",
+            "SQL database",
+            "Social media videos",
+            "CSV file"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Videos, images, and free-form text are unstructured - no fixed schema.",
+          "pageRef": 87
+        },
+        {
+          "id": "q6_4",
+          "question": "What does the 5Vs of Big Data include?",
+          "options": [
+            "Volume, Velocity, Variety, Veracity, Value",
+            "Vision, Volume, Variety, Value, Verify",
+            "Volume, Velocity, Visual, Veracity, Value",
+            "Volume, Variable, Variety, Veracity, Value"
+          ],
+          "correctAnswer": 0,
+          "explanation": "The 5Vs: Volume (size), Velocity (speed), Variety (types), Veracity (accuracy), Value.",
+          "pageRef": 89
+        }
+      ]
+    }
+  },
+  {
+    "id": "lesson07_neural_networks_intro",
+    "title": "Neural Networks Introduction",
+    "lessonNumber": 7,
+    "unit": {
+      "number": 6,
+      "title": "Understanding Neural Networks",
+      "pageStart": 103,
+      "pageEnd": 122
+    },
+    "objectives": [
+      "Understand artificial neurons and their components",
+      "Learn about weights, bias, and activation functions",
+      "Explore basic neural network architecture",
+      "Trace forward propagation manually"
+    ],
+    "keyConcepts": [
+      "Neurons",
+      "Weights",
+      "Bias",
+      "Activation Functions",
+      "Perceptron",
+      "Layers",
+      "Forward Propagation"
+    ],
+    "realWorldApplication": "Neural networks power voice assistants, image recognition, language translation, and game-playing AI. They're the foundation of modern deep learning.",
+    "progress": 0,
+    "xpEarned": 0,
+    "mastery": "beginner",
+    "theory": [
+      {
+        "title": "Artificial Neuron",
+        "content": "Inspired by biological neurons. Takes multiple inputs, multiplies each by a weight, sums them, adds a bias, and passes through an activation function to produce output.",
+        "pageRef": 105
+      },
+      {
+        "title": "Weights and Bias",
+        "content": "Weights determine the importance of each input. Bias is an additional parameter that helps the model fit the data better. Both are learned during training.",
+        "pageRef": 106
+      },
+      {
+        "title": "Activation Functions",
+        "content": "Introduce non-linearity so networks can learn complex patterns. Common ones: Sigmoid (0-1), ReLU (max(0,x)), Tanh (-1 to 1).",
+        "pageRef": 108
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Simple Perceptron Calculation",
+        "code": "import numpy as np\n\ndef perceptron(inputs, weights, bias):\n    # Weighted sum + bias\n    total = np.dot(inputs, weights) + bias\n    # Step activation function\n    output = 1 if total > 0 else 0\n    return output\n\n# Example: AND gate\ninputs = np.array([1, 1])\nweights = np.array([0.5, 0.5])\nbias = -0.7\n\nresult = perceptron(inputs, weights, bias)\nprint(f\"Output: {result}\")  # Should be 1",
+        "explanation": "A perceptron is the simplest neural network - just one neuron!"
+      },
+      {
+        "title": "Activation Functions",
+        "code": "import numpy as np\n\ndef sigmoid(x):\n    return 1 / (1 + np.exp(-x))\n\ndef relu(x):\n    return np.maximum(0, x)\n\ndef tanh(x):\n    return np.tanh(x)\n\n# Test values\nx = np.array([-2, -1, 0, 1, 2])\n\nprint(\"Sigmoid:\", sigmoid(x))\nprint(\"ReLU:\", relu(x))\nprint(\"Tanh:\", tanh(x))",
+        "explanation": "Activation functions transform the neuron's output. Each has different properties."
+      }
+    ],
+    "quiz": {
+      "questions": [
+        {
+          "id": "q7_1",
+          "question": "What is the basic unit of a neural network?",
+          "options": [
+            "Layer",
+            "Neuron",
+            "Weight",
+            "Bias"
+          ],
+          "correctAnswer": 1,
+          "explanation": "The neuron is the fundamental computational unit of neural networks.",
+          "pageRef": 105
+        },
+        {
+          "id": "q7_2",
+          "question": "What does the activation function do?",
+          "options": [
+            "Initializes weights",
+            "Introduces non-linearity",
+            "Calculates loss",
+            "Updates gradients"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Activation functions introduce non-linearity, enabling complex pattern learning.",
+          "pageRef": 108
+        },
+        {
+          "id": "q7_3",
+          "question": "What does ReLU output for negative inputs?",
+          "options": [
+            "The input value",
+            "1",
+            "-1",
+            "0"
+          ],
+          "correctAnswer": 3,
+          "explanation": "ReLU (Rectified Linear Unit) returns max(0, x), so negatives become 0.",
+          "pageRef": 108
+        },
+        {
+          "id": "q7_4",
+          "question": "What is the purpose of bias in a neuron?",
+          "options": [
+            "Reduce learning rate",
+            "Shift the activation function",
+            "Increase weights",
+            "Store memory"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Bias allows the activation function to shift, improving model flexibility.",
+          "pageRef": 106
+        }
+      ]
+    }
+  },
+  {
+    "id": "lesson08_generative_ai_concepts",
+    "title": "Generative AI Concepts",
+    "lessonNumber": 8,
+    "unit": {
+      "number": 7,
+      "title": "Generative AI",
+      "pageStart": 123,
+      "pageEnd": 145
+    },
+    "objectives": [
+      "Distinguish generative vs discriminative models",
+      "Understand how text generation works",
+      "Explore Large Language Models (LLMs)",
+      "Learn about image generation systems"
+    ],
+    "keyConcepts": [
+      "Generative Models",
+      "Discriminative Models",
+      "Large Language Models",
+      "Text Generation",
+      "Image Generation",
+      "Transformers"
+    ],
+    "realWorldApplication": "ChatGPT, DALL-E, Midjourney, GitHub Copilot - all use generative AI. These systems create new content including text, images, code, and music.",
+    "progress": 0,
+    "xpEarned": 0,
+    "mastery": "beginner",
+    "theory": [
+      {
+        "title": "Generative vs Discriminative",
+        "content": "Discriminative models classify/distinguish (e.g., 'Is this a cat or dog?'). Generative models create new content similar to training data (e.g., 'Generate a picture of a cat').",
+        "pageRef": 125
+      },
+      {
+        "title": "Large Language Models",
+        "content": "LLMs are neural networks trained on massive text datasets. They predict the next word given context, enabling conversational AI, summarization, translation, and code generation.",
+        "pageRef": 128
+      },
+      {
+        "title": "How Text Generation Works",
+        "content": "Given a prompt, the model predicts the most likely next token (word/subword) based on patterns learned during training. This process repeats to generate full responses.",
+        "pageRef": 130
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Text Generation Probability (Conceptual)",
+        "code": "# How LLMs predict next word (simplified)\n\nprompt = \"The cat sat on the\"\n\n# Model calculates probabilities for next word:\nnext_word_probs = {\n    'mat': 0.35,\n    'floor': 0.25,\n    'chair': 0.20,\n    'table': 0.15,\n    'bed': 0.05\n}\n\n# Highest probability word is selected\npredicted = max(next_word_probs, key=next_word_probs.get)\nprint(f\"{prompt} {predicted}\")",
+        "explanation": "LLMs calculate probabilities for each possible next token and select one."
+      }
+    ],
+    "quiz": {
+      "questions": [
+        {
+          "id": "q8_1",
+          "question": "What type of model creates new content?",
+          "options": [
+            "Discriminative",
+            "Generative",
+            "Predictive",
+            "Classification"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Generative models learn patterns to create new content similar to training data.",
+          "pageRef": 125
+        },
+        {
+          "id": "q8_2",
+          "question": "What does LLM stand for?",
+          "options": [
+            "Large Learning Machine",
+            "Large Language Model",
+            "Linear Language Model",
+            "Logic Learning Model"
+          ],
+          "correctAnswer": 1,
+          "explanation": "LLM = Large Language Model, trained on vast amounts of text data.",
+          "pageRef": 128
+        },
+        {
+          "id": "q8_3",
+          "question": "How do text generation models work?",
+          "options": [
+            "By storing templates",
+            "By predicting the next token",
+            "By copying from databases",
+            "By random selection"
+          ],
+          "correctAnswer": 1,
+          "explanation": "LLMs predict the most probable next token based on the input context.",
+          "pageRef": 130
+        }
+      ]
+    }
+  },
+  {
+    "id": "lesson09_generative_ai_ethics",
+    "title": "Generative AI Ethics",
+    "lessonNumber": 9,
+    "unit": {
+      "number": 7,
+      "title": "Generative AI",
+      "pageStart": 123,
+      "pageEnd": 145
+    },
+    "objectives": [
+      "Identify ethical risks of generative AI",
+      "Understand deepfakes and misinformation",
+      "Explore bias in AI systems",
+      "Learn about responsible AI practices"
+    ],
+    "keyConcepts": [
+      "AI Ethics",
+      "Deepfakes",
+      "Misinformation",
+      "Bias in AI",
+      "Copyright Issues",
+      "Responsible AI"
+    ],
+    "realWorldApplication": "Deepfake detection systems, AI governance policies, content moderation on social platforms, copyright legislation for AI-generated content.",
+    "progress": 0,
+    "xpEarned": 0,
+    "mastery": "beginner",
+    "theory": [
+      {
+        "title": "Deepfakes",
+        "content": "AI-generated synthetic media where a person's likeness is replaced or manipulated. Can be used to spread misinformation, create fake news, or impersonate individuals.",
+        "pageRef": 138
+      },
+      {
+        "title": "Bias in AI",
+        "content": "AI systems can inherit and amplify biases present in training data. This can lead to unfair outcomes in hiring, lending, healthcare, and criminal justice.",
+        "pageRef": 140
+      },
+      {
+        "title": "Responsible AI",
+        "content": "Principles include: Transparency (explain decisions), Fairness (avoid bias), Privacy (protect data), Accountability (human oversight), Safety (prevent harm).",
+        "pageRef": 142
+      }
+    ],
+    "codeExamples": [],
+    "quiz": {
+      "questions": [
+        {
+          "id": "q9_1",
+          "question": "What is a deepfake?",
+          "options": [
+            "A type of malware",
+            "AI-generated fake media",
+            "A security protocol",
+            "A data format"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Deepfakes are AI-generated synthetic media that can appear authentic.",
+          "pageRef": 138
+        },
+        {
+          "id": "q9_2",
+          "question": "Where does AI bias typically come from?",
+          "options": [
+            "Hardware limitations",
+            "Training data",
+            "User preferences",
+            "Algorithm design only"
+          ],
+          "correctAnswer": 1,
+          "explanation": "AI systems learn patterns from training data, including any biases present.",
+          "pageRef": 140
+        },
+        {
+          "id": "q9_3",
+          "question": "Which is NOT a principle of Responsible AI?",
+          "options": [
+            "Transparency",
+            "Fairness",
+            "Profit Maximization",
+            "Accountability"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Responsible AI focuses on ethics, not profit. Key principles: transparency, fairness, accountability.",
+          "pageRef": 142
+        }
+      ]
+    }
+  },
+  {
+    "id": "lesson10_data_storytelling",
+    "title": "Data Storytelling",
+    "lessonNumber": 10,
+    "unit": {
+      "number": 8,
+      "title": "Data Storytelling",
+      "pageStart": 146,
+      "pageEnd": 168
+    },
+    "objectives": [
+      "Understand the three components of data storytelling",
+      "Choose appropriate visualizations for data",
+      "Create compelling narratives from analysis",
+      "Design effective data presentations"
+    ],
+    "keyConcepts": [
+      "Data",
+      "Narrative",
+      "Visuals",
+      "Audience Analysis",
+      "Visualization Types",
+      "Storytelling Structure"
+    ],
+    "realWorldApplication": "Business presentations, journalism (data journalism), scientific publications, marketing analytics, public policy advocacy.",
+    "progress": 0,
+    "xpEarned": 0,
+    "mastery": "beginner",
+    "theory": [
+      {
+        "title": "Three Components",
+        "content": "Effective data storytelling combines: 1) Data (accurate, relevant findings), 2) Narrative (context, insights, story arc), 3) Visuals (charts, graphs that clarify the message).",
+        "pageRef": 148
+      },
+      {
+        "title": "Know Your Audience",
+        "content": "Tailor your story to the audience's needs, expertise level, and interests. Executives need high-level insights; analysts need detailed methodology.",
+        "pageRef": 150
+      },
+      {
+        "title": "Choosing Visualizations",
+        "content": "Bar charts for comparisons, line charts for trends, pie charts for parts of a whole, scatter plots for relationships, maps for geographic data.",
+        "pageRef": 155
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "📊 Bar Chart - Sales Comparison",
+        "code": "import matplotlib.pyplot as plt\n\n# Sales data\nmonths = ['Jan', 'Feb', 'Mar', 'Apr', 'May']\nsales = [120, 145, 132, 168, 180]\n\n# Create bar chart\nplt.figure(figsize=(8, 4))\nplt.bar(months, sales, color='#4F46E5')\nplt.xlabel('Month')\nplt.ylabel('Sales (units)')\nplt.title('Monthly Sales Performance')\nplt.tight_layout()\nplt.show()",
+        "explanation": "Bar charts are ideal for comparing values across categories."
+      },
+      {
+        "title": "📈 Line Chart - Trend Over Time",
+        "code": "import matplotlib.pyplot as plt\nimport numpy as np\n\n# Temperature data\ndays = np.arange(1, 8)\ntemps = [22, 24, 21, 25, 28, 27, 26]\n\nplt.figure(figsize=(8, 4))\nplt.plot(days, temps, marker='o', color='#10B981', linewidth=2, markersize=8)\nplt.fill_between(days, temps, alpha=0.3, color='#10B981')\nplt.xlabel('Day')\nplt.ylabel('Temperature (°C)')\nplt.title('Weekly Temperature Trend')\nplt.grid(True, alpha=0.3)\nplt.tight_layout()\nplt.show()",
+        "explanation": "Line charts show trends over time. The fill adds visual emphasis."
+      },
+      {
+        "title": "🥧 Pie Chart - Distribution",
+        "code": "import matplotlib.pyplot as plt\n\n# Market share data\nlabels = ['Python', 'JavaScript', 'Java', 'C++', 'Other']\nsizes = [35, 25, 20, 12, 8]\ncolors = ['#4F46E5', '#10B981', '#F59E0B', '#EF4444', '#6B7280']\nexplode = (0.05, 0, 0, 0, 0)\n\nplt.figure(figsize=(8, 6))\nplt.pie(sizes, explode=explode, labels=labels, colors=colors,\n        autopct='%1.1f%%', shadow=True, startangle=90)\nplt.title('Programming Language Market Share')\nplt.tight_layout()\nplt.show()",
+        "explanation": "Pie charts show parts of a whole. Use sparingly - max 5-6 slices."
+      },
+      {
+        "title": "📉 Scatter Plot - Correlation",
+        "code": "import matplotlib.pyplot as plt\nimport numpy as np\n\n# Study hours vs marks\nnp.random.seed(42)\nhours = np.random.uniform(1, 8, 20)\nmarks = hours * 10 + np.random.normal(0, 5, 20)\n\nplt.figure(figsize=(8, 5))\nplt.scatter(hours, marks, c='#8B5CF6', s=100, alpha=0.7, edgecolors='white')\nplt.xlabel('Study Hours')\nplt.ylabel('Marks')\nplt.title('Study Time vs Performance')\nplt.grid(True, alpha=0.3)\nplt.tight_layout()\nplt.show()",
+        "explanation": "Scatter plots reveal relationships between two variables."
+      }
+    ],
+    "quiz": {
+      "questions": [
+        {
+          "id": "q10_1",
+          "question": "What are the three components of data storytelling?",
+          "options": [
+            "Data, Charts, Reports",
+            "Data, Narrative, Visuals",
+            "Numbers, Text, Images",
+            "Analysis, Summary, Conclusion"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Effective data storytelling combines Data + Narrative + Visuals.",
+          "pageRef": 148
+        },
+        {
+          "id": "q10_2",
+          "question": "Which chart is best for showing trends over time?",
+          "options": [
+            "Pie chart",
+            "Bar chart",
+            "Line chart",
+            "Scatter plot"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Line charts effectively show how values change over time.",
+          "pageRef": 155
+        },
+        {
+          "id": "q10_3",
+          "question": "Why is understanding your audience important?",
+          "options": [
+            "To use complex vocabulary",
+            "To tailor the message to their needs",
+            "To include more data",
+            "To make longer presentations"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Different audiences need different levels of detail and focus.",
+          "pageRef": 150
+        }
+      ]
+    }
+  },
+  {
+    "id": "lesson11_capstone_problem_data_plan",
+    "title": "Capstone: Problem & Data Plan",
+    "lessonNumber": 11,
+    "unit": {
+      "number": 2,
+      "title": "Capstone Project",
+      "pageStart": 17,
+      "pageEnd": 42
+    },
+    "objectives": [
+      "Define a clear problem statement",
+      "Identify required data sources",
+      "Choose appropriate success metrics",
+      "Plan your capstone project"
+    ],
+    "keyConcepts": [
+      "Problem Statement",
+      "Data Requirements",
+      "Success Metrics",
+      "Project Planning"
+    ],
+    "realWorldApplication": "Every AI project starts with problem definition. This skill is essential for data scientists, product managers, and researchers.",
+    "progress": 0,
+    "xpEarned": 0,
+    "mastery": "beginner",
+    "theory": [
+      {
+        "title": "Problem Statement",
+        "content": "A good problem statement is specific, measurable, and actionable. It clearly defines what you're trying to solve and why it matters.",
+        "pageRef": 19
+      }
+    ],
+    "codeExamples": [],
+    "quiz": {
+      "questions": [
+        {
+          "id": "q11_1",
+          "question": "What makes a good problem statement?",
+          "options": [
+            "Vague and broad",
+            "Specific and measurable",
+            "Technical and complex",
+            "Long and detailed"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Good problem statements are specific, measurable, and actionable.",
+          "pageRef": 19
+        }
+      ]
+    }
+  },
+  {
+    "id": "lesson12_capstone_baseline_model",
+    "title": "Capstone: Baseline Model",
+    "lessonNumber": 12,
+    "unit": {
+      "number": 1,
+      "title": "Capstone Project",
+      "pageStart": 1,
+      "pageEnd": 42
+    },
+    "objectives": [
+      "Load and clean your dataset",
+      "Train a simple baseline model",
+      "Evaluate with appropriate metrics",
+      "Document your baseline performance"
+    ],
+    "keyConcepts": [
+      "Data Loading",
+      "Data Cleaning",
+      "Baseline Model",
+      "Evaluation Metrics"
+    ],
+    "realWorldApplication": "Baseline models establish a benchmark. All improvements are measured against this starting point.",
+    "progress": 0,
+    "xpEarned": 0,
+    "mastery": "beginner",
+    "theory": [
+      {
+        "title": "Why Baseline Matters",
+        "content": "A baseline model is your simplest reasonable solution. It sets expectations and provides a benchmark to measure improvements.",
+        "pageRef": 27
+      }
+    ],
+    "codeExamples": [],
+    "quiz": {
+      "questions": [
+        {
+          "id": "q12_1",
+          "question": "Why create a baseline model first?",
+          "options": [
+            "It's the final model",
+            "To benchmark improvements",
+            "It's required by Python",
+            "To skip testing"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Baselines establish benchmarks against which improvements are measured.",
+          "pageRef": 27
+        }
+      ]
+    }
+  },
+  {
+    "id": "lesson13_capstone_improvement_story",
+    "title": "Capstone: Improvement & Story",
+    "lessonNumber": 13,
+    "unit": {
+      "number": 8,
+      "title": "Capstone Project",
+      "pageStart": 146,
+      "pageEnd": 168
+    },
+    "objectives": [
+      "Improve your model iteratively",
+      "Visualize your results",
+      "Build a narrative around your findings",
+      "Prepare for presentation"
+    ],
+    "keyConcepts": [
+      "Model Improvement",
+      "Visualization",
+      "Storytelling",
+      "Results Analysis"
+    ],
+    "realWorldApplication": "Communicating results effectively is as important as the analysis itself.",
+    "progress": 0,
+    "xpEarned": 0,
+    "mastery": "beginner",
+    "theory": [],
+    "codeExamples": [],
+    "quiz": {
+      "questions": []
+    }
+  },
+  {
+    "id": "lesson14_capstone_presentation",
+    "title": "Capstone: Presentation",
+    "lessonNumber": 14,
+    "unit": {
+      "number": 8,
+      "title": "Capstone Project",
+      "pageStart": 146,
+      "pageEnd": 168
+    },
+    "objectives": [
+      "Structure your final presentation",
+      "Create effective slides",
+      "Practice your delivery",
+      "Anticipate questions"
+    ],
+    "keyConcepts": [
+      "Presentation Skills",
+      "Slide Design",
+      "Public Speaking",
+      "Q&A Preparation"
+    ],
+    "realWorldApplication": "Presenting AI projects to stakeholders, clients, or academic committees.",
+    "progress": 0,
+    "xpEarned": 0,
+    "mastery": "beginner",
+    "theory": [],
+    "codeExamples": [],
+    "quiz": {
+      "questions": []
+    }
+  }
+]
