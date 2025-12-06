@@ -725,6 +725,11 @@
       {
         "title": "Computer Vision Process",
         "content": "5 main stages: 1) Image Acquisition (capture) 2) Preprocessing (noise reduction, normalization) 3) Feature Extraction (edges, corners, textures) 4) Detection/Segmentation 5) High-level Processing (recognition)",
+        "diagram": {
+          "title": "Computer Vision Pipeline",
+          "code": "graph LR\n    A[📷 Acquisition] --> B[🧹 Preprocessing]\n    B --> C[🔍 Feature Extraction]\n    C --> D[🧩 Segmentation]\n    D --> E[🧠 Recognition]\n    style A fill:#64748b\n    style C fill:#6366f1\n    style E fill:#10b981",
+          "caption": "From raw pixels to understanding: The journey of an image through a CV system"
+        },
         "pageRef": 48
       }
     ],
@@ -1081,6 +1086,11 @@
       {
         "title": "How Text Generation Works",
         "content": "Given a prompt, the model predicts the most likely next token (word/subword) based on patterns learned during training. This process repeats to generate full responses.",
+        "diagram": {
+          "title": "Text Generation Process",
+          "code": "graph LR\n    A[Input: 'The cat'] --> B[Tokenization]\n    B --> C[Model Processing]\n    C --> D[Probabilities]\n    D --> E[Select: 'sat']\n    E --> F[Loop Back]\n    F -.-> A\n    style A fill:#f59e0b\n    style C fill:#6366f1\n    style E fill:#10b981",
+          "caption": "LLMs generate text one token at a time, feeding the output back as new input"
+        },
         "pageRef": 130
       }
     ],
