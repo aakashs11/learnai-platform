@@ -2,7 +2,7 @@
 
 An interactive educational platform for AI/Python curriculum with hands-on coding.
 
-**Live URL:** https://learnai-platform.vercel.app
+**Live URL:** https://ai-curriculum-navy.vercel.app
 
 ## Features
 
