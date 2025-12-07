@@ -14,7 +14,8 @@
 const setupPdfWorker = async () => {
     if (typeof window !== 'undefined') {
         const pdfjsLib = await import('pdfjs-dist')
-        pdfjsLib.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjsLib.version}/pdf.worker.min.js`
+        // Use exact version matching package.json or a fixed reliable version
+        pdfjsLib.GlobalWorkerOptions.workerSrc = `https://unpkg.com/pdfjs-dist@${pdfjsLib.version}/build/pdf.worker.min.js`
         return pdfjsLib
     }
     return null

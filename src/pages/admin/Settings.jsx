@@ -22,11 +22,11 @@ export default function Settings() {
                     <div className="grid gap-4">
                         <div>
                             <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Platform Name</label>
-                            <input type="text" defaultValue="LearnAI" className="w-full px-4 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg" />
+                            <input type="text" defaultValue="LearnAI" className="w-full px-4 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg text-slate-900 dark:text-white" />
                         </div>
                         <div>
                             <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Support Email</label>
-                            <input type="email" defaultValue="support@learnai.in" className="w-full px-4 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg" />
+                            <input type="email" defaultValue="support@learnai.in" className="w-full px-4 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg text-slate-900 dark:text-white" />
                         </div>
                     </div>
                 </div>
@@ -43,11 +43,11 @@ export default function Settings() {
                     <div className="space-y-4">
                         <div>
                             <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Hero Title</label>
-                            <input type="text" defaultValue="Master Artificial Intelligence" className="w-full px-4 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg" />
+                            <input type="text" defaultValue="Master Artificial Intelligence" className="w-full px-4 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg text-slate-900 dark:text-white" />
                         </div>
                         <div>
                             <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Hero Subtitle</label>
-                            <textarea rows={3} defaultValue="Comprehensive curriculum for CBSE Class 12 AI. Learn Python, Data Science, and Computer Vision." className="w-full px-4 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg" />
+                            <textarea rows={3} defaultValue="Comprehensive curriculum for CBSE Class 12 AI. Learn Python, Data Science, and Computer Vision." className="w-full px-4 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg text-slate-900 dark:text-white" />
                         </div>
                         <div className="flex items-center gap-2">
                             <input type="checkbox" id="show-testimonials" className="rounded border-slate-300 text-indigo-600 focus:ring-indigo-500" />
