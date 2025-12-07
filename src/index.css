@@ -1,7 +1,34 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-body {
-  @apply bg-slate-900 text-white;
+@layer base {
+  body {
+    @apply bg-space-900 text-white font-sans antialiased selection:bg-neon-cyan/30;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-heading tracking-tight;
+  }
+}
+
+@layer utilities {
+  .glass-panel {
+    @apply bg-space-800/60 backdrop-blur-xl border border-white/10 shadow-xl;
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-neon-cyan to-nebula-end;
+  }
+
+  .neon-glow {
+    @apply shadow-[0_0_20px_rgba(0, 240, 255, 0.3)];
+  }
 }
