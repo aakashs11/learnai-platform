@@ -25,9 +25,10 @@ function App() {
         <Route path="/courses" element={<CourseCatalog />} />
         <Route path="/courses/:courseId" element={<CoursePage />} />
 
+        <Route path="/courses/:courseId/lesson/:lessonId" element={<LessonPage />} />
+
         {/* Student Routes - Protected */}
         <Route element={<ProtectedRoute />}>
-          <Route path="/courses/:courseId/lesson/:lessonId" element={<LessonPage />} />
           <Route path="/creator" element={<CreatorDashboard />} />
         </Route>
 
