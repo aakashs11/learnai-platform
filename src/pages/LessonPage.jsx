@@ -114,29 +114,29 @@ export default function LessonPage() {
     const lessonProgress = progress.lessons[lesson.id]?.progress || 0
 
     return (
-        <div className="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100">
+        <div className="min-h-screen bg-space-900 text-slate-200 font-sans selection:bg-neon-cyan/30">
             {/* Top Navigation Bar */}
-            <header className="sticky top-0 z-30 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800">
+            <header className="sticky top-0 z-30 bg-space-900/80 backdrop-blur-md border-b border-white/10">
                 <div className="flex items-center justify-between px-4 py-3">
                     <div className="flex items-center gap-3">
                         <button
                             onClick={() => setSidebarOpen(!sidebarOpen)}
-                            className="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg lg:hidden"
+                            className="p-2 hover:bg-white/10 rounded-lg lg:hidden transition-colors"
                         >
-                            <Menu className="w-5 h-5" />
+                            <Menu className="w-5 h-5 text-slate-200" />
                         </button>
 
                         <Link
                             to={`/courses/${courseId}`}
-                            className="flex items-center gap-2 text-slate-600 hover:text-slate-900 dark:hover:text-white transition-colors"
+                            className="flex items-center gap-2 text-slate-400 hover:text-white transition-colors"
                         >
                             <ArrowLeft className="w-4 h-4" />
-                            <span className="hidden sm:inline">Back to Course</span>
+                            <span className="hidden sm:inline font-medium">Back to Course</span>
                         </Link>
                     </div>
 
                     <div className="flex items-center gap-4">
-                        <span className="px-3 py-1.5 bg-amber-100 dark:bg-amber-500/20 text-amber-700 dark:text-amber-400 rounded-full flex items-center gap-1.5 text-sm font-medium">
+                        <span className="px-3 py-1.5 bg-starlight-yellow/10 text-starlight-yellow rounded-full flex items-center gap-1.5 text-sm font-bold border border-starlight-yellow/20 shadow-[0_0_10px_rgba(255,215,0,0.1)]">
                             <Sparkles className="w-4 h-4" />
                             {progress.xp} XP
                         </span>
@@ -144,9 +144,9 @@ export default function LessonPage() {
                 </div>
 
                 {/* Progress bar */}
-                <div className="h-1 bg-slate-100 dark:bg-slate-800">
+                <div className="h-0.5 bg-space-800">
                     <motion.div
-                        className="h-full bg-gradient-to-r from-indigo-500 to-purple-500"
+                        className="h-full bg-gradient-to-r from-neon-cyan to-nebula-end shadow-[0_0_10px_rgba(0,240,255,0.4)]"
                         initial={{ width: 0 }}
                         animate={{ width: `${lessonProgress}%` }}
                         transition={{ duration: 0.5 }}
@@ -154,7 +154,7 @@ export default function LessonPage() {
                 </div>
             </header>
 
-            <div className="flex">
+            <div className="flex relative">
                 {/* Sidebar - Lesson Outline */}
                 <AnimatePresence>
                     {sidebarOpen && (
@@ -162,42 +162,42 @@ export default function LessonPage() {
                             initial={{ x: -280, opacity: 0 }}
                             animate={{ x: 0, opacity: 1 }}
                             exit={{ x: -280, opacity: 0 }}
-                            className="fixed lg:sticky top-[53px] left-0 z-20 w-72 h-[calc(100vh-53px)] bg-white dark:bg-slate-900 border-r border-slate-200 dark:border-slate-800 overflow-y-auto"
+                            className="fixed lg:sticky top-[53px] left-0 z-20 w-72 h-[calc(100vh-53px)] bg-space-800/50 backdrop-blur-xl border-r border-white/10 overflow-y-auto scrollbar-thin scrollbar-thumb-space-600 scrollbar-track-transparent"
                         >
                             {/* Lesson Info */}
-                            <div className="p-4 border-b border-slate-200 dark:border-slate-800">
-                                <div className="flex items-center gap-2 text-xs text-slate-600 dark:text-slate-400 mb-2">
-                                    <span className="px-2 py-0.5 bg-indigo-100 dark:bg-indigo-500/20 text-indigo-600 dark:text-indigo-400 rounded-full font-medium">
-                                        Lesson {lesson.lessonNumber}
+                            <div className="p-5 border-b border-white/10 bg-gradient-to-br from-space-800 to-space-900">
+                                <div className="flex items-center gap-2 text-xs text-slate-400 mb-3">
+                                    <span className="px-2 py-0.5 bg-neon-cyan/10 text-neon-cyan border border-neon-cyan/20 rounded-md font-mono font-medium">
+                                        LESSON {lesson.lessonNumber}
                                     </span>
-                                    <span>Unit {lesson.unit?.number}</span>
+                                    <span className="font-mono text-slate-500">UNIT {lesson.unit?.number}</span>
                                 </div>
-                                <h2 className="font-semibold text-slate-900 dark:text-white">{lesson.title}</h2>
-                                <p className="text-xs text-slate-600 dark:text-slate-400 mt-1">
+                                <h2 className="font-heading font-bold text-white text-lg leading-tight">{lesson.title}</h2>
+                                <p className="text-xs text-slate-400 mt-2 font-medium">
                                     {lesson.unit?.title}
                                 </p>
                             </div>
 
                             {/* Section Navigation */}
-                            <nav className="p-3">
-                                <p className="text-xs font-medium text-slate-500 dark:text-slate-600 uppercase tracking-wide px-2 mb-2">
-                                    Sections
+                            <nav className="p-4">
+                                <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest px-2 mb-3">
+                                    Mission Control
                                 </p>
                                 <div className="space-y-1">
                                     {sections.map(section => (
                                         <button
                                             key={section.id}
                                             onClick={() => setActiveSection(section.id)}
-                                            className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-left transition-all ${activeSection === section.id
-                                                ? 'bg-indigo-50 dark:bg-indigo-500/20 text-indigo-600 dark:text-indigo-400 font-medium'
-                                                : 'text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800'
+                                            className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-left transition-all border ${activeSection === section.id
+                                                ? 'bg-neon-cyan/10 border-neon-cyan/30 text-neon-cyan font-medium shadow-[0_0_15px_rgba(0,240,255,0.1)]'
+                                                : 'border-transparent text-slate-400 hover:bg-white/5 hover:text-slate-200'
                                                 }`}
                                         >
-                                            <section.icon className="w-4 h-4" />
+                                            <section.icon className={`w-4 h-4 ${activeSection === section.id ? 'text-neon-cyan' : 'text-slate-500'}`} />
                                             {section.label}
                                             {section.id === 'quiz' && lesson.quiz?.questions?.length && (
-                                                <span className="ml-auto text-xs text-slate-500">
-                                                    {lesson.quiz.questions.length} Q
+                                                <span className="ml-auto text-xs font-mono bg-space-900/50 px-1.5 py-0.5 rounded text-slate-400">
+                                                    {lesson.quiz.questions.length}Q
                                                 </span>
                                             )}
                                         </button>
@@ -206,44 +206,46 @@ export default function LessonPage() {
                             </nav>
 
                             {/* PDF Reference */}
-                            <div className="p-3 border-t border-slate-200 dark:border-slate-800">
+                            <div className="mx-4 mt-2 p-3 bg-nebula-end/10 border border-nebula-end/20 rounded-xl">
                                 <a
                                     href={`/handbook.pdf#page=${lesson.unit?.pageStart}`}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="flex items-center gap-3 px-3 py-2.5 bg-blue-50 dark:bg-blue-500/10 hover:bg-blue-100 dark:hover:bg-blue-500/20 text-blue-600 dark:text-blue-400 rounded-lg transition-colors"
+                                    className="flex items-center gap-3 group"
                                 >
-                                    <FileText className="w-4 h-4" />
-                                    <div className="flex-1 text-sm">
-                                        <div className="font-medium">PDF Handbook</div>
-                                        <div className="text-xs opacity-70">Pages {lesson.unit?.pageStart}-{lesson.unit?.pageEnd}</div>
+                                    <div className="p-2 bg-nebula-end/20 rounded-lg group-hover:bg-nebula-end/30 transition-colors">
+                                        <FileText className="w-4 h-4 text-nebula-start" />
                                     </div>
-                                    <ExternalLink className="w-3.5 h-3.5" />
+                                    <div className="flex-1 text-sm">
+                                        <div className="font-medium text-slate-200 group-hover:text-white transition-colors">Course Handbook</div>
+                                        <div className="text-xs text-slate-500 group-hover:text-slate-400">Pages {lesson.unit?.pageStart}-{lesson.unit?.pageEnd}</div>
+                                    </div>
+                                    <ExternalLink className="w-3.5 h-3.5 text-slate-500 group-hover:text-white transition-colors" />
                                 </a>
                             </div>
 
                             {/* Lesson Navigation */}
-                            <div className="p-3 border-t border-slate-200 dark:border-slate-800">
-                                <p className="text-xs font-medium text-slate-500 dark:text-slate-600 uppercase tracking-wide px-2 mb-2">
-                                    Navigation
+                            <div className="p-4 mt-4 border-t border-white/10">
+                                <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest px-2 mb-3">
+                                    Trajectory
                                 </p>
-                                <div className="space-y-1">
+                                <div className="space-y-2">
                                     {prevLesson && (
                                         <button
                                             onClick={() => navigateLesson('prev')}
-                                            className="w-full flex items-center gap-2 px-3 py-2 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg transition-colors"
+                                            className="w-full flex items-center gap-2 px-3 py-2 text-sm text-slate-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors border border-transparent hover:border-white/10"
                                         >
-                                            <ChevronLeft className="w-4 h-4" />
+                                            <ChevronLeft className="w-4 h-4 text-slate-600" />
                                             <span className="truncate">{prevLesson.title}</span>
                                         </button>
                                     )}
                                     {nextLesson && (
                                         <button
                                             onClick={() => navigateLesson('next')}
-                                            className="w-full flex items-center gap-2 px-3 py-2 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg transition-colors"
+                                            className="w-full flex items-center gap-2 px-3 py-2 text-sm text-slate-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors border border-transparent hover:border-white/10"
                                         >
-                                            <span className="truncate">{nextLesson.title}</span>
-                                            <ChevronRight className="w-4 h-4 ml-auto" />
+                                            <span className="truncate flex-1 text-right">{nextLesson.title}</span>
+                                            <ChevronRight className="w-4 h-4 text-slate-600" />
                                         </button>
                                     )}
                                 </div>
@@ -253,54 +255,64 @@ export default function LessonPage() {
                 </AnimatePresence>
 
                 {/* Main Content */}
-                <main className={`flex-1 min-h-[calc(100vh-53px)] ${sidebarOpen ? 'lg:ml-0' : ''}`}>
-                    <div className="max-w-4xl mx-auto px-6 py-8">
+                <main className={`flex-1 min-h-[calc(100vh-64px)] ${sidebarOpen ? 'lg:ml-0' : ''}`}>
+                    <div className="max-w-4xl mx-auto px-6 py-12">
                         {/* Lesson Header */}
-                        <div className="mb-8">
-                            <div className="flex items-center gap-3 mb-3">
-                                <span className="px-3 py-1 bg-indigo-100 dark:bg-indigo-500/20 text-indigo-600 dark:text-indigo-400 text-sm font-medium rounded-full">
+                        <div className="mb-10 relative">
+                            {/* Decorative background glow */}
+                            <div className="absolute -top-20 -left-20 w-64 h-64 bg-neon-cyan/10 rounded-full blur-[100px] pointer-events-none opacity-50" />
+
+                            <div className="flex items-center gap-3 mb-4 relative z-10">
+                                <span className="px-3 py-1 bg-neon-cyan/10 text-neon-cyan border border-neon-cyan/20 text-sm font-mono font-medium rounded-full shadow-[0_0_10px_rgba(0,240,255,0.1)]">
                                     Lesson {lesson.lessonNumber}
                                 </span>
                                 {lessonProgress >= 100 && (
-                                    <span className="flex items-center gap-1 px-3 py-1 bg-emerald-100 dark:bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-sm font-medium rounded-full">
+                                    <span className="flex items-center gap-1 px-3 py-1 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-sm font-medium rounded-full">
                                         <CheckCircle className="w-3.5 h-3.5" />
                                         Completed
                                     </span>
                                 )}
                             </div>
-                            <h1 className="text-3xl font-bold text-slate-900 dark:text-white mb-2">
+                            <h1 className="text-4xl md:text-5xl font-heading font-bold text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-200 to-slate-400 mb-6 drop-shadow-sm relative z-10">
                                 {lesson.title}
                             </h1>
-                            <div className="flex flex-wrap items-center gap-4 text-sm text-slate-600 dark:text-slate-400">
-                                <span className="flex items-center gap-1">
-                                    <Clock className="w-4 h-4" />
-                                    ~15 min
+                            <div className="glass-panel rounded-xl p-4 flex flex-wrap items-center gap-6 text-sm text-slate-300 relative z-10">
+                                <span className="flex items-center gap-2">
+                                    <Clock className="w-4 h-4 text-neon-cyan" />
+                                    ~15 min reading
                                 </span>
-                                <span className="flex items-center gap-1">
-                                    <Target className="w-4 h-4" />
-                                    {lesson.objectives?.length || 0} objectives
+                                <div className="w-px h-4 bg-white/10" />
+                                <span className="flex items-center gap-2">
+                                    <Target className="w-4 h-4 text-nebula-start" />
+                                    {lesson.objectives?.length || 0} Key Objectives
                                 </span>
-                                <span className="flex items-center gap-1">
-                                    <HelpCircle className="w-4 h-4" />
-                                    {lesson.quiz?.questions?.length || 0} quiz questions
+                                <div className="w-px h-4 bg-white/10" />
+                                <span className="flex items-center gap-2">
+                                    <HelpCircle className="w-4 h-4 text-starlight-yellow" />
+                                    {lesson.quiz?.questions?.length || 0} Challenge Questions
                                 </span>
                             </div>
                         </div>
 
                         {/* Learning Objectives */}
-                        <div className="bg-gradient-to-r from-indigo-50 to-purple-50 dark:from-indigo-500/10 dark:to-purple-500/10 rounded-2xl p-6 border border-indigo-100 dark:border-indigo-500/20 mb-8">
-                            <h3 className="font-semibold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
-                                <Target className="w-5 h-5 text-indigo-500" />
-                                What you'll learn
-                            </h3>
-                            <ul className="grid sm:grid-cols-2 gap-3">
-                                {lesson.objectives?.map((obj, idx) => (
-                                    <li key={idx} className="flex items-start gap-2 text-slate-700 dark:text-slate-300">
-                                        <CheckCircle className="w-4 h-4 text-emerald-500 mt-0.5 shrink-0" />
-                                        <span className="text-sm">{obj}</span>
-                                    </li>
-                                ))}
-                            </ul>
+                        <div className="relative mb-12 group">
+                            <div className="absolute -inset-0.5 bg-gradient-to-r from-neon-cyan/20 to-nebula-end/20 rounded-2xl blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200" />
+                            <div className="relative bg-space-800 rounded-2xl p-6 border border-white/10">
+                                <h3 className="font-heading font-semibold text-white mb-4 flex items-center gap-2 text-lg">
+                                    <Target className="w-5 h-5 text-neon-cyan" />
+                                    Mission Objectives
+                                </h3>
+                                <ul className="grid sm:grid-cols-2 gap-4">
+                                    {lesson.objectives?.map((obj, idx) => (
+                                        <li key={idx} className="flex items-start gap-3 text-slate-300">
+                                            <div className="w-5 h-5 rounded-full bg-emerald-500/20 flex items-center justify-center shrink-0 mt-0.5">
+                                                <CheckCircle className="w-3.5 h-3.5 text-emerald-400" />
+                                            </div>
+                                            <span className="text-sm leading-relaxed">{obj}</span>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
                         </div>
 
                         {/* Content Sections */}
@@ -311,31 +323,40 @@ export default function LessonPage() {
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     exit={{ opacity: 0, y: -20 }}
-                                    className="space-y-6"
+                                    transition={{ duration: 0.3 }}
+                                    className="space-y-8"
                                 >
                                     {lesson.videoId && (
-                                        <VideoPlayer
-                                            videoId={lesson.videoId}
-                                            title={lesson.title}
-                                        />
+                                        <div className="border border-white/5 rounded-2xl overflow-hidden shadow-2xl">
+                                            <VideoPlayer
+                                                videoId={lesson.videoId}
+                                                title={lesson.title}
+                                            />
+                                        </div>
                                     )}
 
                                     {lesson.theory?.length > 0 && (
-                                        <InteractiveTheory
-                                            sections={lesson.theory}
-                                            keyConcepts={lesson.keyConcepts}
-                                            unit={lesson.unit}
-                                        />
+                                        <div className="prose prose-invert prose-lg max-w-none">
+                                            <InteractiveTheory
+                                                sections={lesson.theory}
+                                                keyConcepts={lesson.keyConcepts}
+                                                unit={lesson.unit}
+                                            />
+                                        </div>
                                     )}
 
-                                    <div className="flex justify-center pt-6">
+                                    <div className="flex justify-center pt-8">
                                         <button
                                             onClick={() => setActiveSection('practice')}
-                                            className="px-6 py-3 bg-cyan-100 dark:bg-cyan-500/20 hover:bg-cyan-200 dark:hover:bg-cyan-500/30 text-cyan-700 dark:text-cyan-400 rounded-xl font-medium flex items-center gap-2 transition-colors"
+                                            className="group relative px-8 py-4 bg-transparent overflow-hidden rounded-xl transition-all"
                                         >
-                                            <Code className="w-5 h-5" />
-                                            Try the Code Examples
-                                            <ChevronRight className="w-4 h-4" />
+                                            <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-neon-cyan to-nebula-end opacity-20 group-hover:opacity-30 transition-opacity" />
+                                            <div className="absolute inset-0 border border-neon-cyan/50 rounded-xl" />
+                                            <div className="relative flex items-center gap-3 text-neon-cyan font-bold tracking-wide">
+                                                <Code className="w-5 h-5" />
+                                                INITIALIZE TRAINING SIMULATION
+                                                <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                                            </div>
                                         </button>
                                     </div>
                                 </motion.div>
@@ -347,15 +368,15 @@ export default function LessonPage() {
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     exit={{ opacity: 0, y: -20 }}
-                                    className="space-y-6"
+                                    className="space-y-8"
                                 >
-                                    <div className="flex items-center gap-3 mb-6">
-                                        <div className="p-2 bg-cyan-100 dark:bg-cyan-500/20 rounded-lg">
-                                            <Code className="w-5 h-5 text-cyan-600 dark:text-cyan-400" />
+                                    <div className="flex items-center gap-4 mb-6">
+                                        <div className="p-3 bg-neon-cyan/10 border border-neon-cyan/20 rounded-xl shadow-[0_0_15px_rgba(0,240,255,0.15)]">
+                                            <Code className="w-6 h-6 text-neon-cyan" />
                                         </div>
                                         <div>
-                                            <h3 className="font-semibold text-slate-900 dark:text-white">Code Examples</h3>
-                                            <p className="text-sm text-slate-600 dark:text-slate-400">Run and modify code directly in your browser</p>
+                                            <h3 className="font-heading font-bold text-white text-xl">Code Laboratory</h3>
+                                            <p className="text-slate-400">Execute Python scripts in the browser sandbox.</p>
                                         </div>
                                     </div>
 
@@ -369,21 +390,25 @@ export default function LessonPage() {
                                             />
                                         ))
                                     ) : (
-                                        <div className="text-center py-12 text-slate-500">
-                                            <Code className="w-12 h-12 mx-auto mb-3 opacity-50" />
-                                            <p>No code examples for this lesson yet.</p>
+                                        <div className="text-center py-16 border border-dashed border-white/10 rounded-2xl bg-space-800/30">
+                                            <Code className="w-12 h-12 mx-auto mb-4 text-slate-600" />
+                                            <p className="text-slate-500">No code modules detected for this sector.</p>
                                         </div>
                                     )}
 
                                     {lesson.quiz?.questions?.length > 0 && (
-                                        <div className="flex justify-center pt-6">
+                                        <div className="flex justify-center pt-8">
                                             <button
                                                 onClick={() => setActiveSection('quiz')}
-                                                className="px-6 py-3 bg-purple-100 dark:bg-purple-500/20 hover:bg-purple-200 dark:hover:bg-purple-500/30 text-purple-700 dark:text-purple-400 rounded-xl font-medium flex items-center gap-2 transition-colors"
+                                                className="group relative px-8 py-4 bg-transparent overflow-hidden rounded-xl transition-all"
                                             >
-                                                <HelpCircle className="w-5 h-5" />
-                                                Take the Quiz
-                                                <ChevronRight className="w-4 h-4" />
+                                                <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-starlight-yellow/20 to-orange-500/20 opacity-100 group-hover:opacity-80 transition-opacity" />
+                                                <div className="absolute inset-0 border border-starlight-yellow/50 rounded-xl" />
+                                                <div className="relative flex items-center gap-3 text-starlight-yellow font-bold tracking-wide">
+                                                    <HelpCircle className="w-5 h-5" />
+                                                    START CHALLENGE MODE
+                                                    <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                                                </div>
                                             </button>
                                         </div>
                                     )}
@@ -403,9 +428,9 @@ export default function LessonPage() {
                                             onComplete={handleQuizComplete}
                                         />
                                     ) : (
-                                        <div className="text-center py-12 text-slate-500">
-                                            <HelpCircle className="w-12 h-12 mx-auto mb-3 opacity-50" />
-                                            <p>No quiz for this lesson yet.</p>
+                                        <div className="text-center py-16 border border-dashed border-white/10 rounded-2xl bg-space-800/30">
+                                            <HelpCircle className="w-12 h-12 mx-auto mb-4 text-slate-600" />
+                                            <p className="text-slate-500">No challenge modules detected for this sector.</p>
                                         </div>
                                     )}
                                 </motion.div>
@@ -413,16 +438,16 @@ export default function LessonPage() {
                         </AnimatePresence>
 
                         {/* Bottom Navigation */}
-                        <div className="flex items-center justify-between mt-12 pt-8 border-t border-slate-200 dark:border-slate-800">
+                        <div className="flex items-center justify-between mt-16 pt-8 border-t border-white/10">
                             {prevLesson ? (
                                 <button
                                     onClick={() => navigateLesson('prev')}
-                                    className="flex items-center gap-2 px-4 py-2 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors"
+                                    className="flex items-center gap-4 px-5 py-3 text-slate-400 hover:text-white hover:bg-white/5 rounded-xl transition-all group"
                                 >
-                                    <ChevronLeft className="w-4 h-4" />
+                                    <ChevronLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
                                     <div className="text-left">
-                                        <div className="text-xs text-slate-500">Previous</div>
-                                        <div className="text-sm font-medium">{prevLesson.title}</div>
+                                        <div className="text-xs text-slate-500 font-mono mb-1">PREVIOUS SECTOR</div>
+                                        <div className="text-base font-medium">{prevLesson.title}</div>
                                     </div>
                                 </button>
                             ) : (
@@ -432,27 +457,30 @@ export default function LessonPage() {
                             {nextLesson ? (
                                 <button
                                     onClick={() => navigateLesson('next')}
-                                    className="flex items-center gap-2 px-4 py-2 bg-indigo-500 hover:bg-indigo-600 text-white rounded-xl transition-colors"
+                                    className="flex items-center gap-4 px-6 py-3 bg-gradient-to-r from-neon-cyan to-nebula-end text-black rounded-xl hover:shadow-[0_0_20px_rgba(0,240,255,0.4)] transition-all group"
                                 >
                                     <div className="text-right">
-                                        <div className="text-xs text-indigo-200">Next Lesson</div>
-                                        <div className="text-sm font-medium">{nextLesson.title}</div>
+                                        <div className="text-xs text-slate-800 font-mono font-bold mb-1 opacity-70">NEXT SECTOR</div>
+                                        <div className="text-base font-bold">{nextLesson.title}</div>
                                     </div>
-                                    <ChevronRight className="w-4 h-4" />
+                                    <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                                 </button>
                             ) : (
                                 <Link
                                     to={`/courses/${courseId}`}
-                                    className="flex items-center gap-2 px-4 py-2 bg-emerald-500 hover:bg-emerald-600 text-white rounded-xl transition-colors"
+                                    className="flex items-center gap-2 px-6 py-3 bg-emerald-500 hover:bg-emerald-400 text-black rounded-xl font-bold transition-all shadow-lg shadow-emerald-500/20"
                                 >
-                                    <CheckCircle className="w-4 h-4" />
-                                    Complete Course
+                                    <CheckCircle className="w-5 h-5" />
+                                    MISSION ACCOMPLISHED
                                 </Link>
                             )}
                         </div>
                     </div>
                 </main>
             </div>
+
+            {/* AI Tutor Widget - Floating Overlay */}
+            <AITutorWidget lessonContext={{ title: lesson.title, id: lesson.id, content: lesson.theory?.map(t => t.content).join(' ').substring(0, 1000) }} />
         </div>
     )
 }
