@@ -200,6 +200,17 @@ function TheorySection({ section, index, isExpanded, isCompleted, checkState, on
                                 ))}
                             </div>
 
+                            {/* Section Image */}
+                            {section.image && (
+                                <div className="rounded-xl overflow-hidden border border-white/10 shadow-lg my-4">
+                                    <img
+                                        src={`/${section.image}`}
+                                        alt={section.title}
+                                        className="w-full h-auto object-cover hover:scale-105 transition-transform duration-500"
+                                    />
+                                </div>
+                            )}
+
                             {/* Diagram */}
                             {section.diagram && (
                                 <MermaidDiagram
@@ -226,9 +237,9 @@ function TheorySection({ section, index, isExpanded, isCompleted, checkState, on
                             {section.keyTakeaway && (
                                 <div className="bg-indigo-500/10 rounded-lg p-3 border border-indigo-500/20">
                                     <div className="flex items-start gap-2">
-                                        <Target className="w-4 h-4 text-indigo-400 mt-0.5" />
+                                        <Target className="w-4 h-4 text-indigo-300 mt-0.5" />
                                         <div>
-                                            <span className="text-xs text-indigo-400 font-semibold uppercase">Key Takeaway</span>
+                                            <span className="text-xs text-indigo-300 font-semibold uppercase">Key Takeaway</span>
                                             <p className="text-slate-300 text-sm mt-1">{section.keyTakeaway}</p>
                                         </div>
                                     </div>

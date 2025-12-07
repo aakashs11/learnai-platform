@@ -5,7 +5,6 @@ import {
   BookOpen, ArrowLeft, CheckCircle, Clock, Target,
   Sparkles, FileText, ExternalLink, Play
 } from 'lucide-react'
-import ThemeToggle from '../components/ThemeToggle'
 
 // Lesson type icons
 const lessonIcons = {
@@ -72,31 +71,37 @@ export default function CoursePage() {
   const completedCount = lessons.filter(l => (progress.lessons[l.id]?.progress || 0) >= 100).length
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100">
+    <div className="min-h-screen bg-space-900 text-white font-sans selection:bg-neon-cyan/30">
+      {/* Background Decor */}
+      <div className="fixed inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-purple-500/20 rounded-full blur-[100px] opacity-30" />
+        <div className="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] bg-neon-cyan/10 rounded-full blur-[100px] opacity-20" />
+        <div className="absolute top-[20%] right-[10%] w-[300px] h-[300px] bg-blue-500/20 rounded-full blur-[80px] opacity-20" />
+      </div>
+
       {/* Header */}
-      <header className="sticky top-0 z-10 backdrop-blur-md bg-white/80 dark:bg-slate-900/80 border-b border-slate-200 dark:border-slate-800">
+      <header className="sticky top-0 z-10 backdrop-blur-md bg-space-900/80 border-b border-white/10">
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           <div className="flex items-center gap-4">
             <Link
               to="/courses"
-              className="flex items-center gap-1 text-slate-500 hover:text-slate-900 dark:hover:text-white transition-colors text-sm"
+              className="flex items-center gap-1 text-slate-400 hover:text-white transition-colors text-sm"
             >
               <ArrowLeft className="w-4 h-4" />
               <span className="hidden sm:inline">All Courses</span>
             </Link>
             <div className="flex items-center gap-3">
-              <div className="p-2 bg-indigo-100 dark:bg-indigo-500/20 rounded-lg">
-                <BookOpen className="w-5 h-5 text-indigo-600 dark:text-indigo-400" />
+              <div className="p-2 bg-space-800 rounded-lg border border-white/10">
+                <BookOpen className="w-5 h-5 text-neon-cyan" />
               </div>
               <div>
-                <h1 className="text-lg font-bold">AI Class XII</h1>
-                <p className="text-xs text-slate-600">CBSE • {lessons.length} Lessons</p>
+                <h1 className="text-lg font-bold text-white font-heading tracking-wide">AI Class XII</h1>
+                <p className="text-xs text-slate-400">CBSE • {lessons.length} Lessons</p>
               </div>
             </div>
           </div>
           <div className="flex items-center gap-3">
-            <ThemeToggle />
-            <span className="px-3 py-1.5 bg-amber-100 dark:bg-amber-500/20 text-amber-700 dark:text-amber-400 rounded-full flex items-center gap-1.5 text-sm font-medium">
+            <span className="px-3 py-1.5 bg-starlight-yellow/10 text-starlight-yellow rounded-full flex items-center gap-1.5 text-sm font-medium border border-starlight-yellow/20 shadow-[0_0_10px_rgba(255,215,0,0.1)]">
               <Sparkles className="w-4 h-4" />
               {progress.xp} XP
             </span>
@@ -104,35 +109,35 @@ export default function CoursePage() {
         </div>
       </header>
 
-      <main className="max-w-7xl mx-auto px-6 py-6">
+      <main className="relative z-0 max-w-7xl mx-auto px-6 py-6">
         {/* Progress Overview */}
-        <div className="bg-white dark:bg-slate-900/50 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 mb-8">
+        <div className="glass-panel p-6 mb-8 bg-space-800/50">
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
             <div>
-              <h2 className="text-xl font-semibold mb-1">Your Progress</h2>
-              <p className="text-slate-600 text-sm">
-                {completedCount} of {lessons.length} lessons completed
+              <h2 className="text-xl font-bold mb-1 text-white font-heading">Your Progress</h2>
+              <p className="text-slate-400 text-sm">
+                {completedCount} of {lessons.length} missions completed
               </p>
             </div>
             <div className="flex items-center gap-6">
               <div className="text-center">
-                <div className="text-2xl font-bold text-indigo-600 dark:text-indigo-400">
+                <div className="text-2xl font-bold text-neon-cyan drop-shadow-[0_0_8px_rgba(0,240,255,0.5)]">
                   {Math.round((completedCount / lessons.length) * 100) || 0}%
                 </div>
-                <div className="text-xs text-slate-600">Complete</div>
+                <div className="text-xs text-slate-400">Complete</div>
               </div>
-              <div className="h-12 w-px bg-slate-200 dark:bg-slate-800" />
+              <div className="h-12 w-px bg-white/10" />
               <div className="text-center">
-                <div className="text-2xl font-bold text-amber-600 dark:text-amber-400">{progress.xp}</div>
-                <div className="text-xs text-slate-600">Total XP</div>
+                <div className="text-2xl font-bold text-starlight-yellow drop-shadow-[0_0_8px_rgba(255,215,0,0.5)]">{progress.xp}</div>
+                <div className="text-xs text-slate-400">Total XP</div>
               </div>
             </div>
           </div>
-          <div className="mt-4 h-2 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+          <div className="mt-4 h-2 bg-space-950 rounded-full overflow-hidden border border-white/5">
             <motion.div
               initial={{ width: 0 }}
               animate={{ width: `${(completedCount / lessons.length) * 100}%` }}
-              className="h-full bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full"
+              className="h-full bg-gradient-to-r from-neon-cyan to-neon-purple rounded-full shadow-[0_0_10px_rgba(0,240,255,0.5)]"
             />
           </div>
         </div>
@@ -142,26 +147,26 @@ export default function CoursePage() {
           href="/handbook.pdf"
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-4 p-4 bg-blue-50 dark:bg-blue-500/10 hover:bg-blue-100 dark:hover:bg-blue-500/20 border border-blue-200 dark:border-blue-500/20 rounded-xl mb-8 transition-colors"
+          className="flex items-center gap-4 p-4 bg-blue-500/10 hover:bg-blue-500/20 border border-blue-500/20 hover:border-blue-400/40 rounded-xl mb-8 transition-all group"
         >
-          <div className="p-3 bg-blue-100 dark:bg-blue-500/20 rounded-lg">
-            <FileText className="w-6 h-6 text-blue-600 dark:text-blue-400" />
+          <div className="p-3 bg-blue-500/20 rounded-lg group-hover:scale-110 transition-transform">
+            <FileText className="w-6 h-6 text-blue-400" />
           </div>
           <div className="flex-1">
-            <div className="font-semibold text-blue-700 dark:text-blue-400">CBSE AI Handbook (PDF)</div>
-            <div className="text-sm text-blue-600/70 dark:text-blue-400/70">Complete Class XII reference • 100+ pages</div>
+            <div className="font-bold text-blue-300 group-hover:text-blue-200 transition-colors">CBSE AI Handbook (PDF)</div>
+            <div className="text-sm text-blue-400/70">Complete Class XII reference • 100+ pages</div>
           </div>
-          <ExternalLink className="w-5 h-5 text-blue-500" />
+          <ExternalLink className="w-5 h-5 text-blue-400 group-hover:text-white transition-colors" />
         </a>
 
         {/* Unit Filter */}
-        <div className="flex gap-2 mb-6 overflow-x-auto pb-2">
+        <div className="flex gap-2 mb-6 overflow-x-auto pb-2 scrollbar-thin scrollbar-thumb-space-700 scrollbar-track-transparent">
           <button
             onClick={() => setSelectedUnit(null)}
-            className={`px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-all
+            className={`px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-all border
               ${!selectedUnit
-                ? 'bg-indigo-500 text-white'
-                : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700'}`}
+                ? 'bg-neon-cyan/20 border-neon-cyan/50 text-neon-cyan shadow-[0_0_10px_rgba(0,240,255,0.2)]'
+                : 'bg-space-800/50 border-white/10 text-slate-400 hover:bg-space-700 hover:text-white'}`}
           >
             All Lessons
           </button>
@@ -169,10 +174,10 @@ export default function CoursePage() {
             <button
               key={unit.number}
               onClick={() => setSelectedUnit(unit.number)}
-              className={`px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-all
+              className={`px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-all border
                 ${selectedUnit === unit.number
-                  ? 'bg-indigo-500 text-white'
-                  : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700'}`}
+                  ? 'bg-neon-cyan/20 border-neon-cyan/50 text-neon-cyan shadow-[0_0_10px_rgba(0,240,255,0.2)]'
+                  : 'bg-space-800/50 border-white/10 text-slate-400 hover:bg-space-700 hover:text-white'}`}
             >
               Unit {unit.number}: {unit.title}
             </button>
@@ -194,59 +199,68 @@ export default function CoursePage() {
               >
                 <Link
                   to={`/courses/${courseId}/lesson/${lesson.id}`}
-                  className="block w-full text-left p-5 bg-white dark:bg-slate-900/50 rounded-xl border border-slate-200 dark:border-slate-800 hover:border-indigo-300 dark:hover:border-indigo-500/50 hover:shadow-lg dark:hover:bg-slate-900 transition-all group"
+                  className="block w-full text-left p-5 glass-panel bg-space-800/40 hover:bg-space-800/60 transition-all group relative overflow-hidden"
                 >
-                  <div className="flex items-start justify-between mb-3">
-                    <div className="flex items-center gap-2">
-                      <span className="text-2xl">{getLessonIcon(lesson.title)}</span>
-                      <span className="text-xs font-medium px-2 py-1 bg-indigo-100 dark:bg-indigo-500/20 text-indigo-600 dark:text-indigo-400 rounded-full">
-                        Lesson {lesson.lessonNumber}
+                  {/* Hover Glow */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-neon-cyan/0 via-neon-cyan/5 to-neon-purple/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                  <div className="relative z-10">
+                    <div className="flex items-start justify-between mb-3">
+                      <div className="flex items-center gap-2">
+                        <span className="text-2xl filter drop-shadow-[0_0_5px_rgba(255,255,255,0.3)]">{getLessonIcon(lesson.title)}</span>
+                        <span className="text-xs font-bold px-2 py-1 bg-space-950/50 border border-white/10 text-slate-300 rounded-full tracking-wide">
+                          LESSON {lesson.lessonNumber}
+                        </span>
+                      </div>
+                      {isCompleted && (
+                        <CheckCircle className="w-5 h-5 text-emerald-400 drop-shadow-[0_0_5px_rgba(52,211,153,0.5)]" />
+                      )}
+                    </div>
+
+                    <h3 className="font-bold text-white mb-2 group-hover:text-neon-cyan transition-colors line-clamp-2">
+                      {lesson.title}
+                    </h3>
+
+                    <div className="flex items-center gap-3 text-xs text-slate-400 mb-4">
+                      <span className="flex items-center gap-1">
+                        <Clock className="w-3.5 h-3.5" />
+                        ~15 min
+                      </span>
+                      <span className="flex items-center gap-1">
+                        <Target className="w-3.5 h-3.5" />
+                        {lesson.quiz?.questions?.length || 0} questions
                       </span>
                     </div>
-                    {isCompleted && (
-                      <CheckCircle className="w-5 h-5 text-emerald-500" />
-                    )}
-                  </div>
 
-                  <h3 className="font-semibold text-slate-900 dark:text-white mb-2 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
-                    {lesson.title}
-                  </h3>
+                    {/* Progress bar */}
+                    <div className="mt-auto">
+                      {lessonProgress > 0 && lessonProgress < 100 ? (
+                        <div className="h-1.5 bg-space-950 rounded-full overflow-hidden border border-white/5">
+                          <div
+                            className="h-full bg-gradient-to-r from-neon-cyan to-blue-500 rounded-full"
+                            style={{ width: `${lessonProgress}%` }}
+                          />
+                        </div>
+                      ) : null}
 
-                  <div className="flex items-center gap-3 text-xs text-slate-600">
-                    <span className="flex items-center gap-1">
-                      <Clock className="w-3.5 h-3.5" />
-                      ~15 min
-                    </span>
-                    <span className="flex items-center gap-1">
-                      <Target className="w-3.5 h-3.5" />
-                      {lesson.quiz?.questions?.length || 0} questions
-                    </span>
-                  </div>
-
-                  {/* Progress bar */}
-                  {lessonProgress > 0 && lessonProgress < 100 && (
-                    <div className="mt-3 h-1.5 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
-                      <div
-                        className="h-full bg-indigo-500 rounded-full"
-                        style={{ width: `${lessonProgress}%` }}
-                      />
+                      {/* Start/Continue button */}
+                      <div className="mt-3 flex items-center justify-between">
+                        <span className={`text-xs font-medium ${isCompleted
+                          ? 'text-emerald-400'
+                          : lessonProgress > 0
+                            ? 'text-neon-cyan'
+                            : 'text-slate-500 group-hover:text-slate-300'
+                          }`}>
+                          {isCompleted ? 'Mission Complete' : lessonProgress > 0 ? `${lessonProgress}% complete` : 'Not started'}
+                        </span>
+                        <span className={`flex items-center gap-1 text-xs font-bold uppercase tracking-wider transition-all
+                                ${lessonProgress > 0 ? 'text-neon-cyan' : 'text-slate-400 group-hover:text-white'}
+                            `}>
+                          {lessonProgress > 0 ? 'Resume' : 'Start'}
+                          <Play className="w-3 h-3 fill-current" />
+                        </span>
+                      </div>
                     </div>
-                  )}
-
-                  {/* Start/Continue button */}
-                  <div className="mt-4 flex items-center justify-between">
-                    <span className={`text-xs font-medium ${isCompleted
-                        ? 'text-emerald-600 dark:text-emerald-400'
-                        : lessonProgress > 0
-                          ? 'text-indigo-600 dark:text-indigo-400'
-                          : 'text-slate-500'
-                      }`}>
-                      {isCompleted ? 'Completed' : lessonProgress > 0 ? `${lessonProgress}% complete` : 'Not started'}
-                    </span>
-                    <span className="flex items-center gap-1 text-indigo-600 dark:text-indigo-400 text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity">
-                      {lessonProgress > 0 ? 'Continue' : 'Start'}
-                      <Play className="w-3.5 h-3.5" />
-                    </span>
                   </div>
                 </Link>
               </motion.div>

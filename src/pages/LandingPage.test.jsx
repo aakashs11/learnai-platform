@@ -48,10 +48,9 @@ describe('LandingPage', () => {
             </MemoryRouter>
         )
 
-        expect(screen.getByText(/Your Journey to/i)).toBeInTheDocument()
-        expect(screen.getByText(/Mastering AI/i)).toBeInTheDocument()
-        expect(screen.getByText(/Start Learning Free/i)).toBeInTheDocument()
-        expect(screen.getByText(/Browse Courses/i)).toBeInTheDocument()
+        expect(screen.getByText(/AI is not magic/i)).toBeInTheDocument()
+        expect(screen.getByText(/It is Engineering/i)).toBeInTheDocument()
+        expect(screen.getByText(/Run Python Lab/i)).toBeInTheDocument()
     })
 
     it('has working navigation to courses page', () => {
@@ -61,31 +60,20 @@ describe('LandingPage', () => {
             </MemoryRouter>
         )
 
-        const browseButton = screen.getByText(/Browse Courses/i)
-        fireEvent.click(browseButton)
+        const labButton = screen.getByText(/Run Python Lab/i)
+        fireEvent.click(labButton)
 
-        expect(mockNavigate).toHaveBeenCalledWith('/courses')
+        expect(mockNavigate).toHaveBeenCalledWith('/courses/class-12-ai')
     })
 
-    it('displays curriculum topics correctly', () => {
+    it('displays instructor section', () => {
         render(
             <MemoryRouter>
                 <LandingPage />
             </MemoryRouter>
         )
 
-        expect(screen.getByText('Data Handling with Python')).toBeInTheDocument()
-        expect(screen.getByText('Machine Learning & AI')).toBeInTheDocument()
-    })
-
-    it('displays stats section', () => {
-        render(
-            <MemoryRouter>
-                <LandingPage />
-            </MemoryRouter>
-        )
-
-        expect(screen.getAllByText('14+').length).toBeGreaterThan(0)
-        expect(screen.getAllByText('Interactive Lessons').length).toBeGreaterThan(0)
+        expect(screen.getByText('Aakash Singh')).toBeInTheDocument()
+        expect(screen.getByText('IIT Bombay Alumnus & AI Educator')).toBeInTheDocument()
     })
 })

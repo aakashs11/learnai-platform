@@ -59,42 +59,42 @@ export default function LoginPage() {
     }
 
     return (
-        <div className="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white flex items-center justify-center p-6">
-            {/* Background */}
-            <div className="fixed inset-0 pointer-events-none overflow-hidden">
-                <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-indigo-500/10 dark:bg-indigo-500/20 rounded-full blur-3xl" />
-                <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/10 dark:bg-purple-500/20 rounded-full blur-3xl" />
+        <div className="min-h-screen bg-space-900 text-white flex items-center justify-center p-6 relative overflow-hidden">
+            {/* Background Decor */}
+            <div className="fixed inset-0 pointer-events-none">
+                <div className="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-purple-500/20 rounded-full blur-[100px] opacity-30" />
+                <div className="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] bg-neon-cyan/10 rounded-full blur-[100px] opacity-20" />
             </div>
 
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="relative w-full max-w-md"
+                className="relative w-full max-w-md z-10"
             >
                 {/* Logo */}
                 <div className="text-center mb-8">
-                    <Link to="/" className="inline-flex items-center gap-3 mb-4">
-                        <div className="p-2 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl">
+                    <Link to="/" className="inline-flex items-center gap-3 mb-4 group">
+                        <div className="p-2 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl shadow-[0_0_20px_rgba(124,58,237,0.3)] group-hover:shadow-[0_0_30px_rgba(124,58,237,0.5)] transition-all">
                             <Sparkles className="w-6 h-6 text-white" />
                         </div>
-                        <span className="text-2xl font-bold">LearnAI</span>
+                        <span className="text-2xl font-bold font-heading tracking-wide">Learn<span className="text-neon-cyan">AI</span></span>
                     </Link>
-                    <h1 className="text-3xl font-bold mb-2">
-                        {mode === 'login' ? 'Welcome back' : 'Create account'}
+                    <h1 className="text-3xl font-bold mb-2 font-heading">
+                        {mode === 'login' ? 'Welcome Back' : 'Join the Crew'}
                     </h1>
-                    <p className="text-slate-600 dark:text-slate-400">
+                    <p className="text-slate-400">
                         {mode === 'login'
-                            ? 'Sign in to track your progress'
-                            : 'Start your AI learning journey'}
+                            ? 'Enter the cockpit to resume your mission'
+                            : 'Start your journey into Artificial Intelligence'}
                     </p>
                 </div>
 
                 {/* Auth Card */}
-                <div className="bg-white dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-lg">
+                <div className="glass-panel p-8 bg-space-800/50 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl">
                     {/* Google Sign In */}
                     <button
                         onClick={handleGoogleSignIn}
-                        className="w-full flex items-center justify-center gap-3 px-4 py-3 bg-slate-100 dark:bg-white hover:bg-slate-200 dark:hover:bg-gray-100 text-gray-900 font-medium rounded-xl transition-colors mb-4"
+                        className="w-full flex items-center justify-center gap-3 px-4 py-3 bg-white text-space-950 hover:bg-slate-200 font-bold rounded-xl transition-all shadow-[0_0_15px_rgba(255,255,255,0.1)] mb-6"
                     >
                         <Chrome className="w-5 h-5" />
                         Continue with Google
@@ -102,32 +102,32 @@ export default function LoginPage() {
 
                     <div className="relative my-6">
                         <div className="absolute inset-0 flex items-center">
-                            <div className="w-full border-t border-slate-200 dark:border-slate-800" />
+                            <div className="w-full border-t border-white/10" />
                         </div>
                         <div className="relative flex justify-center text-sm">
-                            <span className="px-4 bg-white dark:bg-slate-900 text-slate-600">or</span>
+                            <span className="px-4 bg-space-800 text-slate-500">OR</span>
                         </div>
                     </div>
 
                     {/* Email Form */}
                     <form onSubmit={handleEmailAuth} className="space-y-4">
                         <div>
-                            <label className="block text-sm font-medium text-slate-600 dark:text-slate-400 mb-1.5">Email</label>
+                            <label className="block text-sm font-medium text-slate-400 mb-1.5">Email Coordinates</label>
                             <div className="relative">
                                 <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-500" />
                                 <input
                                     type="email"
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
-                                    placeholder="you@example.com"
+                                    placeholder="pilot@learnai.com"
                                     required
-                                    className="w-full pl-10 pr-4 py-3 bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-xl text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20"
+                                    className="w-full pl-10 pr-4 py-3 bg-space-950/50 border border-white/10 rounded-xl text-white placeholder-slate-600 focus:outline-none focus:border-neon-cyan/50 focus:ring-2 focus:ring-neon-cyan/10 transition-all"
                                 />
                             </div>
                         </div>
 
                         <div>
-                            <label className="block text-sm font-medium text-slate-600 dark:text-slate-400 mb-1.5">Password</label>
+                            <label className="block text-sm font-medium text-slate-400 mb-1.5">Access Code (Password)</label>
                             <div className="relative">
                                 <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-500" />
                                 <input
@@ -137,15 +137,15 @@ export default function LoginPage() {
                                     placeholder="••••••••"
                                     required
                                     minLength={6}
-                                    className="w-full pl-10 pr-4 py-3 bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-xl text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20"
+                                    className="w-full pl-10 pr-4 py-3 bg-space-950/50 border border-white/10 rounded-xl text-white placeholder-slate-600 focus:outline-none focus:border-neon-cyan/50 focus:ring-2 focus:ring-neon-cyan/10 transition-all"
                                 />
                             </div>
                         </div>
 
                         {error && (
-                            <div className={`flex items-start gap-2 p-3 rounded-lg text-sm ${error.includes('Check')
-                                    ? 'bg-emerald-50 dark:bg-emerald-500/10 text-emerald-700 dark:text-emerald-400'
-                                    : 'bg-amber-50 dark:bg-amber-500/10 text-amber-700 dark:text-amber-400'
+                            <div className={`flex items-start gap-2 p-3 rounded-lg text-sm border ${error.includes('Check')
+                                ? 'bg-emerald-500/10 border-emerald-500/20 text-emerald-400'
+                                : 'bg-red-500/10 border-red-500/20 text-red-400'
                                 }`}>
                                 <Info className="w-4 h-4 mt-0.5 shrink-0" />
                                 {error}
@@ -155,13 +155,13 @@ export default function LoginPage() {
                         <button
                             type="submit"
                             disabled={isSubmitting}
-                            className="w-full py-3 bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 disabled:opacity-50 text-white rounded-xl font-semibold flex items-center justify-center gap-2 transition-all"
+                            className="w-full py-3 bg-gradient-to-r from-neon-cyan to-blue-600 hover:from-neon-cyan hover:to-blue-500 disabled:opacity-50 text-space-950 font-bold rounded-xl flex items-center justify-center gap-2 transition-all shadow-[0_0_20px_rgba(0,240,255,0.3)] hover:shadow-[0_0_30px_rgba(0,240,255,0.5)]"
                         >
                             {isSubmitting ? (
-                                <div className="animate-spin rounded-full h-5 w-5 border-2 border-white border-t-transparent" />
+                                <div className="animate-spin rounded-full h-5 w-5 border-2 border-space-950 border-t-transparent" />
                             ) : (
                                 <>
-                                    {mode === 'login' ? 'Sign In' : 'Create Account'}
+                                    {mode === 'login' ? 'Initiate Launch' : 'Register Account'}
                                     <ArrowRight className="w-4 h-4" />
                                 </>
                             )}
@@ -169,32 +169,29 @@ export default function LoginPage() {
                     </form>
 
                     {/* Toggle mode */}
-                    <p className="text-center text-slate-600 dark:text-slate-400 text-sm mt-6">
-                        {mode === 'login' ? "Don't have an account?" : 'Already have an account?'}
+                    <p className="text-center text-slate-400 text-sm mt-6">
+                        {mode === 'login' ? "New to the platform?" : 'Already a member?'}
                         <button
                             onClick={() => setMode(mode === 'login' ? 'signup' : 'login')}
-                            className="text-indigo-600 dark:text-indigo-400 hover:text-indigo-500 ml-1 font-medium"
+                            className="text-neon-cyan hover:text-white ml-1 font-bold transition-colors"
                         >
-                            {mode === 'login' ? 'Sign up' : 'Sign in'}
+                            {mode === 'login' ? 'Join Now' : 'Sign In'}
                         </button>
                     </p>
                 </div>
 
                 {/* Browse as Guest */}
-                <div className="text-center mt-6 space-y-3">
-                    <p className="text-slate-600 dark:text-slate-600 text-sm">
-                        Don't want to sign up yet?
+                <div className="text-center mt-8 space-y-3">
+                    <p className="text-slate-500 text-sm">
+                        Just exploring?
                     </p>
                     <Link
                         to="/courses"
-                        className="inline-flex items-center gap-2 px-5 py-2.5 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 rounded-xl text-sm font-medium transition-colors"
+                        className="inline-flex items-center gap-2 px-6 py-2.5 bg-space-800/50 hover:bg-space-800 border border-white/5 hover:border-white/20 text-slate-300 hover:text-white rounded-full text-sm font-medium transition-all"
                     >
                         <BookOpen className="w-4 h-4" />
-                        Browse Courses as Guest
+                        Browse as Guest Visualizer
                     </Link>
-                    <p className="text-xs text-slate-500">
-                        (Progress won't be saved across devices)
-                    </p>
                 </div>
             </motion.div>
         </div>

@@ -52,11 +52,11 @@
         "title": "NumPy Arrays Explained",
         "type": "concept",
         "duration": 3,
-        "content": "The main data structure in NumPy is the ndarray (n-dimensional array). Let's break this down:\n\n• 1D array (Vector): A single row of values → [1, 2, 3, 4, 5]\n• 2D array (Matrix): Rows and columns → [[1, 2], [3, 4]]\n• 3D+ arrays: Think of stacked matrices (used in images, videos)\n\nEvery array has a 'shape' (its dimensions) and a 'dtype' (the data type it stores). For example, a 3×4 matrix has shape (3, 4).",
+        "content": "The main data structure in NumPy is the ndarray (n-dimensional array). Let's break this down:\n\n\u2022 1D array (Vector): A single row of values \u2192 [1, 2, 3, 4, 5]\n\u2022 2D array (Matrix): Rows and columns \u2192 [[1, 2], [3, 4]]\n\u2022 3D+ arrays: Think of stacked matrices (used in images, videos)\n\nEvery array has a 'shape' (its dimensions) and a 'dtype' (the data type it stores). For example, a 3\u00d74 matrix has shape (3, 4).",
         "diagram": {
           "title": "Array Dimensions Visualization",
           "code": "graph LR\n    subgraph 1D[\"1D Array (Vector)\"]\n        A1[1] --- A2[2] --- A3[3] --- A4[4] --- A5[5]\n    end\n    subgraph 2D[\"2D Array (Matrix)\"]\n        B1[1,1] --- B2[1,2] --- B3[1,3]\n        B4[2,1] --- B5[2,2] --- B6[2,3]\n    end\n    subgraph 3D[\"3D Array (Image)\"]\n        C1[R] --- C2[G] --- C3[B]\n    end\n    style 1D fill:#6366f1\n    style 2D fill:#7c3aed\n    style 3D fill:#10b981",
-          "caption": "NumPy arrays can have 1, 2, or more dimensions - images use 3D arrays (height × width × color channels)"
+          "caption": "NumPy arrays can have 1, 2, or more dimensions - images use 3D arrays (height \u00d7 width \u00d7 color channels)"
         },
         "didYouKnow": "Digital images are stored as 3D NumPy arrays! A color image has shape (height, width, 3), where 3 represents the Red, Green, and Blue color channels.",
         "keyTakeaway": "Arrays have dimensions (shape) - 1D for lists, 2D for tables, 3D+ for complex data like images.",
@@ -70,14 +70,14 @@
             "(2, 15)"
           ],
           "correctAnswer": 1,
-          "explanation": "Shape is always (rows, columns), so 3 rows × 5 columns = (3, 5)."
+          "explanation": "Shape is always (rows, columns), so 3 rows \u00d7 5 columns = (3, 5)."
         }
       },
       {
         "title": "Introduction to Pandas",
         "type": "concept",
         "duration": 3,
-        "content": "While NumPy is great for numerical operations, Pandas makes working with real-world data much easier. It provides two key data structures:\n\n📊 Series: Like a labeled list (1D)\nImagine a column from Excel with row labels.\n\n📋 DataFrame: Like a spreadsheet (2D)\nRows and columns with labels - the most commonly used structure.\n\nPandas excels at: loading data from files, handling missing values, filtering and grouping, merging multiple datasets.",
+        "content": "While NumPy is great for numerical operations, Pandas makes working with real-world data much easier. It provides two key data structures:\n\n\ud83d\udcca Series: Like a labeled list (1D)\nImagine a column from Excel with row labels.\n\n\ud83d\udccb DataFrame: Like a spreadsheet (2D)\nRows and columns with labels - the most commonly used structure.\n\nPandas excels at: loading data from files, handling missing values, filtering and grouping, merging multiple datasets.",
         "didYouKnow": "The name 'Pandas' comes from 'Panel Data', a term used in econometrics. It was created by Wes McKinney in 2008 while working at a hedge fund!",
         "keyTakeaway": "Use Series for single columns of data, DataFrames for full tables. Pandas makes data manipulation intuitive.",
         "pageRef": 3,
@@ -111,7 +111,7 @@
         "explanation": "DataFrames are 2D tables with labeled rows and columns, ideal for tabular data."
       },
       {
-        "title": "📊 Visualizing Arrays with Heatmap",
+        "title": "\ud83d\udcca Visualizing Arrays with Heatmap",
         "code": "import numpy as np\nimport matplotlib.pyplot as plt\n\n# Create a 5x5 matrix\ndata = np.random.randint(0, 100, (5, 5))\nprint(\"Matrix:\\n\", data)\n\n# Visualize as heatmap\nplt.figure(figsize=(6, 5))\nplt.imshow(data, cmap='viridis')\nplt.colorbar(label='Value')\nplt.title('NumPy Array Heatmap')\n\n# Add value annotations\nfor i in range(5):\n    for j in range(5):\n        plt.text(j, i, data[i, j], ha='center', va='center', color='white')\n\nplt.tight_layout()\nplt.show()",
         "explanation": "Heatmaps are great for visualizing 2D arrays. Colors show relative values."
       }
@@ -219,7 +219,7 @@
         "title": "Understanding CSV Files",
         "type": "concept",
         "duration": 2,
-        "content": "CSV (Comma-Separated Values) is the universal language for data exchange. It's a plain text format where:\n\n• Each row is one line in the file\n• Each column is separated by a comma\n• The first row usually contains column headers\n\nCSV is popular because it's simple, human-readable, and can be opened in Excel, Google Sheets, or any text editor.",
+        "content": "CSV (Comma-Separated Values) is the universal language for data exchange. It's a plain text format where:\n\n\u2022 Each row is one line in the file\n\u2022 Each column is separated by a comma\n\u2022 The first row usually contains column headers\n\nCSV is popular because it's simple, human-readable, and can be opened in Excel, Google Sheets, or any text editor.",
         "didYouKnow": "CSV files can actually use any separator! Tab-separated files (TSV) use tabs. In Europe, semicolons are often used since commas are decimal separators.",
         "keyTakeaway": "CSV is the simplest way to store and share tabular data. Use pd.read_csv() to load and pd.to_csv() to save.",
         "pageRef": 6,
@@ -239,7 +239,7 @@
         "title": "Why Missing Values Matter",
         "type": "concept",
         "duration": 3,
-        "content": "Real-world data is messy! Missing values (shown as NaN - 'Not a Number') occur because:\n\n• Survey respondents skip questions\n• Sensors fail or lose connection\n• Records were incomplete\n• Data entry errors\n\nMissing values can break your analysis - many algorithms can't handle them. You MUST deal with them before training models.",
+        "content": "Real-world data is messy! Missing values (shown as NaN - 'Not a Number') occur because:\n\n\u2022 Survey respondents skip questions\n\u2022 Sensors fail or lose connection\n\u2022 Records were incomplete\n\u2022 Data entry errors\n\nMissing values can break your analysis - many algorithms can't handle them. You MUST deal with them before training models.",
         "didYouKnow": "In healthcare data, about 30-50% of records have at least one missing value! This is why data cleaning often takes 80% of a data scientist's time.",
         "keyTakeaway": "Always check for missing values using df.isnull().sum() before analysis.",
         "pageRef": 9,
@@ -259,7 +259,7 @@
         "title": "Strategies for Missing Data",
         "type": "application",
         "duration": 3,
-        "content": "You have two main choices when dealing with missing values:\n\n🗑️ Delete (dropna)\n• Remove entire rows with any missing values\n• Use when: You have lots of data and few missing values\n\n✏️ Fill (fillna)\n• Replace NaN with a value: 0, mean, median, or mode\n• Use when: You can't afford to lose data\n\nChoosing the right strategy depends on your data and problem!",
+        "content": "You have two main choices when dealing with missing values:\n\n\ud83d\uddd1\ufe0f Delete (dropna)\n\u2022 Remove entire rows with any missing values\n\u2022 Use when: You have lots of data and few missing values\n\n\u270f\ufe0f Fill (fillna)\n\u2022 Replace NaN with a value: 0, mean, median, or mode\n\u2022 Use when: You can't afford to lose data\n\nChoosing the right strategy depends on your data and problem!",
         "keyTakeaway": "Use dropna() when missing data is rare. Use fillna() with mean/median when you need to keep all rows.",
         "pageRef": 9,
         "check": {
@@ -399,7 +399,7 @@
         "title": "What is Data Science Methodology?",
         "type": "concept",
         "duration": 3,
-        "content": "Imagine building a house without a blueprint - chaos! Data Science Methodology is your blueprint for solving problems with data.\n\nDeveloped by John Rollins at IBM, it's a 10-step framework that ensures you:\n• Ask the right questions\n• Collect the right data\n• Build the right solution\n• Actually solve the business problem",
+        "content": "Imagine building a house without a blueprint - chaos! Data Science Methodology is your blueprint for solving problems with data.\n\nDeveloped by John Rollins at IBM, it's a 10-step framework that ensures you:\n\u2022 Ask the right questions\n\u2022 Collect the right data\n\u2022 Build the right solution\n\u2022 Actually solve the business problem",
         "didYouKnow": "According to IBM research, projects that follow this methodology are 3x more likely to succeed than ad-hoc approaches!",
         "keyTakeaway": "Always follow a structured approach. Skipping steps leads to solutions that don't solve the real problem.",
         "pageRef": 18,
@@ -419,10 +419,10 @@
         "title": "The 10-Step Journey",
         "type": "concept",
         "duration": 4,
-        "content": "Think of these as milestones on your data science journey:\n\n📋 Problem Understanding (Steps 1-2)\n1. Business Understanding - What's the problem?\n2. Analytic Approach - How will we solve it?\n\n📊 Data Preparation (Steps 3-6)\n3. Data Requirements - What data do we need?\n4. Data Collection - Gather the data\n5. Data Understanding - Explore and visualize\n6. Data Preparation - Clean and transform\n\n🤖 Modeling & Deployment (Steps 7-10)\n7. Modeling - Build the model\n8. Evaluation - Does it work?\n9. Deployment - Put it in production\n10. Feedback - Learn and improve",
+        "content": "Think of these as milestones on your data science journey:\n\n\ud83d\udccb Problem Understanding (Steps 1-2)\n1. Business Understanding - What's the problem?\n2. Analytic Approach - How will we solve it?\n\n\ud83d\udcca Data Preparation (Steps 3-6)\n3. Data Requirements - What data do we need?\n4. Data Collection - Gather the data\n5. Data Understanding - Explore and visualize\n6. Data Preparation - Clean and transform\n\n\ud83e\udd16 Modeling & Deployment (Steps 7-10)\n7. Modeling - Build the model\n8. Evaluation - Does it work?\n9. Deployment - Put it in production\n10. Feedback - Learn and improve",
         "diagram": {
           "title": "Data Science Methodology Flow",
-          "code": "graph TD\n    A[📋 Business Understanding] --> B[🔍 Analytic Approach]\n    B --> C[📊 Data Requirements]\n    C --> D[📥 Data Collection]\n    D --> E[🔎 Data Understanding]\n    E --> F[🧹 Data Preparation]\n    F --> G[🤖 Modeling]\n    G --> H[✅ Evaluation]\n    H --> I[🚀 Deployment]\n    I --> J[📈 Feedback]\n    J -.-> A\n    style A fill:#6366f1\n    style G fill:#7c3aed\n    style I fill:#10b981",
+          "code": "graph TD\n    A[\ud83d\udccb Business Understanding] --> B[\ud83d\udd0d Analytic Approach]\n    B --> C[\ud83d\udcca Data Requirements]\n    C --> D[\ud83d\udce5 Data Collection]\n    D --> E[\ud83d\udd0e Data Understanding]\n    E --> F[\ud83e\uddf9 Data Preparation]\n    F --> G[\ud83e\udd16 Modeling]\n    G --> H[\u2705 Evaluation]\n    H --> I[\ud83d\ude80 Deployment]\n    I --> J[\ud83d\udcc8 Feedback]\n    J -.-> A\n    style A fill:#6366f1\n    style G fill:#7c3aed\n    style I fill:#10b981",
           "caption": "The 10 steps of IBM's Data Science Methodology - notice how feedback loops back to the start"
         },
         "keyTakeaway": "The methodology is iterative - you often go back to earlier steps as you learn more.",
@@ -443,10 +443,10 @@
         "title": "Types of Analytics",
         "type": "application",
         "duration": 3,
-        "content": "Each type of analytics answers a different question:\n\n📈 Descriptive - 'What happened?'\n→ Sales reports, dashboards\n\n🔍 Diagnostic - 'Why did it happen?'\n→ Root cause analysis\n\n🔮 Predictive - 'What will happen?'\n→ Forecasting, predictions\n\n💡 Prescriptive - 'What should we do?'\n→ Recommendations, optimization\n\nAs you move down, analytics becomes more complex but also more valuable!",
+        "content": "Each type of analytics answers a different question:\n\n\ud83d\udcc8 Descriptive - 'What happened?'\n\u2192 Sales reports, dashboards\n\n\ud83d\udd0d Diagnostic - 'Why did it happen?'\n\u2192 Root cause analysis\n\n\ud83d\udd2e Predictive - 'What will happen?'\n\u2192 Forecasting, predictions\n\n\ud83d\udca1 Prescriptive - 'What should we do?'\n\u2192 Recommendations, optimization\n\nAs you move down, analytics becomes more complex but also more valuable!",
         "diagram": {
           "title": "Analytics Maturity Pyramid",
-          "code": "graph TB\n    subgraph Value[\"💎 Value\"]\n        direction TB\n        D[\"💡 Prescriptive<br/>What should we do?\"]\n        C[\"🔮 Predictive<br/>What will happen?\"]\n        B[\"🔍 Diagnostic<br/>Why did it happen?\"]\n        A[\"📈 Descriptive<br/>What happened?\"]\n    end\n    A --> B --> C --> D\n    style D fill:#10b981\n    style C fill:#6366f1\n    style B fill:#f59e0b\n    style A fill:#64748b",
+          "code": "graph TB\n    subgraph Value[\"\ud83d\udc8e Value\"]\n        direction TB\n        D[\"\ud83d\udca1 Prescriptive<br/>What should we do?\"]\n        C[\"\ud83d\udd2e Predictive<br/>What will happen?\"]\n        B[\"\ud83d\udd0d Diagnostic<br/>Why did it happen?\"]\n        A[\"\ud83d\udcc8 Descriptive<br/>What happened?\"]\n    end\n    A --> B --> C --> D\n    style D fill:#10b981\n    style C fill:#6366f1\n    style B fill:#f59e0b\n    style A fill:#64748b",
           "caption": "As you move up the pyramid, analytics becomes more complex but also more valuable to the business"
         },
         "didYouKnow": "Most companies are stuck at Descriptive analytics. Only 3% have achieved true Prescriptive analytics!",
@@ -591,7 +591,7 @@
       },
       {
         "title": "Key Metrics",
-        "content": "Accuracy = (TP+TN)/Total. Precision = TP/(TP+FP) - 'Of predicted positives, how many are correct?' Recall = TP/(TP+FN) - 'Of actual positives, how many did we find?' F1 = 2×(Precision×Recall)/(Precision+Recall)",
+        "content": "Accuracy = (TP+TN)/Total. Precision = TP/(TP+FP) - 'Of predicted positives, how many are correct?' Recall = TP/(TP+FN) - 'Of actual positives, how many did we find?' F1 = 2\u00d7(Precision\u00d7Recall)/(Precision+Recall)",
         "pageRef": 35
       }
     ],
@@ -676,7 +676,7 @@
             "RMSE"
           ],
           "correctAnswer": 2,
-          "explanation": "F1-Score = 2×(Precision×Recall)/(Precision+Recall), balancing both metrics.",
+          "explanation": "F1-Score = 2\u00d7(Precision\u00d7Recall)/(Precision+Recall), balancing both metrics.",
           "pageRef": 35
         }
       ]
@@ -719,7 +719,7 @@
       },
       {
         "title": "RGB Color Model",
-        "content": "Color images use three channels: Red, Green, Blue. Each channel has values 0-255. By combining intensities of these three colors, over 16 million colors (256³) can be represented.",
+        "content": "Color images use three channels: Red, Green, Blue. Each channel has values 0-255. By combining intensities of these three colors, over 16 million colors (256\u00b3) can be represented.",
         "pageRef": 48
       },
       {
@@ -727,7 +727,7 @@
         "content": "5 main stages: 1) Image Acquisition (capture) 2) Preprocessing (noise reduction, normalization) 3) Feature Extraction (edges, corners, textures) 4) Detection/Segmentation 5) High-level Processing (recognition)",
         "diagram": {
           "title": "Computer Vision Pipeline",
-          "code": "graph LR\n    A[📷 Acquisition] --> B[🧹 Preprocessing]\n    B --> C[🔍 Feature Extraction]\n    C --> D[🧩 Segmentation]\n    D --> E[🧠 Recognition]\n    style A fill:#64748b\n    style C fill:#6366f1\n    style E fill:#10b981",
+          "code": "graph LR\n    A[\ud83d\udcf7 Acquisition] --> B[\ud83e\uddf9 Preprocessing]\n    B --> C[\ud83d\udd0d Feature Extraction]\n    C --> D[\ud83e\udde9 Segmentation]\n    D --> E[\ud83e\udde0 Recognition]\n    style A fill:#64748b\n    style C fill:#6366f1\n    style E fill:#10b981",
           "caption": "From raw pixels to understanding: The journey of an image through a CV system"
         },
         "pageRef": 48
@@ -775,7 +775,7 @@
             "1 million"
           ],
           "correctAnswer": 2,
-          "explanation": "Each channel has 256 values: 256 × 256 × 256 = 16,777,216 colors.",
+          "explanation": "Each channel has 256 values: 256 \u00d7 256 \u00d7 256 = 16,777,216 colors.",
           "pageRef": 48
         },
         {
@@ -868,7 +868,7 @@
     "codeExamples": [
       {
         "title": "Orange Workflow (Conceptual)",
-        "code": "# Orange uses visual workflows instead of code.\n# A typical classification workflow:\n\n# 1. File Widget → Load dataset (e.g., iris.tab)\n# 2. Data Table → View the data\n# 3. Tree Widget → Apply Decision Tree algorithm\n# 4. Test & Score → Evaluate with cross-validation\n# 5. Confusion Matrix → View detailed results\n\n# In Python, equivalent would be:\nfrom sklearn.tree import DecisionTreeClassifier\nfrom sklearn.datasets import load_iris\n\niris = load_iris()\nmodel = DecisionTreeClassifier()\nmodel.fit(iris.data, iris.target)",
+        "code": "# Orange uses visual workflows instead of code.\n# A typical classification workflow:\n\n# 1. File Widget \u2192 Load dataset (e.g., iris.tab)\n# 2. Data Table \u2192 View the data\n# 3. Tree Widget \u2192 Apply Decision Tree algorithm\n# 4. Test & Score \u2192 Evaluate with cross-validation\n# 5. Confusion Matrix \u2192 View detailed results\n\n# In Python, equivalent would be:\nfrom sklearn.tree import DecisionTreeClassifier\nfrom sklearn.datasets import load_iris\n\niris = load_iris()\nmodel = DecisionTreeClassifier()\nmodel.fit(iris.data, iris.target)",
         "explanation": "Orange provides a visual alternative to coding machine learning workflows."
       }
     ],
@@ -1282,22 +1282,22 @@
     ],
     "codeExamples": [
       {
-        "title": "📊 Bar Chart - Sales Comparison",
+        "title": "\ud83d\udcca Bar Chart - Sales Comparison",
         "code": "import matplotlib.pyplot as plt\n\n# Sales data\nmonths = ['Jan', 'Feb', 'Mar', 'Apr', 'May']\nsales = [120, 145, 132, 168, 180]\n\n# Create bar chart\nplt.figure(figsize=(8, 4))\nplt.bar(months, sales, color='#4F46E5')\nplt.xlabel('Month')\nplt.ylabel('Sales (units)')\nplt.title('Monthly Sales Performance')\nplt.tight_layout()\nplt.show()",
         "explanation": "Bar charts are ideal for comparing values across categories."
       },
       {
-        "title": "📈 Line Chart - Trend Over Time",
-        "code": "import matplotlib.pyplot as plt\nimport numpy as np\n\n# Temperature data\ndays = np.arange(1, 8)\ntemps = [22, 24, 21, 25, 28, 27, 26]\n\nplt.figure(figsize=(8, 4))\nplt.plot(days, temps, marker='o', color='#10B981', linewidth=2, markersize=8)\nplt.fill_between(days, temps, alpha=0.3, color='#10B981')\nplt.xlabel('Day')\nplt.ylabel('Temperature (°C)')\nplt.title('Weekly Temperature Trend')\nplt.grid(True, alpha=0.3)\nplt.tight_layout()\nplt.show()",
+        "title": "\ud83d\udcc8 Line Chart - Trend Over Time",
+        "code": "import matplotlib.pyplot as plt\nimport numpy as np\n\n# Temperature data\ndays = np.arange(1, 8)\ntemps = [22, 24, 21, 25, 28, 27, 26]\n\nplt.figure(figsize=(8, 4))\nplt.plot(days, temps, marker='o', color='#10B981', linewidth=2, markersize=8)\nplt.fill_between(days, temps, alpha=0.3, color='#10B981')\nplt.xlabel('Day')\nplt.ylabel('Temperature (\u00b0C)')\nplt.title('Weekly Temperature Trend')\nplt.grid(True, alpha=0.3)\nplt.tight_layout()\nplt.show()",
         "explanation": "Line charts show trends over time. The fill adds visual emphasis."
       },
       {
-        "title": "🥧 Pie Chart - Distribution",
+        "title": "\ud83e\udd67 Pie Chart - Distribution",
         "code": "import matplotlib.pyplot as plt\n\n# Market share data\nlabels = ['Python', 'JavaScript', 'Java', 'C++', 'Other']\nsizes = [35, 25, 20, 12, 8]\ncolors = ['#4F46E5', '#10B981', '#F59E0B', '#EF4444', '#6B7280']\nexplode = (0.05, 0, 0, 0, 0)\n\nplt.figure(figsize=(8, 6))\nplt.pie(sizes, explode=explode, labels=labels, colors=colors,\n        autopct='%1.1f%%', shadow=True, startangle=90)\nplt.title('Programming Language Market Share')\nplt.tight_layout()\nplt.show()",
         "explanation": "Pie charts show parts of a whole. Use sparingly - max 5-6 slices."
       },
       {
-        "title": "📉 Scatter Plot - Correlation",
+        "title": "\ud83d\udcc9 Scatter Plot - Correlation",
         "code": "import matplotlib.pyplot as plt\nimport numpy as np\n\n# Study hours vs marks\nnp.random.seed(42)\nhours = np.random.uniform(1, 8, 20)\nmarks = hours * 10 + np.random.normal(0, 5, 20)\n\nplt.figure(figsize=(8, 5))\nplt.scatter(hours, marks, c='#8B5CF6', s=100, alpha=0.7, edgecolors='white')\nplt.xlabel('Study Hours')\nplt.ylabel('Marks')\nplt.title('Study Time vs Performance')\nplt.grid(True, alpha=0.3)\nplt.tight_layout()\nplt.show()",
         "explanation": "Scatter plots reveal relationships between two variables."
       }
@@ -1513,5 +1513,60 @@
     "quiz": {
       "questions": []
     }
+  },
+  {
+    "id": "lesson_handbook_01",
+    "title": "Artificial Intelligence Curriculum - Student Handbook for Class XII",
+    "lessonNumber": 15,
+    "unit": {
+      "number": 99,
+      "title": "Handbook Data",
+      "pageStart": 1,
+      "pageEnd": 99
+    },
+    "objectives": [],
+    "keyConcepts": [],
+    "realWorldApplication": "Extracted from Official CBSE Handbook",
+    "progress": 0,
+    "xpEarned": 0,
+    "mastery": "beginner",
+    "theory": [
+      {
+        "type": "concept",
+        "title": "Introduction to Artificial Intelligence",
+        "content": "The world around us is undergoing a dramatic transformation, driven by the relentless advancement of Artificial Intelligence (AI). From self-driving cars navigating city streets to virtual assistants understanding complex inquiries, AI is rapidly reshaping industries, societies, and the very way we interact with technology.",
+        "image": "assets/handbook/img_p1_1.png",
+        "keyTakeaway": "AI is transforming industries and society through advancements in technology."
+      },
+      {
+        "type": "concept",
+        "title": "Purpose of the Textbook",
+        "content": "This revised textbook, designed for students in Classes XI and XII, dives into the captivating world of AI, offering a comprehensive exploration of its core concepts, applications, and potential impact. As you embark on this journey, you will not only delve into the fascinating algorithms that power AI systems, but also examine its ethical considerations and its profound implications for the future.",
+        "image": "assets/handbook/img_p1_0.png",
+        "keyTakeaway": "The textbook aims to provide a comprehensive understanding of AI, its applications, and ethical considerations."
+      },
+      {
+        "type": "concept",
+        "title": "CBSE's Commitment to AI Education",
+        "content": "The Central Board of Secondary Education (CBSE) recognizes the transformative power of Artificial Intelligence (AI) and its impact on the future. Building upon this successful introduction, CBSE extended the AI subject to Class XI & XII, starting in the 2020-2021 academic session. Thus, allowing students to delve deeper into the world of AI and develop a more comprehensive understanding.",
+        "image": "",
+        "keyTakeaway": "CBSE has expanded AI education to Classes XI and XII to enhance students' understanding of the subject."
+      },
+      {
+        "type": "concept",
+        "title": "Collaboration and Curriculum Development",
+        "content": "This AI Curriculum has been created with the help of teacher advisors managed by 1M1B and supported by IBM. This curriculum aligns with industry standards as set forth by the National Skills Qualification Framework (NSQF) at Levels 3 & 4. CBSE acknowledges and appreciates the valuable contribution of IBM India in developing the AI curriculum and conducting training programs.",
+        "image": "",
+        "keyTakeaway": "The AI curriculum is developed in collaboration with industry partners to meet educational standards."
+      },
+      {
+        "type": "concept",
+        "title": "Empowering Students for the Future",
+        "content": "By working together, CBSE and its partners aim to empower students to embrace the future. By incorporating AI into their learning experience, students gain the knowledge and skills necessary to not only understand AI but also leverage its potential to enhance their learning and future prospects. The future is full of possibilities, and AI is poised to play a pivotal role.",
+        "image": "",
+        "keyTakeaway": "The curriculum empowers students to leverage AI for their future learning and career prospects."
+      }
+    ],
+    "quiz": {}
   }
 ]

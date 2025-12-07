@@ -28,7 +28,7 @@ describe('LoginPage', () => {
 
         expect(screen.getByText(/Welcome Back/i)).toBeInTheDocument()
         expect(screen.getByText(/Continue with Google/i)).toBeInTheDocument()
-        expect(screen.getByText(/Browse Courses as Guest/i)).toBeInTheDocument()
+        expect(screen.getByText(/Browse as Guest Visualizer/i)).toBeInTheDocument()
     })
 
     it('calls signInWithGoogle when button is clicked', () => {
