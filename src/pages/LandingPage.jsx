@@ -25,10 +25,15 @@ export default function LandingPage() {
         if (isAuthenticated) {
             navigate('/courses')
         } else {
-            const { error } = await signInWithGoogle()
+            const { data, error } = await signInWithGoogle()
             if (error) {
+                // On error, redirect to login page to show error message
+                navigate('/login')
+            } else if (data?.session) {
+                // Mock mode: session returned immediately, navigate
                 navigate('/courses')
             }
+            // Production OAuth: browser will redirect, no action needed
         }
     }
 

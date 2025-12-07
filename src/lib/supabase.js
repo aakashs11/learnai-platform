@@ -44,11 +44,11 @@ export const signInWithGoogle = async () => {
 export const signInWithEmail = async (email, password) => {
     if (!supabase) {
         // Mock login
-        if (email === 'aakash@example.com') {
+        if (email === 'aakash.mufc@gmail.com') {
             localStorage.setItem('demo_session', JSON.stringify(MOCK_SESSION))
             return { data: { session: MOCK_SESSION }, error: null }
         }
-        return { error: { message: 'Auth not configured. Use aakash@example.com for admin demo.' } }
+        return { error: { message: 'Auth not configured. Use aakash.mufc@gmail.com for admin demo.' } }
     }
 
     const { data, error } = await supabase.auth.signInWithPassword({
