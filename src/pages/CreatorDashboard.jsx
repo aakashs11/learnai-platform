@@ -16,9 +16,40 @@ const COURSE_TEMPLATES = [
 
 const CLASS_LEVELS = ['10', '11', '12', 'College', 'Professional']
 
-export default function CreatorDashboard() {
-    const navigate = useNavigate()
-    const [step, setStep] = useState(1) // 1: Upload, 2: Configure, 3: Processing, 4: Review
+class ErrorBoundary extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = { hasError: false, error: null }
+    }
+    static getDerivedStateFromError(error) {
+        return { hasError: true, error }
+    }
+    render() {
+        if (this.state.hasError) {
+            return (
+                <div className="p-8 text-center">
+                    <h2 className="text-red-500 font-bold text-xl">Something went wrong</h2>
+                    <pre className="text-left mt-4 text-sm bg-slate-900 text-slate-300 p-4 rounded overflow-auto">
+                        {this.state.error.toString()}
+                    </pre>
+                </div>
+            )
+        }
+        return this.props.children
+    }
+}
+
+export default function CreatorDashboardWrapper() {
+    return (
+        <ErrorBoundary>
+            <CreatorDashboard />
+        </ErrorBoundary>
+    )
+}
+
+function CreatorDashboard() {
+    // ... existing component code ...
+
     const [pdfFile, setPdfFile] = useState(null)
     const [pdfPreview, setPdfPreview] = useState(null)
     const [config, setConfig] = useState({
