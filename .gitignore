@@ -46,6 +46,3 @@ Pipfile
 Pipfile.lock
 
 
-# Private Content (Generated)
-ui/public/assets/handbook/
-ui/public/lessons.json
