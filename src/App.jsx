@@ -6,6 +6,7 @@ import CoursePage from './pages/CoursePage'
 import LessonPage from './pages/LessonPage'
 import CreatorDashboard from './pages/CreatorDashboard'
 import LoginPage from './pages/LoginPage'
+import AuthCallback from './pages/AuthCallback'
 import ProtectedRoute from './components/ProtectedRoute'
 import AdminLayout from './pages/admin/AdminLayout'
 import CourseManager from './pages/admin/CourseManager'
@@ -19,7 +20,7 @@ function App() {
     <ThemeProvider>
       <Routes>
         <Route path="/login" element={<LoginPage />} />
-
+        <Route path="/auth/callback" element={<AuthCallback />} />
         {/* Student Routes */}
         <Route element={<ProtectedRoute />}>
           <Route path="/" element={<LandingPage />} />
