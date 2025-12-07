@@ -1,15 +1,19 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import { useParams, useNavigate, Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import {
     ArrowLeft, ChevronLeft, ChevronRight, BookOpen, Code, HelpCircle,
     CheckCircle, Clock, Target, Lightbulb, FileText, ExternalLink,
-    Sparkles, Menu, X, Home
+    Sparkles, Menu, X, Home, Award
 } from 'lucide-react'
 import InteractiveTheory from '../components/InteractiveTheory'
 import InteractiveCode from '../components/InteractiveCode'
 import Quiz from '../components/Quiz'
 import VideoPlayer from '../components/VideoPlayer'
+import AITutorWidget from '../components/AITutorWidget'
+import { BadgeNotification, BadgePreview } from '../components/BadgeDisplay'
+import { useBadges } from '../hooks/useBadges'
+
 
 // Helper to load/save progress from localStorage
 const loadProgress = () => {
@@ -35,6 +39,25 @@ export default function LessonPage() {
     const [activeSection, setActiveSection] = useState('learn')
     const [progress, setProgress] = useState(loadProgress)
     const [sidebarOpen, setSidebarOpen] = useState(true)
+
+    // Compute badge stats from progress
+    const badgeStats = useMemo(() => {
+        const lessonsCompleted = Object.values(progress.lessons || {}).filter(l => l.progress >= 100).length
+        const quizzesCompleted = Object.values(progress.lessons || {}).filter(l => l.xpEarned > 0).length
+        const perfectQuizzes = Object.values(progress.lessons || {}).filter(l => l.progress === 100).length
+        return {
+            lessonsCompleted,
+            totalLessons: allLessons.length || 20,
+            totalXp: progress.xp || 0,
+            currentStreak: progress.streak || 1,
+            quizzesCompleted,
+            perfectQuizzes
+        }
+    }, [progress, allLessons.length])
+
+    // Badge system
+    const { badges, newBadge, dismissNewBadge, earnedCount, totalBadges } = useBadges(badgeStats)
+
 
     useEffect(() => {
         fetch('/lessons.json')
@@ -481,6 +504,9 @@ export default function LessonPage() {
 
             {/* AI Tutor Widget - Floating Overlay */}
             <AITutorWidget lessonContext={{ title: lesson.title, id: lesson.id, content: lesson.theory?.map(t => t.content).join(' ').substring(0, 1000) }} />
+
+            {/* Badge Unlock Notification */}
+            <BadgeNotification badge={newBadge} onDismiss={dismissNewBadge} />
         </div>
     )
 }
