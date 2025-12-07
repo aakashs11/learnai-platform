@@ -48,7 +48,8 @@ export default function CreatorDashboardWrapper() {
 }
 
 function CreatorDashboard() {
-    // ... existing component code ...
+    const navigate = useNavigate()
+    const [step, setStep] = useState(1) // 1: Upload, 2: Configure, 3: Processing, 4: Review
 
     const [pdfFile, setPdfFile] = useState(null)
     const [pdfPreview, setPdfPreview] = useState(null)
