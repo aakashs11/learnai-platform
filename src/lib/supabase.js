@@ -27,9 +27,7 @@ const MOCK_SESSION = {
 // Auth helper functions
 export const signInWithGoogle = async () => {
     if (!supabase) {
-        // Mock successful login for demo
-        localStorage.setItem('demo_session', JSON.stringify(MOCK_SESSION))
-        return { data: { session: MOCK_SESSION }, error: null }
+        return { error: { message: 'Auth not configured' } }
     }
 
     const { data, error } = await supabase.auth.signInWithOAuth({

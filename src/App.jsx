@@ -21,11 +21,12 @@ function App() {
       <Routes>
         <Route path="/login" element={<LoginPage />} />
         <Route path="/auth/callback" element={<AuthCallback />} />
-        {/* Student Routes */}
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/courses" element={<CourseCatalog />} />
+        <Route path="/courses/:courseId" element={<CoursePage />} />
+
+        {/* Student Routes - Protected */}
         <Route element={<ProtectedRoute />}>
-          <Route path="/" element={<LandingPage />} />
-          <Route path="/courses" element={<CourseCatalog />} />
-          <Route path="/courses/:courseId" element={<CoursePage />} />
           <Route path="/courses/:courseId/lesson/:lessonId" element={<LessonPage />} />
           <Route path="/creator" element={<CreatorDashboard />} />
         </Route>
