@@ -57,9 +57,8 @@ function App() {
         {/* AUTHENTICATED ROUTES - Login required       */}
         {/* ============================================ */}
 
-        <Route path="/creator" element={<CreatorDashboard />} />
-
         <Route element={<ProtectedRoute />}>
+          <Route path="/creator" element={<CreatorDashboard />} />
           {/* Authenticated routes */}
         </Route>
 
