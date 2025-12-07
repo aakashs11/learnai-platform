@@ -46,3 +46,4 @@ Pipfile
 Pipfile.lock
 
 
+.vercel

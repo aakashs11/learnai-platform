@@ -11,7 +11,7 @@ import { signInWithGoogle } from '../lib/supabase'
 
 export default function LandingPage() {
     const navigate = useNavigate()
-    const { isAuthenticated, loading } = useAuth()
+    const { isAuthenticated, loading, user } = useAuth()
     const heroRef = useRef(null)
 
     const { scrollYProgress } = useScroll({
@@ -180,12 +180,22 @@ export default function LandingPage() {
                             Courses
                         </button>
                         {!loading && (
-                            <button
-                                onClick={handleGetStarted}
-                                className="px-5 py-2.5 bg-space-800/80 hover:bg-space-700/80 rounded-full border border-neon-cyan/30 text-neon-cyan font-medium transition-all hover:scale-105 hover:shadow-[0_0_15px_rgba(0,240,255,0.3)]"
-                            >
-                                {isAuthenticated ? 'My Dashboard' : 'Sign In'}
-                            </button>
+                            <div className="flex items-center gap-3">
+                                {isAuthenticated && (user?.email === 'aakash.mufc@gmail.com' || user?.email === 'admin@learnai.com') && (
+                                    <button
+                                        onClick={() => navigate('/admin')}
+                                        className="text-sm font-bold text-red-400 hover:text-red-300 transition-colors uppercase tracking-wider"
+                                    >
+                                        [ADMIN]
+                                    </button>
+                                )}
+                                <button
+                                    onClick={handleGetStarted}
+                                    className="px-5 py-2.5 bg-space-800/80 hover:bg-space-700/80 rounded-full border border-neon-cyan/30 text-neon-cyan font-medium transition-all hover:scale-105 hover:shadow-[0_0_15px_rgba(0,240,255,0.3)]"
+                                >
+                                    {isAuthenticated ? 'My Dashboard' : 'Sign In'}
+                                </button>
+                            </div>
                         )}
                     </motion.div>
                 </nav>

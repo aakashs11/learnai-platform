@@ -1,0 +1,42 @@
+{
+  "title": "Artificial Intelligence Curriculum - Student Handbook for Class XII",
+  "objectives": [],
+  "contentBlocks": [
+    {
+      "type": "concept",
+      "title": "Introduction to Artificial Intelligence",
+      "content": "The world around us is undergoing a dramatic transformation, driven by the relentless advancement of Artificial Intelligence (AI). From self-driving cars navigating city streets to virtual assistants understanding complex inquiries, AI is rapidly reshaping industries, societies, and the very way we interact with technology.",
+      "image": "assets/handbook/img_p1_1.png",
+      "keyTakeaway": "AI is transforming industries and society through advancements in technology."
+    },
+    {
+      "type": "concept",
+      "title": "Purpose of the Textbook",
+      "content": "This revised textbook, designed for students in Classes XI and XII, dives into the captivating world of AI, offering a comprehensive exploration of its core concepts, applications, and potential impact. As you embark on this journey, you will not only delve into the fascinating algorithms that power AI systems, but also examine its ethical considerations and its profound implications for the future.",
+      "image": "assets/handbook/img_p1_0.png",
+      "keyTakeaway": "The textbook aims to provide a comprehensive understanding of AI, its applications, and ethical considerations."
+    },
+    {
+      "type": "concept",
+      "title": "CBSE's Commitment to AI Education",
+      "content": "The Central Board of Secondary Education (CBSE) recognizes the transformative power of Artificial Intelligence (AI) and its impact on the future. Building upon this successful introduction, CBSE extended the AI subject to Class XI & XII, starting in the 2020-2021 academic session. Thus, allowing students to delve deeper into the world of AI and develop a more comprehensive understanding.",
+      "image": "",
+      "keyTakeaway": "CBSE has expanded AI education to Classes XI and XII to enhance students' understanding of the subject."
+    },
+    {
+      "type": "concept",
+      "title": "Collaboration and Curriculum Development",
+      "content": "This AI Curriculum has been created with the help of teacher advisors managed by 1M1B and supported by IBM. This curriculum aligns with industry standards as set forth by the National Skills Qualification Framework (NSQF) at Levels 3 & 4. CBSE acknowledges and appreciates the valuable contribution of IBM India in developing the AI curriculum and conducting training programs.",
+      "image": "",
+      "keyTakeaway": "The AI curriculum is developed in collaboration with industry partners to meet educational standards."
+    },
+    {
+      "type": "concept",
+      "title": "Empowering Students for the Future",
+      "content": "By working together, CBSE and its partners aim to empower students to embrace the future. By incorporating AI into their learning experience, students gain the knowledge and skills necessary to not only understand AI but also leverage its potential to enhance their learning and future prospects. The future is full of possibilities, and AI is poised to play a pivotal role.",
+      "image": "",
+      "keyTakeaway": "The curriculum empowers students to leverage AI for their future learning and career prospects."
+    }
+  ],
+  "quiz": {}
+}
