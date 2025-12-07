@@ -10,17 +10,31 @@
  * - Mermaid diagram suggestions
  */
 
-// PDF.js worker setup (for browser environment)
+// PDF.js Worker Configuration
+// SOLID: Single Responsibility - This function ONLY handles worker setup
+// Dependency Inversion - Uses CDN for worker to avoid bundler issues
+const PDFJS_CONFIG = {
+    // jsdelivr has better caching and reliability than unpkg
+    cdnBase: 'https://cdn.jsdelivr.net/npm/pdfjs-dist',
+    // v5 changed file extension to .mjs
+    workerFile: 'build/pdf.worker.min.mjs'
+}
+
 const setupPdfWorker = async () => {
-    if (typeof window !== 'undefined') {
+    if (typeof window === 'undefined') return null
+
+    try {
         const pdfjsLib = await import('pdfjs-dist')
-        // SOLID: Ensure worker version matches library version exactly to prevent runtime errors
-        // Fallback to a known stable version if version is not detected
-        const workerVersion = pdfjsLib.version || '4.4.168'
-        pdfjsLib.GlobalWorkerOptions.workerSrc = `https://unpkg.com/pdfjs-dist@${workerVersion}/build/pdf.worker.min.js`
+        const version = pdfjsLib.version
+
+        pdfjsLib.GlobalWorkerOptions.workerSrc =
+            `${PDFJS_CONFIG.cdnBase}@${version}/${PDFJS_CONFIG.workerFile}`
+
         return pdfjsLib
+    } catch (err) {
+        console.error('[pdfCourseGenerator] Failed to setup PDF worker:', err)
+        throw new Error(`PDF Worker setup failed: ${err.message}`)
     }
-    return null
 }
 
 /**
