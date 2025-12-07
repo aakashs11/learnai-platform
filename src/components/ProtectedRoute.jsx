@@ -1,9 +1,13 @@
-import { Navigate } from 'react-router-dom'
+import { Navigate, Outlet } from 'react-router-dom'
 import { useAuth } from '../contexts/AuthContext'
+import { ADMIN_EMAIL } from '../config/routes'
 
 /**
  * ProtectedRoute - Wraps routes that require authentication
- * Optionally requires admin role
+ * 
+ * Usage:
+ * - Basic: <Route element={<ProtectedRoute />}> for login-required routes
+ * - Admin: <Route element={<ProtectedRoute requireAdmin />}> for admin-only routes
  */
 export default function ProtectedRoute({
     children,
@@ -27,7 +31,7 @@ export default function ProtectedRoute({
 
     // Check admin role if required
     if (requireAdmin) {
-        const isAdmin = user?.email === 'aakash.mufc@gmail.com'
+        const isAdmin = user?.email === ADMIN_EMAIL
 
         if (!isAdmin) {
             return (
