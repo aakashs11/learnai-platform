@@ -1,7 +1,7 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, useMemo } from 'react'
 import mermaid from 'mermaid'
 
-// Initialize Mermaid with custom theme
+// Initialize Mermaid (safe to call multiple times with startOnLoad: false)
 mermaid.initialize({
     startOnLoad: false,
     theme: 'dark',
@@ -23,46 +23,64 @@ mermaid.initialize({
     },
     flowchart: {
         curve: 'basis',
-        padding: 20,
-        nodeSpacing: 50,
-        rankSpacing: 50
+        padding: 20
     }
 })
 
 /**
  * MermaidDiagram Component
- * Renders Mermaid diagrams for flowcharts, mindmaps, etc.
+ * Renders Mermaid diagrams with stable IDs to prevent flickering
  */
 export default function MermaidDiagram({
     code,
     title,
     caption,
-    id = `mermaid-${Math.random().toString(36).substr(2, 9)}`
+    id: propId
 }) {
     const containerRef = useRef(null)
     const [svg, setSvg] = useState('')
     const [error, setError] = useState(null)
 
+    // Stable ID generation - critical to prevent flickering on parent re-renders
+    const uniqueId = useMemo(() => {
+        return propId || `mermaid-${Math.random().toString(36).substr(2, 9)}`
+    }, [propId])
+
     useEffect(() => {
+        let isMounted = true
+
         const renderDiagram = async () => {
             if (!code || !containerRef.current) return
 
             try {
-                // Clear previous content
-                setSvg('')
-                setError(null)
+                // Clear previous content only if code changed materially
+                // (Optimistically keep showing old SVG while new one renders if possible, 
+                // but mermaid.render needs a clean slate usually)
 
-                // Render the diagram
-                const { svg: renderedSvg } = await mermaid.render(id, code)
-                setSvg(renderedSvg)
+                // IMPORTANT: Mermaid requires unique IDs for elements. 
+                // If we re-use the same ID in the DOM it might conflict.
+                // But since we are replacing the innerHTML, it should be fine.
+
+                const { svg: renderedSvg } = await mermaid.render(uniqueId, code)
+
+                if (isMounted) {
+                    setSvg(renderedSvg)
+                    setError(null)
+                }
             } catch (err) {
                 console.error('Mermaid render error:', err)
-                setError('Failed to render diagram')
+                if (isMounted) {
+                    setError('Failed to render diagram')
+                }
             }
         }
 
         renderDiagram()
-    }, [code, id])
+
+        return () => {
+            isMounted = false
+        }
+    }, [code, uniqueId])
 
     if (error) {
         return (
