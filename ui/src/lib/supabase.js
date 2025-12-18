@@ -3,11 +3,15 @@ import { createClient } from '@supabase/supabase-js'
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY
 
-if (!supabaseUrl || !supabaseAnonKey) {
-    console.warn('Supabase credentials not found. Running in demo/mock mode.')
+// DEPRECATED/DEAD PROJECT CHECK
+// If we see the old deleted project, ignore it and force mock mode
+const isDeadProject = supabaseUrl?.includes('nvgaautamiqcpexrfeoz')
+
+if (!supabaseUrl || !supabaseAnonKey || isDeadProject) {
+    console.warn('Supabase credentials missing or invalid. Running in demo/mock mode.')
 }
 
-export const supabase = supabaseUrl && supabaseAnonKey
+export const supabase = (supabaseUrl && supabaseAnonKey && !isDeadProject)
     ? createClient(supabaseUrl, supabaseAnonKey)
     : null
 
