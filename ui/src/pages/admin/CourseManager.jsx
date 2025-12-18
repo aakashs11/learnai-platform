@@ -1,10 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { Plus, Search, MoreVertical, Edit, Trash, BookOpen } from 'lucide-react'
-import { dataProvider } from '../../lib/dataProvider'
-
-// ... imports kept same ...
 import { Plus, Search, MoreVertical, Edit, Trash, BookOpen, BarChart3 } from 'lucide-react'
+import { dataProvider } from '../../lib/dataProvider'
 
 // Skeleton Component
 const CourseSkeleton = () => (
