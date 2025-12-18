@@ -1,0 +1,93 @@
+{
+  "title": "Artificial Intelligence - Class XII Student Handbook",
+  "objectives": [
+    "Understand the fundamentals of Artificial Intelligence and its applications.",
+    "Explore the curriculum and resources provided for Class XII.",
+    "Learn about the ethical considerations and implications of AI."
+  ],
+  "contentBlocks": [
+    {
+      "type": "concept",
+      "title": "Introduction to Artificial Intelligence",
+      "content": "The world around us is undergoing a dramatic transformation, driven by the relentless advancement of Artificial Intelligence (AI). From self-driving cars navigating city streets to virtual assistants understanding complex inquiries, AI is rapidly reshaping industries, societies, and the very way we interact with technology.",
+      "image": "assets/d03bb9c9_AI_Student_HandbookXII/img_p1_1.png",
+      "keyTakeaway": "AI is transforming industries and society through advanced technologies."
+    },
+    {
+      "type": "concept",
+      "title": "Acknowledgments",
+      "content": "Patrons include Mr. Rahul Singh, IAS, Chairperson, Central Board of Secondary Education, and strategic guidance from Dr. Biswajit Saha, Director (Skill Education), CBSE. The curriculum planning team includes various educators and experts from institutions.",
+      "keyTakeaway": "The development of the AI curriculum involved contributions from various educational leaders."
+    },
+    {
+      "type": "concept",
+      "title": "Curriculum Overview",
+      "content": "The AI Curriculum has been created with the help of teacher advisors managed by 1M1B and supported by IBM. This curriculum aligns with industry standards as set forth by the National Skills Qualification Framework (NSQF) at Levels 3 & 4.",
+      "keyTakeaway": "The AI curriculum is aligned with industry standards and developed collaboratively."
+    },
+    {
+      "type": "concept",
+      "title": "Index of Topics",
+      "content": "Unit 1: Python Programming-II, Unit 2: Data Science Methodology, Unit 3: Making Machines See, Unit 4: AI with Orange Data Mining Tool, Unit 5: Introduction to Big Data and Data Analytics, Unit 6: Understanding Neural Networks, Unit 7: Generative AI, Unit 8: Data Storytelling.",
+      "keyTakeaway": "The curriculum covers a wide range of topics essential for understanding AI."
+    },
+    {
+      "type": "concept",
+      "title": "Unit 1: Python Programming-II",
+      "content": "This chapter provides a comprehensive review of fundamental python programming and techniques. Students will gain hands-on experience with essential Python libraries, preparing them for more advanced data analysis and machine learning tasks which can be incorporated in their capstone project.",
+      "keyTakeaway": "Students will enhance their Python programming skills for data analysis."
+    },
+    {
+      "type": "concept",
+      "title": "Handling Missing Values",
+      "content": "The two most common strategies for handling missing values explained in this section are: Drop the row having missing values OR Estimate the missing value. Checking Missing Values: Pandas provide a function isnull() to check whether any value is missing or not in the DataFrame.",
+      "keyTakeaway": "Handling missing values is crucial for data quality in analysis."
+    },
+    {
+      "type": "concept",
+      "title": "Generative AI",
+      "content": "Generative AI creates new content resembling training samples across text, images, audio, and video. It covers how these systems learn from data, the difference between generative and discriminative models, and their diverse practical applications.",
+      "keyTakeaway": "Generative AI is a powerful tool for creating new content based on learned patterns."
+    },
+    {
+      "type": "concept",
+      "title": "Data Storytelling",
+      "content": "Data storytelling is the art and practice of translating complex data and analytics into a compelling narrative that is easily understandable and relatable to various audiences. It combines data, visuals, and narrative to present complex information engagingly.",
+      "keyTakeaway": "Data storytelling enhances comprehension and impact of data insights."
+    }
+  ],
+  "quiz": {
+    "questions": [
+      {
+        "question": "Which of the following is a primary data structure in Pandas?",
+        "options": [
+          "a) List",
+          "b) Tuple",
+          "c) Series",
+          "d) Matrix"
+        ],
+        "answer": "c) Series"
+      },
+      {
+        "question": "What does the fillna(0) function do in Pandas?",
+        "options": [
+          "a) Removes rows with missing values",
+          "b) Fills missing values with zeros",
+          "c) Estimates missing values based on averages",
+          "d) Converts all data to zero"
+        ],
+        "answer": "b) Fills missing values with zeros"
+      },
+      {
+        "question": "What is the correct syntax to read a CSV file into a Pandas DataFrame?",
+        "options": [
+          "a) pd.DataFrame('filename.csv')",
+          "b) pd.read_csv('filename.csv')",
+          "c) pandas.read_file('filename.csv')",
+          "d) pd.file_read('filename.csv')"
+        ],
+        "answer": "b) pd.read_csv('filename.csv')"
+      }
+    ]
+  }
+}

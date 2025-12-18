@@ -1,0 +1,4 @@
+pymupdf
+pillow
+python-dotenv
+openai
