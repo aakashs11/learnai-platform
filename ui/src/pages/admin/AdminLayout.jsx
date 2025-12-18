@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Link, Outlet, useLocation } from 'react-router-dom'
 import {
     LayoutDashboard, BookOpen, FileText, Settings,
-    LogOut, Menu, X, PlusCircle
+    LogOut, Menu, X, PlusCircle, Users
 } from 'lucide-react'
 import ThemeToggle from '../../components/ThemeToggle'
 
@@ -12,6 +12,7 @@ export default function AdminLayout() {
 
     const navItems = [
         { icon: LayoutDashboard, label: 'Dashboard', path: '/admin' },
+        { icon: Users, label: 'Students', path: '/admin/users' },
         { icon: BookOpen, label: 'Courses', path: '/admin/courses' },
         { icon: FileText, label: 'Question Bank', path: '/admin/questions' },
         { icon: Settings, label: 'Settings', path: '/admin/settings' },
@@ -47,8 +48,8 @@ export default function AdminLayout() {
                                     key={item.path}
                                     to={item.path}
                                     className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-colors ${isActive
-                                            ? 'bg-indigo-50 dark:bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 font-medium'
-                                            : 'text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800'
+                                        ? 'bg-indigo-50 dark:bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 font-medium'
+                                        : 'text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800'
                                         }`}
                                 >
                                     <item.icon className="w-5 h-5" />

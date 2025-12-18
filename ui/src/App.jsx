@@ -16,6 +16,8 @@ import ProtectedRoute from './components/ProtectedRoute'
 
 // Admin pages
 import AdminLayout from './pages/admin/AdminLayout'
+import AdminDashboard from './pages/admin/AdminDashboard'
+import UserList from './pages/admin/UserList'
 import CourseManager from './pages/admin/CourseManager'
 import CourseDetail from './pages/admin/CourseDetail'
 import LessonEditor from './pages/admin/LessonEditor'
@@ -72,7 +74,8 @@ function App() {
           {/* ============================================ */}
 
           <Route path="/admin" element={<ProtectedRoute requireAdmin><AdminLayout /></ProtectedRoute>}>
-            <Route index element={<CourseManager />} />
+            <Route index element={<AdminDashboard />} />
+            <Route path="users" element={<UserList />} />
             <Route path="courses" element={<CourseManager />} />
             <Route path="courses/:courseId" element={<CourseDetail />} />
             <Route path="lesson/:lessonId" element={<LessonEditor />} />
